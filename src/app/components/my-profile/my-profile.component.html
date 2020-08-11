@@ -1,0 +1,35 @@
+<app-navbar *ngIf="identity"></app-navbar>
+
+<div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle vimeo-wrapper" *ngIf="identity" style="overflow-y: hidden!important;" uk-grid>
+  <div class="uk-padding-large">
+    <h1>Bienvenido {{identity.name}}</h1>
+    <div class="uk-child-width-1-2@s uk-grid-collapse uk-text-center" uk-grid>
+      <div>
+        <div class="uk-tile uk-tile-default">
+          <p class="uk-h4">Usuario: {{identity.name + ' ' + identity.surname}}</p>
+        </div>
+      </div>
+      <div>
+        <div class="uk-tile uk-tile-muted">
+          <p class="uk-h4">Email: {{identity.email}}</p>
+        </div>
+      </div>
+      <div>
+        <div class="uk-tile uk-tile-primary">
+          <p class="uk-h4">Teléfono:{{identity.cellphone}}</p>
+        </div>
+      </div>
+      <div>
+        <div class="uk-tile uk-tile-secondary">
+          <p class="uk-h4">Rol: Administrador</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="uk-background-cover" style="background-image: url('https://getuikit.com/docs/images/photo.jpg');" uk-height-viewport>
+
+  </div>
+
+</div>
+
+<app-login *ngIf="!identity"></app-login>

@@ -1,0 +1,58 @@
+<div class="uk-animation-fade">
+  <div class="vimeo-wrapper">
+    <iframe src="https://player.vimeo.com/video/333837997?background=1&autoplay=1&loop=1&byline=0&title=0"
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">VxOS Software</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active mg">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mg">
+          <a class="nav-link" routerLink="/contact">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div style=" background: #fff; ;width: 75%;  padding: 35px" class="mx-auto search ">
+    <div class="content-search mx-auto h2" >Contácto a VxOS Software | Estamos para servirle</div>
+    <form (ngSubmit)="contactForm(form.value)" #form="ngForm" *ngIf="msgService">
+      <fieldset class="uk-fieldset">
+        <legend class="uk-legend">Servicio de asistencia</legend>
+
+        <div class="uk-margin">
+          <input class="uk-input" type="text" placeholder="Ingrese su email asociado a su licencia" name="email" ngModel>
+        </div>
+
+        <div class="uk-margin">
+          <select class="uk-select" name="nombre" ngModel>
+            <option>Asistencia técnica</option>
+            <option>Renovación de licencia</option>
+          </select>
+        </div>
+
+        <div class="uk-margin">
+          <textarea name="mensaje" ngModel class="uk-textarea" rows="5" placeholder="Ingrese su mensaje sobre su solicitud"></textarea>
+        </div>
+        <button type="submit" class="uk-button uk-button-primary">Enviar</button>
+
+      </fieldset>
+    </form>
+    <div *ngIf="!msgService">
+      <div class="alert alert-success" role="alert">
+        Su solicitud con número de ticket {{tickect}} ha sido enviado correctamente,
+        nos pondremos en contacto con usted en este email muy pronto.
+      </div>
+    </div>
+  </div>
+
+</div>

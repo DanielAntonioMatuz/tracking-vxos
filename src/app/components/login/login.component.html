@@ -1,0 +1,101 @@
+<div class="uk-animation-fade" *ngIf="!identity">
+
+  <div id="modal-full" class="uk-modal-full">
+    <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+      <div class="uk-padding-large">
+        <div>
+          <div class="uk-tile uk-tile-secondary" style="text-align: center; padding-top: 15px; padding-bottom: 15px; margin-bottom: 15px">
+            <a class="uk-h4" routerLink="/">Ir a inicio</a>
+          </div>
+        </div>
+        <h2 style="text-align: center">Iniciar sesión</h2>
+        <div class="w-75 mx-auto border" style="margin-top: 35px; padding: 20px; border-radius: 5px">
+          <div class="alert alert-success" role="alert" *ngIf="status == 'success'" style="  font-family: 'Open Sans', sans-serif;">
+            Has iniciado sesión con éxito
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="status == 'error'" style="  font-family: 'Open Sans', sans-serif;">
+            ¡Ou!, al parecer tu email o contraseña es incorrecto, verificalo
+          </div>
+
+          <form class="uk-form-stacked" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Email</label>
+              <div class="uk-form-controls">
+                <input name="email" #email="ngModel" [(ngModel)]="user.email" required="required" class="uk-input" id="form-stacked-text" type="email" placeholder="Ingrese su email">
+              </div>
+            </div>
+
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-password">Contraseña</label>
+              <div class="uk-form-controls">
+                <input name="password" #password="ngModel" [(ngModel)]="user.password" required="required" class="uk-input" id="form-stacked-password" type="password" placeholder="Ingrese su contraseña">
+              </div>
+            </div>
+
+            <button [disabled]="!loginForm.form.valid" class="uk-button uk-button-primary" type="submit" style="border-radius: 4px; margin-top: 5px">Iniciar sesión </button>
+          </form>
+        </div>
+      </div>
+      <div class="uk-background-cover mv-d" style="background-image: url('https://getuikit.com/docs/images/photo.jpg');" uk-height-viewport></div>
+    </div>
+  </div>
+</div>
+
+<div class="uk-animation-fade" *ngIf="identity">
+
+  <div id="modal-full" class="uk-modal-full">
+    <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+      <div class="uk-padding-large">
+        <div style="text-align: center">
+          <div class="uk-tile uk-tile-secondary" style="text-align: center; padding-top: 15px; padding-bottom: 15px; margin-bottom: 15px">
+            <a class="uk-h4" routerLink="/dashboard">Ir a dashboard</a>
+          </div>
+        </div>
+        <h2 style="text-align: center">Hola {{identity.name}}</h2>
+        <h3 style="text-align: center">Ya haz iniciado sesión</h3>
+        <div class="w-75 mx-auto border" style="margin-top: 35px; padding: 20px; border-radius: 5px">
+          <form class="uk-form-stacked">
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Usuario</label>
+              <div class="uk-form-controls">
+                <input name="email" value="{{identity.name + ' ' + identity.surname}}"  required="required" class="uk-input"  type="text" disabled placeholder="Ingrese su email">
+              </div>
+            </div>
+
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-password">Email</label>
+              <div class="uk-form-controls">
+                <input name="name" value="{{identity.email}}" class="uk-input"  type="email" disabled placeholder="Ingrese su contraseña">
+              </div>
+            </div>
+            <div style="text-align: center">
+              <div class="uk-tile uk-button-danger" style="text-align: center; padding-top: 15px; padding-bottom: 15px; margin-bottom: 15px">
+                <a class="uk-h4" (click)="logout()" routerLink="/" style="color: white">Cerrar sesión</a>
+              </div>
+            </div>
+            <h6><a href="#offcanvas-flip" uk-toggle style="color: black">¿No puedes iniciar sesión?</a></h6>
+          </form>
+        </div>
+      </div>
+      <div class="uk-background-cover mv-d" style="background-image: url('https://getuikit.com/docs/images/photo.jpg');" uk-height-viewport></div>
+    </div>
+  </div>
+</div>
+
+<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+  <div class="uk-offcanvas-bar">
+
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+    <h3>Iniciar sesión</h3>
+
+    <p>Solo puede iniciar sesión el personal autorizado de VxOS Software, si usted no es un usuario del personal de VxOS y desea realizar el rastreo o asistencia de su licencia, dirijase al inicio,<a routerLink="/"> aquí</a>
+    y escriba en el buscador, su ID de referencia de 5 dígitos para poder acceder al panel de rastreo único de su producto, si desea contactarnos para dudas o detalles, dirijase al centro de
+      <a routerLink="/contact">contacto</a> para poder comunicarse con nosotros</p>
+
+  </div>
+</div>

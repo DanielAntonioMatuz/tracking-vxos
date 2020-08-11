@@ -1,0 +1,81 @@
+<div class="uk-animation-fade">
+
+  <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple"
+  >
+    <p style="font-size: 20px; color: white">Cargando...</p>
+  </ngx-spinner>
+
+
+  <body>
+
+  <div class="vimeo-wrapper">
+    <iframe src="https://player.vimeo.com/video/333837997?background=1&autoplay=1&loop=1&byline=0&title=0"
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">VxOS Software</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active mg">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mg">
+          <a class="nav-link" routerLink="/contact">Contacto</a>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="uk-button uk-button-secondary my-sm-2" routerLink="/login" style="border-radius: 5px">Iniciar sesión</button>
+
+    </form>
+
+  </nav>
+
+
+  <div class="">
+    <h1 style="text-align: center; color: #fff!important;" class="content-search">Ingrese su ID</h1>
+    <div class="uk-text-meta content-search w-75" style="  margin-top: -95px!important; color: #fff!important;">Su ID de rastreo de 5 dígitos, haga click <span class="badge badge-secondary" data-toggle="modal" data-target="#exampleModal">aquí</span> para más información </div>
+    <div style=" background: gainsboro; ;width: 75%; border-radius: 8px" class="mx-auto search d-flex">
+      <div class="uk-search uk-search-large">
+        <span uk-search-icon></span>
+        <input (keyup.enter)="valueId(idValue.value)" class="uk-search-input" type="search" placeholder="..." #idValue name="idValue">
+      </div>
+      <button type="submit" class="btn btn-primary ml-auto float-right" style="background: transparent!important; color: #666666; border: none" (click)="valueId(idValue.value)">Buscar</button>
+    </div>
+    <div *ngIf="!estatus" class="alert alert-warning" role="alert">
+      {{this.details}}
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Información sobre su ID</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Su ID de licencia es una expresión alfanúmerica de 5 digitos, por ejemplo:
+          ABCD1, ABC11, AB111
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</div>

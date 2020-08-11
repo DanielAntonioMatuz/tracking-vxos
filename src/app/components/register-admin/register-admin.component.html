@@ -1,0 +1,65 @@
+
+
+<div id="modal-full" class="uk-modal-full" *ngIf="identity">
+  <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+    <div class="uk-padding-large">
+      <div>
+        <div class="uk-tile uk-tile-secondary" style="text-align: center; padding-top: 15px; padding-bottom: 15px; margin-bottom: 15px">
+          <a class="uk-h4" routerLink="/dashboard">Ir a dashboard</a>
+        </div>
+      </div>
+      <h2 style="text-align: center">Registrar Administrador</h2>
+      <div class="w-75 mx-auto border" style="margin-top: 35px; padding: 20px; border-radius: 5px">
+        <div class="alert alert-success" role="alert" *ngIf="status == 'success'">
+          La información del usuario ha sido registrado
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="status == 'error'">
+          Algunos de los valores ya han sido registrados, verificalo.
+        </div>
+
+        <form class="uk-form-stacked" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Email</label>
+            <div class="uk-form-controls">
+              <input name="email" #email="ngModel" [(ngModel)]="user.email" required="required" class="uk-input" id="form-stacked-text" type="email" placeholder="Ingrese su email">
+            </div>
+          </div>
+
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-name">Nombre</label>
+            <div class="uk-form-controls">
+              <input name="nombre" #nombre="ngModel" [(ngModel)]="user.name" required="required"  class="uk-input" id="form-stacked-name" type="text" placeholder="Ingrese su nombre">
+            </div>
+          </div>
+
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-ref">Apellido</label>
+            <div class="uk-form-controls">
+              <input name="surname" #surname="ngModel" [(ngModel)]="user.surname" required="required"  class="uk-input" id="form-stacked-ref" type="text" placeholder="Ingrese su apellido">
+            </div>
+          </div>
+
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-refA">Teléfono</label>
+            <div class="uk-form-controls">
+              <input name="cellphone" #cellphone="ngModel" [(ngModel)]="user.cellphone" required="required" class="uk-input" id="form-stacked-refA" type="text" placeholder="Ingrese su Teléfono">
+            </div>
+          </div>
+
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-refA">Contraseña</label>
+            <div class="uk-form-controls">
+              <input name="password" #password="ngModel" [(ngModel)]="user.password" required="required" class="uk-input" id="form-stacked-password" type="password" placeholder="Ingrese su contraseña">
+            </div>
+          </div>
+
+          <button [disabled]="!registerForm.form.valid" class="uk-button uk-button-primary" type="submit" style="border-radius: 4px; margin-top: 5px">Registrar </button>
+        </form>
+      </div>
+    </div>
+    <div class="uk-background-cover mv-d" style="background-image: url('https://getuikit.com/docs/images/photo.jpg');" uk-height-viewport></div>
+  </div>
+</div>
+
+<app-login *ngIf="!identity"></app-login>

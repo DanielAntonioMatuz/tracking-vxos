@@ -1,0 +1,60 @@
+<div class="uk-animation-fade" *ngIf="identity">
+  <app-navbar></app-navbar>
+  <div>
+    <div class="uk-tile uk-tile-primary" style="padding-bottom: 10px!important; padding-top: 20px!important; align-content: center; text-align: center">
+      <p class="uk-h4">Renovación de licencia</p>
+      <table class="uk-table uk-table-middle uk-table-divider w-75 mx-auto" style="text-align: left!important;">
+        <thead>
+        <tr>
+          <th >Detalle</th>
+          <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Renovar</td>
+          <td>Renueva la licencia del usuario</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <nav class="uk-navbar-container border w-75 mx-auto" uk-navbar style="border-radius: 5px; margin-top: 15px">
+    <div class="uk-navbar-left">
+
+      <div class="uk-navbar-item">
+        <form class="uk-search uk-search-navbar">
+          <span uk-search-icon></span>
+          <input class="uk-search-input" type="search" (input)="onSearchChange($event.target.value)" placeholder="Buscar usuario...">
+        </form>
+      </div>
+
+    </div>
+  </nav>
+
+  <p class="uk-h3" style="margin-top: 10px; margin-bottom: 10px; text-align: center">Renovación de licencia de usuario</p>
+  <div class="w-75 mx-auto uk-overflow-auto">
+    <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+      <thead>
+      <tr>
+        <th>Email usuario</th>
+        <th>Licencia</th>
+        <th>Vigencia</th>
+        <th>Renovar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of users">
+        <td *ngIf="i.estadoLicencia == 'Inactivo'">{{i.email}}</td>
+        <td *ngIf="i.estadoLicencia == 'Inactivo'">{{i.tipoLicencia}}</td>
+        <td *ngIf="i.estadoLicencia == 'Inactivo'">{{i.vigencia}}</td>
+        <td *ngIf="i.estadoLicencia == 'Inactivo'"><button (click)="valueId(dataRen.value, i)" *ngIf="i.tipoLicencia == 'Creative Cloud'" style="margin-right: 15px; margin-bottom: 5px" class="uk-button uk-button-danger" type="button" #dataRen name="LPU" value="renovar">Renovar</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<app-login *ngIf="!identity"></app-login>

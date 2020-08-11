@@ -1,0 +1,69 @@
+<div *ngIf="identity">
+  <app-navbar></app-navbar>
+  <div>
+    <div class="uk-tile uk-tile-secondary">
+      <p class="uk-h4">Panel de avance de licencia</p>
+      <p class="uk-h5">Tracking de usuarios completados al {{progress}}%</p>
+      <progress id="js-progressbar" class="uk-progress" value="{{progress}}" max="100"></progress>
+
+    </div>
+  </div>
+
+  <nav class="uk-navbar-container border w-75 mx-auto" uk-navbar style="border-radius: 5px; margin-top: 15px">
+    <div class="uk-navbar-left">
+
+      <div class="uk-navbar-item">
+        <form class="uk-search uk-search-navbar">
+          <span uk-search-icon></span>
+          <input class="uk-search-input" type="search" (input)="onSearchChange($event.target.value)" placeholder="Buscar usuario...">
+        </form>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="uk-overflow-auto w-75 mx-auto" style="margin-top: 20px">
+    <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+      <thead>
+      <tr>
+        <th class="uk-table-shrink">ALL</th>
+        <th class="uk-table-shrink">Email</th>
+        <th class="uk-table-shrink">CENTRAL - VXOS</th>
+        <th class="uk-table-shrink">VXOS - ADB</th>
+        <th class="uk-table-shrink">ADB</th>
+        <th class="uk-table-shrink uk-text-nowrap">OK 200</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of users">
+
+
+
+        <td *ngIf="!i.estadoLicencia; else elseBlock"><input (click)="valueId(idValue.value, i)" #idValue name="idValue" value="all" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock><td *ngIf="!i.estadoLicencia"><input  checked disabled (click)="valueId(idValue.value, i)" #idValue name="idValue" value="all" class="uk-checkbox" type="checkbox"></td></ng-template>
+
+
+        <td *ngIf="!i.estadoLicencia"><p>{{i.email}}</p></td>
+
+
+        <td *ngIf="!i.act1 && !i.estadoLicencia; else elseBlock3"><input (click)="valueId(ctrl.value, i)"  #ctrl name="ctrl" value="ctrl" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock3><td *ngIf="!i.estadoLicencia"><input  checked disabled (click)="valueId(ctrl.value, i)"  #ctrl name="ctrl" value="ctrl" class="uk-checkbox" type="checkbox"></td></ng-template>
+
+
+        <td *ngIf="!i.act2 && !i.estadoLicencia; else elseBlock4"><input (click)="valueId(vxos.value, i)"  #vxos name="vxos" value="vxos" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock4><td *ngIf="!i.estadoLicencia"><input  checked disabled #vxos name="vxos" value="vxos" class="uk-checkbox" type="checkbox"></td></ng-template>
+
+
+        <td *ngIf="!i.act3 && !i.estadoLicencia; else elseBlock5"><input (click)="valueId(adb.value, i)"  #adb name="adb" value="adb" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock5><td *ngIf="!i.estadoLicencia"><input  checked disabled #adb name="adb" value="adb" class="uk-checkbox" type="checkbox"></td></ng-template>
+
+
+        <td *ngIf="!i.estadoLicencia; else elseBlock6"><input (click)="valueId(ok.value, i)"  #ok name="ok" value="ok" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock6><td *ngIf="!i.estadoLicencia"><input  checked disabled #ok name="ok" value="ok" class="uk-checkbox" type="checkbox"></td></ng-template>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<app-login *ngIf="!identity"></app-login>

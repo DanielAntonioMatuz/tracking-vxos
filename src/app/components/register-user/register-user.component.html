@@ -1,0 +1,72 @@
+<div class="uk-animation-fade" *ngIf="identity">
+  <app-navbar></app-navbar>
+
+  <div>
+    <div class="uk-tile uk-tile-default border" style="padding-top: 35px; padding-bottom: 35px">
+      <p class="uk-h4">Panel de registro</p>
+      <p class="uk-h5">Usuarios registrados </p>
+    </div>
+  </div>
+
+  <div class="w-75 mx-auto border" style="margin-top: 35px; padding: 20px; border-radius: 5px">
+    <p class="uk-h2" style="text-align: center">Registrar usuario </p>
+
+    <div class="alert alert-success" role="alert" *ngIf="status == 'success'">
+      La información del usuario ha sido registrado <a routerLink="/tracking">, realiza el seguimiento</a>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="status == 'error'">
+      Algunos de los valores ya han sido registrados, verificalo.
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="ref">
+      La referencia y la confirmación son diferentes
+    </div>
+
+    <form class="uk-form-stacked" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Email</label>
+        <div class="uk-form-controls">
+          <input name="email" #email="ngModel" [(ngModel)]="user.email" required="required" class="uk-input" id="form-stacked-text" type="email" placeholder="Ingrese el email">
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-name">Nombre</label>
+        <div class="uk-form-controls">
+          <input name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required="required"  class="uk-input" id="form-stacked-name" type="text" placeholder="Ingrese el nombre del cliente">
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-ref">Referencia (ID)</label>
+        <div class="uk-form-controls">
+          <input name="_id" #_id="ngModel" [(ngModel)]="user._id" required="required"  class="uk-input" id="form-stacked-ref" type="text" placeholder="a{{idData}}">
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-refA">Confirmar Referencia (ID)</label>
+        <div class="uk-form-controls">
+          <input name="referencia" #referencia="ngModel" [(ngModel)]="user.referencia" required="required" class="uk-input" id="form-stacked-refA" type="text" placeholder="a{{idData}}">
+        </div>
+      </div>
+
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-select">Tipo de producto</label>
+        <div class="uk-form-controls">
+          <select class="uk-select" id="form-stacked-select" name="tipoLicencia" #tipoLicencia="ngModel" [(ngModel)]="user.tipoLicencia" required="required" >
+            <option>Creative Cloud</option>
+            <option>Producto individual</option>
+            <option>Producto dual</option>
+
+          </select>
+        </div>
+      </div>
+      <button [disabled]="!registerForm.form.valid" class="uk-button uk-button-primary" type="submit" style="border-radius: 4px; margin-top: 5px">Registrar </button>
+    </form>
+  </div>
+
+</div>
+
+<app-login *ngIf="!identity"></app-login>
