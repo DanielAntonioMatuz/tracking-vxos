@@ -1,0 +1,197 @@
+<div>
+  <app-navbar-contents></app-navbar-contents>
+
+
+  <div>
+
+    <div>
+      <div class="blog-single-cover scheme-light  mx-auto" data-fullheight="true" data-inview="true" data-inview-options='{ "onImagesLoaded": true }' style="background-color: #ff5c5c; width: 90%; height: 450px">
+
+        <figure class="blog-single-media "   data-parallax-options='{ "parallaxBG": true, "triggerHook": "onLeave" }' data-parallax-from='{ "translateY": "0%" }' data-parallax-to='{ "translateY": "20%" }'>
+          <img style="width: 100%; height: 150%" src="{{imagenData}}" alt="Blog single">
+        </figure>
+
+        <div class="blog-single-details">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+
+                <header style="margin-top: 50px">
+                  <h1 style="color: white">Negocio: {{dataUserProfile[0].nombre}} </h1>
+                  <div class="post-meta">
+										<span class="byline">
+											<span class="block text-uppercase ltr-sp-1">Categoría:</span>
+											<span class="author vcard">
+												<a class="url fn n" href="#">{{dataUserProfile[0].categoria}}</a>
+											</span>
+										</span>
+                    <span class="posted-on">
+											<span class="block text-uppercase ltr-sp-1">Dirección:</span>
+											<a href="#" rel="bookmark">
+												<time class="entry-date published updated">{{dataUserProfile[0].direccion}}</time>
+											</a>
+										</span>
+                    <span class="cat-links">
+											<span class="block text-uppercase ltr-sp-1">Horario:</span>
+											<a href="#" rel="category tag">Business</a>
+										</span>
+                  </div><!-- /.post-meta -->
+                </header><!-- /.blog-single-header -->
+
+              </div><!-- /.col-md-6 -->
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+
+        </div><!-- /.blog-single-details -->
+      </div><!-- /.blog-single-cover -->
+    </div>
+
+    <div class="mx-auto vc_row pt-100 pb-80" style="margin-top: -60px; width: 80%">
+
+      <h3 style="color: #ff5c5c">Productos/servicios</h3>
+
+      <h1 *ngIf="dataUser.length === 0" style="margin-top: 60px">Ups... Sin productos publicados aún</h1>
+
+      <div class="liquid-blog-posts" >
+        <div class="liquid-blog-grid row" data-liquid-masonry="true">
+
+          <div class="lqd-column col-md-4" *ngFor="let i of dataUser">
+
+            <div class="fancy-box fancy-box-heading-custom fancy-box-classic">
+              <div class="cb-img-container mb-4">
+
+                <div  class="border-athens-gray uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                  <div class="uk-card-media-left uk-cover-container">
+                    <img src="{{i.imagen}}" alt="" uk-cover>
+                    <canvas width="600" height="400"></canvas>
+                  </div>
+                  <div>
+                    <div class="uk-card-body" style="padding-right: 5px; padding-left: 15px">
+                      <span style="background: #ff5c5c;"  *ngIf="i.precio" class="uk-badge">${{i.precio}}</span>
+                      <span style="background: #ff5c5c;" *ngIf="!i.precio" class="uk-badge">SERVICIO</span>
+                      <h3 class="uk-card-title">{{i.nombre}}</h3>
+                      <p class="biography">{{i.detalles}}</p>
+                      <a style="border-radius: 5px; padding-left: 15px; padding-right: 15px" class="uk-button uk-button-secondary" href="#modal-2" data-lity="#modal-2"(click)="detailsMenu(i)">Ordenar</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!--<figure class="fancy-box-image loaded">
+                  <img *ngIf="i.imagen" src="{{i.imagen}}" alt="No Coding">
+                  <img  *ngIf="!i.imagen" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png" alt="No Coding">
+                </figure>
+                <div class="cb-img-btn">
+                  <div class="cb-img-btn-bg"></div>
+                  <a href="/profile-contents/{{i._id}}" class="liquid-overlay-link"></a>
+                  <div class="cb-img-btn-inner">
+                    <a href="/profile-contents/{{i._id}}" class="btn btn-naked ld_button_5c7fc49d34c89">
+												<span>
+													<span class="btn-txt">Ver productos/servicios</span>
+													<span class="btn-icon"><i class="fa fa-angle-right"></i></span>
+												</span>
+                    </a>
+                  </div>&lt;!&ndash; /.cb-img-btn-bg &ndash;&gt;
+                </div>&lt;!&ndash; /.cb-img=btn &ndash;&gt;-->
+              </div><!-- /.cb-img-container -->
+              <!--<div class="fancy-box-contents">
+                <div class="fancy-box-header">
+                  <h3 class="font-size-19 mt-30 mb-10">{{i.nombre}}</h3>
+                  <p class="biography">{{i.detalles}}</p>
+                </div>&lt;!&ndash; /.fancy-box-header &ndash;&gt;
+              </div>&lt;!&ndash; /.fancy-box-contents &ndash;&gt;
+              <footer class="liquid-lp-footer">
+                <a style="color: #ff5c5c" href="#modal-2" data-lity="#modal-2" class="btn btn-naked text-uppercase ltr-sp-1 size-sm font-weight-bold liquid-lp-read-more">
+													<span>
+														<span class="btn-line btn-line-before"></span>
+														<span class="btn-txt">Comprar</span>
+														<span class="btn-line btn-line-after"></span>
+													</span>
+                </a>
+              </footer>
+            </div>&lt;!&ndash; /.fancy-box &ndash;&gt;-->
+            <hr >
+
+          </div><!-- /.lqd-column col-md-4 -->
+        </div><!-- /.liquid-blog-grid row -->
+      </div><!-- /.liquid-blog-posts -->
+
+    </div><!-- /.lqd-column col-md-12 -->
+
+  </div>
+</div>
+
+</div>
+<!-- Modal -->
+<div style="margin-top: 80px!important; max-width: 600px" class="">
+  <div id="modal-2" class="lqd-modal lity-hide w-75 mx-auto">
+    <div class="lqd-modal-inner">
+
+      <div class="lqd-modal-head"></div><!-- /.lqd-modal-head -->
+
+      <div class="lqd-modal-content">
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="uk-card-media-left uk-cover-container">
+              <img style="border-radius: 5px" src="{{imagenMenu}}" alt="" uk-cover>
+              <canvas width="600" height="400"></canvas>
+            </div>
+            <h3 style="padding: 0px; margin: 0px">{{tituloMenu}}</h3>
+
+            <div class="row">
+              <div class="lqd-column col-md-8 col-md-offset-2">
+                <p style="text-align: left">{{descripcionMenu}}</p>
+              </div><!-- /.col-md-8 col-md-offset-2 -->
+            </div><!-- /.row -->
+
+
+            <div class="row">
+
+              <div class="lqd-column col-md-10 col-md-offset-1">
+
+                <div  class="contact-form contact-form-inputs-underlined contact-form-button-circle">
+                  <div *ngIf="addCart" class="uk-alert-success" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>Agregado al carrito</p>
+                  </div>
+                  <form>
+                    <div *ngIf="precioMenu">
+                    <div class="row d-flex flex-wrap">
+                      <div class="lqd-column col-md-6 mb-20">
+                        <input class="lh-25 mb-30" type="number" name="cantidad" value="1"  min="1" aria-required="true" aria-invalid="false" (input)="calcularPrecioMenu($event.target.value)" placeholder="Cantidad" required>
+                      </div><!-- /.col-md-6 -->
+                        <div  class="lqd-column col-md-6 mb-20">
+                          <div class="lqd-column col-md-6 text-md-right">
+                            <input class="lh-25 mb-30"  type="text" name="Precio" disabled aria-required="true" aria-invalid="false" value="${{precioTotalMenu}}"  placeholder="precio" required>
+                            <input type="submit" value="Añadir a carrito" class="font-size-13 ltr-sp-1 font-weight-bold" (click)="saveItemMenu(menuItem)" style="background: #ff5c5c!important;">
+                          </div><!-- /.col-md-6 -->
+                        </div><!-- /.col-md-12 -->
+                        <div class="lqd-column col-md-6">
+
+                          <p class="font-size-16 opacity-07"><em>Stock sujeto a la disponibilidad del establecimiento</em></p>
+                        </div><!-- /.col-md-6 -->
+                      </div>
+
+                    </div><!-- /.row -->
+                    <input *ngIf="!precioMenu" type="submit" value="Solicitar" class="font-size-13 ltr-sp-1 font-weight-bold" (click)="saveItemMenu(menuItem)" style="background: #ff5c5c!important;">
+
+                  </form>
+                  <div class="contact-form-result hidden"></div><!-- /.contact-form-result -->
+                </div><!-- /.contact-form -->
+
+              </div><!-- /.col-md-10 col-md-offset-1 -->
+
+            </div><!-- /.row -->
+
+
+          </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+
+      </div><!-- /.lqd-modal-content -->
+
+      <div class="lqd-modal-foot"></div><!-- /.lqd-modal-foot -->
+
+    </div><!-- /.lqd-modal-inner -->
+  </div><!-- /.lqd-modal -->
+</div>

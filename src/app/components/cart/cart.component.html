@@ -1,0 +1,173 @@
+<app-navbar-contents></app-navbar-contents>
+
+
+<body class="woocommerce woocommerce-cart" data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="minimal" data-mobile-nav-shceme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
+
+<div id="wrap">
+
+  <main id="content" class="content">
+
+    <section>
+
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-12">
+
+            <div class="lqd-woo-steps">
+              <div class="lqd-woo-steps-inner">
+                <div class="lqd-woo-steps-item is-active">
+                  <span class="lqd-woo-steps-number" style="background: #ff5c5c">1</span><!-- /.lqd-woo-steps-number -->
+                  <span>Tu carrito</span>
+                  <svg width="9" height="56" xmlns="http://www.w3.org/2000/svg" stroke="#e5e5e5" fill="none">
+                    <polyline points="0.5888671875,0.02734375 0.5888671875,20.145751923322678 7.5888671875,27.7603759765625 0.5888671875,35.53466796875 0.5888671875,55.9697265625 "></polyline>
+                  </svg>
+                </div><!-- /.lqd-woo-steps-item -->
+
+                <div class="lqd-woo-steps-item">
+                  <span class="lqd-woo-steps-number">2</span><!-- /.lqd-woo-steps-number -->
+                  <span>Confirmar pedido</span>
+                  <svg width="9" height="56" xmlns="http://www.w3.org/2000/svg" stroke="#e5e5e5" fill="none">
+                    <polyline points="0.5888671875,0.02734375 0.5888671875,20.145751923322678 7.5888671875,27.7603759765625 0.5888671875,35.53466796875 0.5888671875,55.9697265625 "></polyline>
+                  </svg>
+                </div><!-- /.lqd-woo-steps-item -->
+
+                <div class="lqd-woo-steps-item">
+                  <span class="lqd-woo-steps-number">3</span><!-- /.lqd-woo-steps-number -->
+                  <span>Detalles de pedido</span>
+                </div><!-- /.lqd-woo-steps-item -->
+              </div><!-- /.lqd-woo-steps-inner -->
+            </div>
+
+            <form action="#" class="woocommerce-cart-form">
+
+              <table class="shop_table shop_table_responsive cart w-100" cellspacing="0">
+
+                <thead>
+                <tr>
+                  <th class="product-name" colspan="3">Producto(s)</th>
+                  <th class="product-price">Precio</th>
+                  <th class="product-quantity">Cantidad</th>
+                  <th class="product-subtotal">Total</th>
+                  <th class="product-remove">Quitar</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr class="cart_item" *ngFor="let product of cartUser">
+                  <td class="product-name" data-title="Product" colspan="3">
+												<span class="product-name-inner">
+													<a href="/profile-contents/{{product.user}}">
+														<img style="max-width: 200px; max-height: 200px" src="{{product.imagen}}" alt="Watch">
+													</a>
+													 <span class="product-info">
+														<a href="/profile-contents/{{product.user}}">{{product.nombre}}</a>
+													</span>
+												</span>
+                  </td>
+
+                  <td class="product-price" data-title="Price">
+												<span *ngIf="product.precio" class="amount">
+													<span>$</span>{{product.precio}}
+												</span>
+
+                        <span *ngIf="!product.precio" class="amount">
+													<span>POR ACORDAR</span>
+												</span>
+                  </td>
+
+                  <td class="product-quantity" data-title="Quantity">
+                    <div class="ld-product-quantity mb-4">
+                      <div class="quantity">
+                        <label class="screen-reader-text" for="quantity_5de6778aa0b02">Cantidad</label>
+                        <input type="text" class="input-text qty text spinner ui-spinner-input" step="1" min="0" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="product-subtotal" data-title="Total">
+												<span *ngIf="product.precio" class="amount">
+													<span>$</span>{{product.precio}}
+												</span>
+
+                        <span *ngIf="!product.precio" class="amount">
+													<span>POR ACORDAR</span>
+												</span>
+                  </td>
+                  <td class="product-remove" data-title="Remove">
+                    <a href="#" class="remove" title="Quitar producto/servicio">
+                      <i class="icon-ion-ios-close"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" class="cart-coupon">
+
+                  </td>
+                  <td colspan="5" class="actions">
+                    <div class="woo-actions-inner">
+                      <a href="/contents" class="button btn continue_shopping">
+                        <span>Seguir comprando</span>
+                      </a>
+                      <a style="background: #ff5c5c" type="submit" class="button btn update_cart" name="update_cart" value="Update cart" disabled>
+                        <span>Actualizar carrito</span>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+
+                </tbody>
+
+              </table>
+
+              <div class="cart-collaterals">
+                <div class="cart_totals">
+
+                  <h3>Precio total</h3>
+
+                  <table cellspacing="0" class="shop_table shop_table_responsive w-100">
+                    <tbody>
+                    <tr class="cart-subtotal">
+                      <th>Subtotal</th>
+                      <td data-title="Subtotal">
+														<span class="amount">
+															<span>$</span>{{precioTotal}}
+														</span>
+                      </td>
+                    </tr>
+                    <tr class="order-total">
+                      <th>Total</th>
+                      <td data-title="Total">
+                        <strong>
+															<span class="woocommerce-Price-amount amount">
+																<span class="woocommerce-Price-currencySymbol">$</span>{{precioTotal}}
+															</span>
+                        </strong>
+                      </td>
+                    </tr>
+                    </tbody>
+
+                  </table>
+
+                  <div class="woo-checkout-btn">
+                    <a style="background: #ff5c5c" href="/cart/confirm" class="checkout-button button alt wc-forward">
+                      <span>Proceder a confirmar</span>
+                      <i class="fa fa-long-arrow-right"></i>
+                    </a>
+                  </div><!-- /.woo-checkout-btn -->
+
+                </div><!-- /.cart_totals -->
+              </div><!-- /.cart-collaterals -->
+
+            </form>
+
+          </div><!-- /.lqd-column col-md-12 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+
+    </section>
+
+  </main><!-- /#content.content -->
+
+</div><!-- /#wrap -->

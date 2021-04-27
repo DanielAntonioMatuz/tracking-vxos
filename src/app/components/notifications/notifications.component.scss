@@ -1,0 +1,19 @@
+.notification{
+  position: fixed;
+  z-index: 100;
+  top:60%;
+  right:1%;
+  background: #ff5c5c;
+  color: white;
+  border-radius: 10px;
+}
+
+.notificationActive{
+  position: fixed;
+  z-index: 100;
+  top:65%;
+  right:30px;
+  background: mediumseagreen;
+  color: white;
+  border-radius: 10px;
+}

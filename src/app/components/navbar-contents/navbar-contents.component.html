@@ -1,0 +1,208 @@
+<header class="main-header main-header-overlay " style="z-index: 980; background: white" >
+
+  <div class="mainbar-wrap">
+    <div class="megamenu-hover-bg"></div><!-- /.megamenu-hover-bg -->
+    <div class="container-fluid mainbar-container">
+      <div class="mainbar">
+        <div class="row mainbar-row align-items-lg-stretch px-4">
+
+          <div class="col-auto pr-5 ">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/" rel="home">
+										<span class="navbar-brand-inner">
+											<img class="logo-dark" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="logo-sticky" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="mobile-logo-default" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="logo-default" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+										</span>
+              </a>
+              <button type="button" class="navbar-toggle collapsed nav-trigger style-mobile" data-toggle="collapse" data-target="#main-header-collapse" aria-expanded="false" data-changeclassnames='{ "html": "mobile-nav-activated overflow-hidden" }'>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="bars">
+											<span class="bar"></span>
+											<span class="bar"></span>
+											<span class="bar"></span>
+										</span>
+              </button>
+            </div><!-- /.navbar-header -->
+          </div><!-- /.col -->
+
+          <div class="col">
+
+            <div class="collapse navbar-collapse " id="main-header-collapse">
+
+              <ul id="primary-nav" class="deskNone main-nav nav align-items-lg-stretch justify-content-lg-start" data-submenu-options='{ "toggleType":"fade", "handler":"mouse-in-out" }' data-localscroll="true">
+
+                <li>
+                  <h6 *ngIf="identity" style="color: black; margin-left: 10px">Hola {{identity.name}}</h6>
+                </li>
+                <li>
+                  <a href="/contents">
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt" >Inicio</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a >
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Iniciar sesión</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a >
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Mi carrito</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#about">
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Mi perfil</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Blog</span>
+												</span>
+                  </a>
+                </li>
+              </ul><!-- /#primary-nav  -->
+
+            </div><!-- /#main-header-collapse -->
+
+          </div><!-- /.col -->
+
+          <div class="col text-right">
+
+            <div class="header-module" style="margin-left: 50px">
+              <div class="ld-module-cart" style="margin-left: 150px">
+
+										<span  class="ld-module-trigger collapsed" role="button" data-ld-toggle="true" data-toggle="collapse" data-target="#shop-cart" aria-controls="shop-cart" aria-expanded="false">
+											<span class="ld-module-trigger-icon">
+												<i class="icon-ld-cart"></i>
+											</span><!-- /.ld-module-trigger-icon -->
+											<span style="background: #ff5c5c" class="ld-module-trigger-count">{{cartUser.length}}</span>
+										</span><!-- /.ld-module-trigger -->
+
+                <div class="ld-module-dropdown collapse" id="shop-cart" aria-expanded="false" role="list">
+
+                  <div class="ld-cart-contents">
+
+                    <div class="ld-cart-head hidden">
+                      <span class="font-weight-bold text-uppercase ltr-sp-175">Tus pedidos <span class="color-primary">2</span></span>
+                    </div><!-- /.ld-cart-head -->
+
+                    <div class="ld-cart-products">
+
+                      <div class="ld-cart-product" *ngFor="let product of cartUser">
+                        <a href="#" class="ld-cart-product-remove remove"><i class="icon-ion-ios-close"></i></a>
+                        <div class="ld-cart-product-info">
+                          <a href="#">
+                            <figure>
+                              <img src="{{product.imagen}}" alt="Cart Product">
+                            </figure>
+                            <span class="ld-cart-product-details">
+																	<span class="ld-cart-product-name">{{product.nombre}}</span>
+                              <!--<span class="ld-cart-product-extra">
+                                <span>Size: XL</span>
+                              </span>-->
+																	<span class="ld-cart-product-price">
+																		<span>{{product.precio}}</span>
+																		<span class="ld-cart-product-quantity">x1</span>
+																	</span><!-- /.ld-cart-product-price -->
+																</span><!-- /.ld-cart-product-details -->
+                          </a>
+                        </div><!-- /.ld-cart-product-info -->
+                      </div><!-- /.ld-cart-product -->
+
+                      <!--<div class="ld-cart-product">
+                        <a href="#" class="ld-cart-product-remove remove"><i class="icon-ion-ios-close"></i></a>
+                        <div class="ld-cart-product-info">
+                          <a href="#">
+                            <figure>
+                              <img src="assets/demo/shop/cart/cart-product-1.jpg" alt="Cart Product">
+                            </figure>
+                            <span class="ld-cart-product-details">
+                                  <span class="ld-cart-product-name">Scalloped Dress</span>
+                                  <span class="ld-cart-product-extra">
+                                    <span>Size: XL</span>
+                                  </span>
+                                  <span class="ld-cart-product-price">
+                                    <span>$139.90</span>
+                                    <span class="ld-cart-product-quantity">x1</span>
+                                  </span>&lt;!&ndash; /.ld-cart-product-price &ndash;&gt;
+                                </span>&lt;!&ndash; /.ld-cart-product-details &ndash;&gt;
+                          </a>
+                        </div>&lt;!&ndash; /.ld-cart-product-info &ndash;&gt;
+                      </div>--><!-- /.ld-cart-product -->
+
+                    </div><!-- /.ld-cart-products -->
+
+                    <div class="ld-cart-foot">
+                      <div class="ld-cart-total">
+                        <span class="ld-cart-total-label font-weight-bold text-uppercase ltr-sp-175">Subtotal</span>
+                        <span class="ld-cart-total-price color-primary">${{precioTotal}}</span>
+                      </div><!-- /.ld-cart-total -->
+                      <div class="ld-cart-button">
+                        <a href="/cart/confirm" class="btn btn-lg btn-solid text-uppercase ltr-sp-175">
+															<span>
+																<span class="btn-txt">Finalizar pedido</span>
+																<span class="btn-icon"><i class="fa fa-angle-right"></i></span>
+															</span>
+                        </a>
+                        <a href="/cart" class="btn btn-lg btn-naked text-uppercase ltr-sp-175">
+															<span>
+																<span class="btn-txt">Ver pedido</span>
+																<span class="btn-icon"><i class="fa fa-angle-right"></i></span>
+															</span>
+                        </a>
+                      </div><!-- /.ld-cart-button -->
+                    </div><!-- /.ld-cart-foot -->
+
+                    <div class="ld-cart-message" style="background: #ff5c5c">
+                      <p>Productos/servicios sujeto a disponibilidad </p>
+                    </div><!-- /.ld-cart-message -->
+
+                  </div><!-- /.ld-cart-contents -->
+
+                </div><!-- /.ld-module-dropdown -->
+
+              </div><!-- /.module-cart -->
+            </div><!-- /.header-module -->
+
+            <div class="header-module">
+
+              <a *ngIf="!identity" routerLink="/login" target="_blank" class="btn btn-default text-uppercase circle btn-bordered border-thick font-size-12 font-weight-semibold btn-white">
+									<span style="background: #ff5c5c">
+										<span class="btn-txt">Iniciar sesión</span>
+									</span>
+              </a>
+              <a *ngIf="identity" style="color: black">Hola {{identity.name}}</a>
+
+            </div><!-- /.header-module -->
+
+          </div><!-- /.col -->
+
+
+        </div><!-- /.mainbar-row -->
+      </div><!-- /.mainbar -->
+    </div><!-- /.mainbar-container -->
+  </div><!-- /.mainbar-wrap -->
+
+</header>
+

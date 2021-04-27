@@ -37,7 +37,11 @@ export class RenovarComponent implements OnInit {
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.dataCheck();
+  }
 
+  // tslint:disable-next-line:typedef
+  dataCheck(){
     this._userService.get_user(this.token).subscribe(
       response => {
         this.users = response.users;
@@ -71,15 +75,15 @@ export class RenovarComponent implements OnInit {
         _id: user._id,
         nombre: user.nombre,
         email: user.email,
-        estadoLicencia: 'Activo',
+        estadoPedido: 'Activo',
         act1: user.act1,
         act2: user.act2,
         act3: user.act4,
         act4: user.act4,
         vigencia: fechaA,
-        fechaActivacion: this.fecha,
+        fechaOrden: this.fecha,
         referencia: user.referencia,
-        tipoLicencia: user.tipoLicencia,
+        pedido: user.pedido,
       };
 
     this._userService.update_config(this.data).subscribe(
@@ -88,7 +92,7 @@ export class RenovarComponent implements OnInit {
             this.status = 'error';
           } else {
             this.status = 'success';
-            window.location.reload();
+            this.dataCheck();
           }
         },
         error => {
@@ -106,7 +110,7 @@ export class RenovarComponent implements OnInit {
   onSearchChange(searchValue: string): void {
     console.log(searchValue);
     if (searchValue !== ' '){
-      this._userService.search({email: searchValue}).subscribe(
+      this._userService.search({email: searchValue}, this.identity._id).subscribe(
         response => {
           this.users = response.search;
         }, error => {

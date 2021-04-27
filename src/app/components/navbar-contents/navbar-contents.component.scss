@@ -1,0 +1,22 @@
+/*::-webkit-input-placeholder { !* WebKit, Blink, Edge *!
+  color: white;
+  font-weight: 200;
+}*/
+
+@media screen and (max-width: 600px) {
+  .ocultar-div{
+    display:none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .div-desktop { display: none; }
+
+}
+
+@media screen and (min-width: 1025px) {
+  .deskNone {
+    display: none;
+  }
+}

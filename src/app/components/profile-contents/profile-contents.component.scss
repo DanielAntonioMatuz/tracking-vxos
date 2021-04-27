@@ -1,0 +1,15 @@
+$font-size: 16px;
+$line-height: 1.4;
+$lines: 3;
+
+.biography {
+  display: block;
+  display: -webkit-box;
+  height: $font-size * $line-height * $lines;
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

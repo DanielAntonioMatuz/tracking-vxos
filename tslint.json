@@ -1,3 +1,4 @@
+/*
 {
   "extends": "tslint:recommended",
   "rules": {
@@ -149,4 +150,4 @@
   "rulesDirectory": [
     "codelyzer"
   ]
-}
+}*/

@@ -29,7 +29,11 @@ export class UpgradeUserComponent implements OnInit {
   ngOnInit(): void {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.dataCheck();
+  }
 
+  // tslint:disable-next-line:typedef
+  dataCheck(){
     this._userService.get_user(this.token).subscribe(
       response => {
         this.users = response.users;
@@ -59,15 +63,16 @@ export class UpgradeUserComponent implements OnInit {
         _id: user._id,
         nombre: user.nombre,
         email: user.email,
-        estadoLicencia: user.estadoLicencia,
+        estadoPedido: user.estadoPedido,
         act1: user.act1,
         act2: user.act2,
         act3: user.act4,
         act4: user.act4,
         vigencia: user.vigencia,
-        fechaActivacion: user.fechaActivacion,
+        fechaOrden: user.fechaOrden,
         referencia: user.referencia,
-        tipoLicencia: 'Creative Cloud',
+        pedido: 'Creative Cloud',
+        user: this.identity._id
       };
 
       this._userService.update_config(this.data).subscribe(
@@ -76,7 +81,7 @@ export class UpgradeUserComponent implements OnInit {
             this.status = 'error';
           } else {
             this.status = 'success';
-            window.location.reload();
+            this.dataCheck();
           }
         },
         error => {
@@ -97,15 +102,16 @@ export class UpgradeUserComponent implements OnInit {
         _id: user._id,
         nombre: user.nombre,
         email: user.email,
-        estadoLicencia: user.estadoLicencia,
+        estadoPedido: user.estadoPedido,
         act1: user.act1,
         act2: user.act2,
         act3: user.act4,
         act4: user.act4,
         vigencia: user.vigencia,
-        fechaActivacion: user.fechaActivacion,
+        fechaOrden: user.fechaOrden,
         referencia: user.referencia,
-        tipoLicencia: 'Producto único',
+        pedido: 'Licencia de producto unico',
+        user: this.identity._id
       };
 
       this._userService.update_config(this.data).subscribe(
@@ -114,7 +120,7 @@ export class UpgradeUserComponent implements OnInit {
             this.status = 'error';
           } else {
             this.status = 'success';
-            window.location.reload();
+            this.dataCheck();
           }
         },
         error => {
@@ -135,7 +141,7 @@ export class UpgradeUserComponent implements OnInit {
 
   onSearchChange(searchValue: string): void {
     console.log(searchValue);
-    this._userService.search({email: searchValue}).subscribe(
+    this._userService.search({email: searchValue}, this.token).subscribe(
       response => {
         this.users = response.search;
       }, error => {
@@ -150,3 +156,4 @@ export class UpgradeUserComponent implements OnInit {
   }
 
 }
+

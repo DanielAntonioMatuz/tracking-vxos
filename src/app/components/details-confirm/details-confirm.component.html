@@ -1,0 +1,122 @@
+<app-navbar-contents></app-navbar-contents>
+
+
+<app-navbar-contents></app-navbar-contents>
+
+
+<body class="woocommerce woocommerce-cart" data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="minimal" data-mobile-nav-shceme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
+
+<div id="wrap">
+
+  <main id="content" class="content">
+
+    <section>
+
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-12">
+
+            <div class="lqd-woo-steps">
+              <div class="lqd-woo-steps-inner">
+                <div class="lqd-woo-steps-item">
+                  <span class="lqd-woo-steps-number" >1</span><!-- /.lqd-woo-steps-number -->
+                  <span>Tu carrito</span>
+                  <svg width="9" height="56" xmlns="http://www.w3.org/2000/svg" stroke="#e5e5e5" fill="none">
+                    <polyline points="0.5888671875,0.02734375 0.5888671875,20.145751923322678 7.5888671875,27.7603759765625 0.5888671875,35.53466796875 0.5888671875,55.9697265625 "></polyline>
+                  </svg>
+                </div><!-- /.lqd-woo-steps-item -->
+
+                <div class="lqd-woo-steps-item">
+                  <span class="lqd-woo-steps-number" >2</span><!-- /.lqd-woo-steps-number -->
+                  <span>Confirmar pedido</span>
+                  <svg width="9" height="56" xmlns="http://www.w3.org/2000/svg" stroke="#e5e5e5" fill="none">
+                    <polyline points="0.5888671875,0.02734375 0.5888671875,20.145751923322678 7.5888671875,27.7603759765625 0.5888671875,35.53466796875 0.5888671875,55.9697265625 "></polyline>
+                  </svg>
+                </div><!-- /.lqd-woo-steps-item -->
+
+                <div class="lqd-woo-steps-item">
+                  <span class="lqd-woo-steps-number" style="background: #ff5c5c">3</span><!-- /.lqd-woo-steps-number -->
+                  <span>Detalles de pedido</span>
+                </div><!-- /.lqd-woo-steps-item -->
+              </div><!-- /.lqd-woo-steps-inner -->
+            </div>
+
+            <div >
+              <div class="uk-tile uk-tile-secondary" style="padding-top: 20px; padding-bottom: 20px; background: #ff5c5c">
+                <a href="/contents" class="uk-h4">Ir a inicio</a>
+              </div>
+            </div>
+
+            <h4 class="uk-animation-fade">Pedido enviado a negocios</h4>
+            <progress id="js-progressbar" class="uk-progress" value="100" max="100"></progress>
+            <h5>¡Genial! user, ahora, da seguimiento a tus solicitudes</h5>
+            <form action="#" class="woocommerce-cart-form">
+
+              <table class="shop_table shop_table_responsive cart w-100" cellspacing="0">
+
+                <thead>
+                <tr>
+                  <th class="product-name" colspan="3">Producto(s)</th>
+                  <th class="product-price">Precio</th>
+                  <th class="product-quantity">Cantidad</th>
+                  <th class="product-subtotal">Seguimiento</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr class="cart_item" *ngFor="let product of cartUser">
+
+                  <td class="product-name" data-title="Product" colspan="3">
+												<span class="product-name-inner">
+													<a href="/profile-contents/{{product.user}}">
+														<img style="max-width: 200px; max-height: 200px" src="{{product.imagen}}" alt="Watch">
+													</a>
+													 <span class="product-info">
+														<a href="/profile-contents/{{product.user}}">{{product.nombre}}</a>
+													</span>
+												</span>
+                  </td>
+
+                  <td class="product-price" data-title="Price">
+												<span *ngIf="product.precio" class="amount">
+													<span>$</span>{{product.precio}}
+												</span>
+
+                    <span *ngIf="!product.precio" class="amount">
+													<span>POR ACORDAR</span>
+												</span>
+                  </td>
+
+                  <td class="product-quantity" data-title="Quantity">
+                    <div class="ld-product-quantity mb-4">
+                      <div class="quantity">
+                        <label class="screen-reader-text" for="quantity_5de6778aa0b02">Cantidad</label>
+                        <p style="margin-left: 20px">1</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="product-subtotal" data-title="Total">
+                    <a class="uk-badge" style="background: #ff5c5c" href="/profile-user/tracking-user">Ver estatus del pedido</a>
+                  </td>
+                </tr>
+
+                </tbody>
+
+              </table>
+
+
+            </form>
+
+          </div><!-- /.lqd-column col-md-12 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+
+    </section>
+
+  </main><!-- /#content.content -->
+
+</div><!-- /#wrap -->
+

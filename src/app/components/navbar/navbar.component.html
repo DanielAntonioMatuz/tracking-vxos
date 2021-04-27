@@ -1,20 +1,25 @@
-
-<nav class="uk-navbar-container" uk-navbar style=" z-index: 1;" uk-sticky="tanimation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
+<audio id="player" controls style="display: none!important;">
+  <source id="file-mp3" src="../../../../assets/data/config/alert.mp3" type="audio/mpeg">
+</audio>
+<nav class="uk-navbar-container" uk-navbar style=" z-index: 1; background:{{colorNavbar}}; color: {{colorText}}; {{styleLogo}}" uk-sticky="tanimation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
   <div class="uk-navbar-left">
 
     <ul class="uk-navbar-nav">
-      <li class="uk-active"><a routerLink="/dashboard">VxOS Software</a></li>
+      <li class="uk-active d-none d-sm-none d-md-block"><a routerLink="/dashboard" style="color: {{colorText}};">{{logoText}}</a></li>
+
       <li>
-        <a href="#">Usuarios</a>
+        <a href="#" style="color: {{colorText}};">Operaciones</a>
         <div class="uk-navbar-dropdown">
           <ul class="uk-nav uk-navbar-dropdown-nav">
+            <li class="uk-nav-header">HOME</li>
+            <li><a routerLink="/dashboard">Ir al panel</a></li>
             <li class="uk-active"><a >REGISTRO</a></li>
-            <li><a routerLink="/register-user">Registro</a></li>
-            <li class="uk-nav-header">Actualizaciones</li>
-            <li><a routerLink="/renovar">Renovar</a></li>
-            <li><a routerLink="/upgrade">Upgrade</a></li>
+            <li><a routerLink="/register-user">registrar pedidos</a></li>
+            <li class="uk-nav-header">MENU</li>
+            <li><a routerLink="/menu">Actualizar menu</a></li>
             <li class="uk-nav-divider"></li>
-            <li><a routerLink="/tracking">Tracking</a></li>
+            <li class="uk-nav-header">Pedidos</li>
+            <li><a routerLink="/tracking">Rastreo del pedido o servicio</a></li>
           </ul>
         </div>
       </li>
@@ -25,11 +30,13 @@
 
     <ul class="uk-navbar-nav">
       <li>
-        <a>Mi cuenta</a>
+        <a>
+          <a href="" uk-icon="user"></a>
+        </a>
         <div class="uk-navbar-dropdown">
           <ul class="uk-nav uk-navbar-dropdown-nav">
-            <li class="uk-active"><a href="#">MI CUENTA</a></li>
-            <li><a routerLink="/my-profile/{{identity._id}}">Perfil</a></li>
+            <li class="uk-active"><a href="#">MI CUENTA | Plataforma</a></li>
+            <li><a routerLink="/my-profile/{{identity._id}}">Configuraciones</a></li>
             <li class="uk-nav-header">Sesión</li>
             <li><a (click)="logout()">Cerrar sesión</a></li>
             <li><a routerLink="/register-admin">Registrar usuario</a></li>
@@ -37,5 +44,61 @@
         </div>
       </li>
     </ul>
+
+    <ul>
+      <span class="uk-badge" style="margin-top: 15px; padding: 25px; margin-right: 10px; background: {{notificationColor}}">
+        <a href="" uk-icon="bell" uk-toggle="target: #offcanvas-flip">
+        </a>
+        <span class="uk-badge" style="margin-bottom: 2px; margin-left: 5px; background: #ff5c5c; ">{{dataNew.length}}</span>
+
+      </span>
+    </ul>
   </div>
 </nav>
+
+
+<div id="notification" *ngIf="notification" uk-alert class="w-50 mx-auto notification uk-animation-slide-bottom-medium" style="max-width: 400px!important; " >
+  <a class="uk-alert-close" uk-close></a>
+  <h3>Nuevo registro</h3>
+  <p>{{textNotification}}</p>
+</div>
+
+
+<div *ngIf="notificationActive"  uk-alert class="w-50 mx-auto notificationActive uk-animation-slide-bottom-medium" style="max-width: 400px!important;" >
+  <a class="uk-alert-close" uk-close></a>
+  <h3>Bienvenido, operaciones reactivadas</h3>
+  <p>Las operaciones y servicios se han renaudados, el bot ha reactivado la sincronización de datos con la plataforma</p>
+</div>
+
+
+
+
+
+<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true" class="notificationData">
+
+  <div class="uk-offcanvas-bar scrollData mx-auto" style="border-radius: 10px;">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+    <h3 style="margin-bottom: 5px">Notificaciones
+      <button class="uk-button uk-button-danger deleteNotification" >
+        <a  uk-icon="trash" (click)="deleteNotificationAll()"></a>
+      </button>
+    </h3>
+
+    <div style="text-align: center; margin-top: 100px" *ngIf="notNotification">
+      <h5>Sin notificaciones de pedidos</h5>
+      <a uk-icon="comment" style="height: 60px"></a>
+    </div>
+
+    <div *ngFor="let i of dataNew; index as j">
+      <div *ngIf="i.estatus === 'false'"  uk-alert class="w-50 mx-auto notificationService" style="max-width: 400px!important; margin-bottom: 10px!important;" >
+        <a class="uk-alert-close" uk-close (click)="checkNotification(i)"></a>
+        <h3>{{j+1}} Nuevo registro</h3>
+        <p>{{i.detalles}}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

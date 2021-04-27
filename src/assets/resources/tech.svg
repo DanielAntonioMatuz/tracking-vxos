@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="350" height="500" viewBox="0 0 350 500">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.005" y1="0.084" x2="1.012" y2="0.953" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-opacity="0"/>
+      <stop offset="1" stop-opacity="0.102"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.211" y1="-0.333" x2="1.028" y2="0.955" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-opacity="0.102"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="0.12" y1="-0.172" x2="0.88" y2="1.221" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="-0.04" y1="0.164" x2="1.019" y2="0.702" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip-Mesa_de_trabajo_6">
+      <rect width="350" height="500"/>
+    </clipPath>
+  </defs>
+  <g id="Mesa_de_trabajo_6" data-name="Mesa de trabajo – 6" clip-path="url(#clip-Mesa_de_trabajo_6)">
+    <rect width="350" height="500" fill="#5dee9c"/>
+    <g id="computer" transform="translate(76.009 158.693)">
+      <path id="Trazado_44" data-name="Trazado 44" d="M180.748,1H16.432A16.448,16.448,0,0,0,0,17.432V132.453a16.448,16.448,0,0,0,16.432,16.432H73.951c-.173,6.573-1.43,17.064-6.121,21.994a8.06,8.06,0,0,1-6.211,2.654,4.108,4.108,0,1,0,0,8.216h73.942a4.108,4.108,0,1,0,0-8.216,8.06,8.06,0,0,1-6.211-2.654c-4.683-4.93-5.948-15.429-6.121-21.994h57.519a16.448,16.448,0,0,0,16.432-16.432V17.432A16.448,16.448,0,0,0,180.748,1Z" transform="translate(0 0)" fill="#303c42"/>
+      <path id="Trazado_45" data-name="Trazado 45" d="M9.216,2H173.532a8.229,8.229,0,0,1,8.216,8.216V100.59H1V10.216A8.229,8.229,0,0,1,9.216,2Z" transform="translate(7.216 7.216)" fill="#8d949c"/>
+      <path id="Trazado_46" data-name="Trazado 46" d="M9.216,2H173.532a8.229,8.229,0,0,1,8.216,8.216V100.59H1V10.216A8.229,8.229,0,0,1,9.216,2Z" transform="translate(7.216 7.216)" fill="url(#linear-gradient)"/>
+      <path id="Trazado_47" data-name="Trazado 47" d="M173.532,39.647H9.216A8.229,8.229,0,0,1,1,31.432V15H181.748V31.432A8.229,8.229,0,0,1,173.532,39.647Z" transform="translate(7.216 101.021)" fill="#f2f2f2"/>
+      <path id="Trazado_48" data-name="Trazado 48" d="M54.137,43.647H9.27C14.224,36.04,15.185,25.088,15.309,19h32.8c.123,6.088,1.084,17.04,6.039,24.647Z" transform="translate(66.891 129.885)" fill="#f2f2f2"/>
+      <circle id="Elipse_6" data-name="Elipse 6" cx="8.216" cy="8.216" r="8.216" transform="translate(90.374 120.129)" fill="#303c42"/>
+      <path id="Trazado_49" data-name="Trazado 49" d="M48.84,43.647C43.886,36.04,42.925,25.088,42.8,19H10L34.651,43.647Z" transform="translate(72.187 129.885)" fill="url(#linear-gradient-2)"/>
+      <path id="Trazado_50" data-name="Trazado 50" d="M9.216,2H173.532a8.229,8.229,0,0,1,8.216,8.216V100.59H1V10.216A8.229,8.229,0,0,1,9.216,2Z" transform="translate(7.216 7.216)" fill="url(#linear-gradient-3)"/>
+      <path id="Trazado_51" data-name="Trazado 51" d="M34.255,62.511a28.755,28.755,0,0,0,20.006-8.216h9.284A28.721,28.721,0,1,0,83.55,5H34.255a28.755,28.755,0,1,0,0,57.511Z" transform="translate(39.687 28.863)" fill="#303c42"/>
+      <path id="Trazado_52" data-name="Trazado 52" d="M27.04,6H76.334a20.54,20.54,0,1,1,0,41.079,20.293,20.293,0,0,1-15.2-6.86,4.108,4.108,0,0,0-3.056-1.356H45.3a4.108,4.108,0,0,0-3.048,1.356,20.293,20.293,0,0,1-15.207,6.86A20.54,20.54,0,1,1,27.04,6Z" transform="translate(46.903 36.079)" fill="#f2f2f2"/>
+      <path id="Trazado_53" data-name="Trazado 53" d="M11.608,23.432h4.108V27.54a4.108,4.108,0,1,0,8.216,0V23.432H28.04a4.108,4.108,0,0,0,0-8.216H23.932V11.108a4.108,4.108,0,1,0-8.216,0v4.108H11.608a4.108,4.108,0,0,0,0,8.216Z" transform="translate(54.119 43.295)" fill="#303c42"/>
+      <circle id="Elipse_7" data-name="Elipse 7" cx="4.108" cy="4.108" r="4.108" transform="translate(119.129 50.295)" fill="#303c42"/>
+      <circle id="Elipse_8" data-name="Elipse 8" cx="4.108" cy="4.108" r="4.108" transform="translate(110.914 58.511)" fill="#303c42"/>
+      <circle id="Elipse_9" data-name="Elipse 9" cx="4.108" cy="4.108" r="4.108" transform="translate(127.345 58.511)" fill="#303c42"/>
+      <circle id="Elipse_10" data-name="Elipse 10" cx="4.108" cy="4.108" r="4.108" transform="translate(119.129 66.727)" fill="#303c42"/>
+      <path id="Trazado_54" data-name="Trazado 54" d="M180.748,1H16.432A16.448,16.448,0,0,0,0,17.432V132.453a16.448,16.448,0,0,0,16.432,16.432H73.951c-.173,6.573-1.43,17.064-6.121,21.994a8.06,8.06,0,0,1-6.211,2.654,4.108,4.108,0,1,0,0,8.216h73.942a4.108,4.108,0,1,0,0-8.216,8.06,8.06,0,0,1-6.211-2.654c-4.683-4.93-5.948-15.429-6.121-21.994h57.519a16.448,16.448,0,0,0,16.432-16.432V17.432A16.448,16.448,0,0,0,180.748,1Z" transform="translate(0 0)" fill="url(#linear-gradient-4)"/>
+    </g>
+  </g>
+</svg>

@@ -1,34 +1,400 @@
 <app-navbar *ngIf="identity"></app-navbar>
 
-<div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle vimeo-wrapper" *ngIf="identity" style="overflow-y: hidden!important;" uk-grid>
-  <div class="uk-padding-large">
-    <h1>Bienvenido {{identity.name}}</h1>
-    <div class="uk-child-width-1-2@s uk-grid-collapse uk-text-center" uk-grid>
-      <div>
-        <div class="uk-tile uk-tile-default">
-          <p class="uk-h4">Usuario: {{identity.name + ' ' + identity.surname}}</p>
+<div *ngIf="identity">
+
+  <div class="uk-tile uk-tile-secondary w-75" style="background: mediumseagreen ;margin-top: 10px; padding-top: 20px; padding-bottom: 20px; left: 25%; border-radius: 5px">
+    <p class="uk-h4">Configura el horario de tu negocio o dependencia</p>
+  </div>
+
+  <p class="uk-h4 mx-auto" style="text-align: center">Configurar | Actualizar el horario</p>
+
+
+  <form class="uk-form-horizontal uk-margin-large w-75 mx-auto" #registerForm="ngForm" (ngSubmit)="saveHours(registerForm)">
+
+      <div class="uk-grid-small" uk-grid style="margin-top: 20px">
+        <h6 style="margin-top: 5px" class="uk-width-1-4@s">Domingo</h6>
+        <div class="uk-width-1-4@s">
+          <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Abre </p>
+          <select name="domingoAbre" #domingoAbre="ngModel" [(ngModel)]="horario.domingoAbre"  #diaAbre class="uk-select">
+            <option *ngFor="let i  of horarios">{{i}}</option>
+          </select>
         </div>
+        <div class="uk-width-1-4@s">
+          <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Cierra</p>
+          <select name="domingoCierra"  [(ngModel)]="horario.domingoCierra" #diaCierra class="uk-select">
+            <option  *ngFor="let i  of horarios">{{i}}</option>
+          </select>
+        </div>
+        <div class="uk-width-1-4@s">
+        </div>
+        <hr style="width: 100%; margin-top: 25px">
       </div>
-      <div>
-        <div class="uk-tile uk-tile-muted">
-          <p class="uk-h4">Email: {{identity.email}}</p>
+
+      <div class="uk-grid-small" uk-grid style="margin-top: 20px">
+        <h6 style="margin-top: 5px" class="uk-width-1-4@s">Lunes</h6>
+        <div class="uk-width-1-4@s">
+          <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Abre</p>
+          <select name="lunesAbre" #lunesAbre="ngModel" [(ngModel)]="horario.lunesAbre"  #diaAbre class="uk-select">
+            <option *ngFor="let i  of horarios">{{i}}</option>
+          </select>
         </div>
+        <div class="uk-width-1-4@s">
+          <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Cierra</p>
+          <select name="lunesCierra" #lunesCierra="ngModel" [(ngModel)]="horario.lunesCierra" #diaCierra class="uk-select">
+            <option *ngFor="let i  of horarios">{{i}}</option>
+          </select>
+        </div>
+        <div class="uk-width-1-4@s">
+        </div>
+        <hr style="width: 100%; margin-top: 25px">
       </div>
-      <div>
-        <div class="uk-tile uk-tile-primary">
-          <p class="uk-h4">Teléfono:{{identity.cellphone}}</p>
-        </div>
+
+    <div class="uk-grid-small" uk-grid style="margin-top: 20px">
+      <h6 style="margin-top: 5px" class="uk-width-1-4@s">Martes</h6>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Abre</p>
+        <select name="martesAbre" #martesAbre="ngModel" [(ngModel)]="horario.martesAbre"  #diaAbre class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
       </div>
-      <div>
-        <div class="uk-tile uk-tile-secondary">
-          <p class="uk-h4">Rol: Administrador</p>
-        </div>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Cierra</p>
+        <select name="martesCierra" #martesCierra="ngModel" [(ngModel)]="horario.martesCierra" #diaCierra class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+      </div>
+      <hr style="width: 100%; margin-top: 25px">
+    </div>
+
+    <div class="uk-grid-small" uk-grid style="margin-top: 20px">
+      <h6 style="margin-top: 5px" class="uk-width-1-4@s">Miércoles</h6>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Abre</p>
+        <select name="miercolesAbre" #miercolesAbre="ngModel" [(ngModel)]="horario.miercolesAbre"  #diaAbre class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Cierra</p>
+        <select name="miercolesCierra" #miercolesCierra="ngModel" [(ngModel)]="horario.miercolesCierra" #diaCierra class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+      </div>
+      <hr style="width: 100%; margin-top: 25px">
+    </div>
+
+    <div class="uk-grid-small" uk-grid style="margin-top: 20px">
+      <h6 style="margin-top: 5px" class="uk-width-1-4@s">Jueves</h6>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Abre</p>
+        <select name="juevesAbre" #juevesAbre="ngModel" [(ngModel)]="horario.juevesAbre"  #diaAbre class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Cierra</p>
+        <select name="juevesCierra" #juevesCierra="ngModel" [(ngModel)]="horario.juevesCierra" #diaCierra class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+      </div>
+      <hr style="width: 100%; margin-top: 25px">
+    </div>
+
+
+    <div class="uk-grid-small" uk-grid style="margin-top: 20px">
+      <h6 style="margin-top: 5px" class="uk-width-1-4@s">Viernes</h6>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Abre</p>
+        <select name="viernesAbre" #viernesAbre="ngModel" [(ngModel)]="horario.viernesAbre"  #diaAbre class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Cierra</p>
+        <select name="viernesCierra" #viernesCierra="ngModel" [(ngModel)]="horario.viernesCierra" #diaCierra class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+      </div>
+      <hr style="width: 100%; margin-top: 25px">
+    </div>
+
+    <div class="uk-grid-small" uk-grid style="margin-top: 20px">
+      <h6 style="margin-top: 5px" class="uk-width-1-4@s">Sábado</h6>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Abre</p>
+        <select name="sabadoAbre" #sabadoAbre="ngModel" [(ngModel)]="horario.sabadoAbre"  #diaAbre class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+        <p style="margin-top: 5px; font-size: 14px" class="uk-width-1-4@s">Cierra</p>
+        <select name="sabadoCierra" #sabadoCierra="ngModel" [(ngModel)]="horario.sabadoCierra" #diaCierra class="uk-select">
+          <option *ngFor="let i  of horarios">{{i}}</option>
+        </select>
+      </div>
+      <div class="uk-width-1-4@s">
+      </div>
+      <hr style="width: 100%; margin-top: 25px">
+    </div>
+
+    <button type="submit" class="uk-button uk-button-primary" style="background: mediumseagreen; border-radius: 10px; margin-top: 40px">Guardar</button>
+
+  </form>
+
+
+  <div class="uk-tile uk-tile-secondary w-75" style="margin-top: 10px; padding-top: 20px; padding-bottom: 20px; left: 25%; border-radius: 5px">
+    <p class="uk-h4">Sesión de usuario actual:</p>
+  </div>
+  <p class="uk-h4" style=" text-align: center; margin-top: 5px">Información del usuario actual en sesión</p>
+
+  <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match w-75 mx-auto" style="margin-top: 20px" uk-grid>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body" style="border-radius: 20px">
+        <h3 class="uk-card-title">Nombre de usuario:</h3>
+        <p>{{identity.name}}</p>
+        <h6>ID de usuario:</h6>
+        <p>{{identity._id}}</p>
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-card-primary uk-card-body" style="border-radius: 20px">
+        <h3 class="uk-card-title">Email:</h3>
+        <p>{{identity.email}}</p>
+        <h6>Rol:</h6>
+        <p>Personal</p>
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-card-secondary uk-card-body" style="border-radius: 20px">
+        <h3 class="uk-card-title">Teléfono</h3>
+        <p>{{identity.cellphone}}</p>
       </div>
     </div>
   </div>
-  <div class="uk-background-cover" style="background-image: url('https://getuikit.com/docs/images/photo.jpg');" uk-height-viewport>
 
+  <div class="uk-tile uk-tile-primary w-75" style="margin-top: 30px; padding-top: 20px; padding-bottom: 20px; left: 25%; border-radius: 5px">
+    <p class="uk-h4">Personalizar Navbar</p>
   </div>
+  <p class="uk-h4" style=" text-align: center">Realice cambios de diseño en la plataforma acorde al estilo de su empresa</p>
+
+  <div class="w-75 mx-auto">
+    <nav class="uk-navbar-container" uk-navbar style=" border-radius: 20px;background:{{colorNavbar}}; color: {{colorText}} " uk-sticky="tanimation: uk-animation-slide-top; ">
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a style="color: {{colorText}}; {{styleLogo}}">{{logoText}}</a></li>
+          <a class="uk-position-absolute uk-transform-center" uk-tooltip="Cambiar nombre" uk-toggle="target: #offcanvas-overlay-logoText"  style="left: 3.5%; top: 80%; background:#1e87f0 " href="#" uk-marker></a>
+          <li>
+            <a>Usuarios</a>
+          </li>
+        </ul>
+      </div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li>
+            <a>
+              <a uk-icon="user"></a>
+            </a>
+          </li>
+        </ul>
+        <ul>
+      <span class="uk-badge" style="margin-top: 15px; padding: 25px; margin-right: 10px; background: {{notificationColor}}">
+        <a uk-icon="bell"></a>
+        <span class="uk-badge" style="margin-bottom: 2px; margin-left: 5px; background: #ff5c5c; ">0</span>
+      </span>
+        </ul>
+      </div>
+      <a class="uk-position-absolute uk-transform-center" uk-toggle="target: #offcanvas-overlay-notificaciones" uk-tooltip="Cambiar color del fondo de notificaciones" style="left: 93.5%; top: 80%; background: #1e87f0" href="#" uk-marker></a>
+      <a class="uk-position-absolute uk-transform-center" uk-toggle="target: #offcanvas-overlay" uk-tooltip="Cambiar color del navbar" style="left: 50%; top: 80%; background: #1e87f0" href="#" uk-marker></a>
+    </nav>
+  </div>
+
+
+  <div id="offcanvas-overlay" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+      <h3>Cambiar color | Navbar</h3>
+
+      <p>Cambie el color del fondo del navbar</p>
+      <div class="w-75 mx-auto" >
+        <nav class="uk-navbar-container" uk-navbar style=" z-index: 1; border-radius: 20px;background:{{colorNavbar}}; color: {{colorText}} " uk-sticky="tanimation: uk-animation-slide-top; ">
+          <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+              <li class="uk-active"><a>{{logoText}}</a></li>
+              <li>
+                <a>Usuarios</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div style="text-align: center">
+        <p style="margin-top: 20px">Seleccione su color:</p>
+        <div class="uk-margin">
+          <input class="uk-input" value="{{colorNavbar}}" #idValue type="color" placeholder="Ejemplo: #0B5345" style="border-radius: 10px">
+        </div>
+        <button type="submit" class="btn btn-primary ml-auto" style=" color: #ffffff; border: none" (click)="valueId(idValue.value)">Guardar</button>
+      </div>
+
+
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+      <h3 style="margin-top: 20px">Cambiar color del texto | Navbar</h3>
+
+      <p>Cambie el color de todo el texto del navbar</p>
+      <div class="w-75 mx-auto" >
+        <nav class="uk-navbar-container" uk-navbar style=" z-index: 1; border-radius: 20px;background:{{colorNavbar}}; color: {{colorText}} " uk-sticky="tanimation: uk-animation-slide-top; ">
+          <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+              <li class="uk-active"><a style="color: {{colorText}}">{{logoText}}</a></li>
+              <li>
+                <a style="color: {{colorText}}">Usuarios</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div style="text-align: center">
+        <p style="margin-top: 20px">Seleccione su color:</p>
+        <div class="uk-margin">
+          <input class="uk-input" value="{{colorText}}" #colorTextNavbar type="color" placeholder="Ejemplo: #0B5345" style="border-radius: 10px">
+        </div>
+        <button type="submit" class="btn btn-primary ml-auto" style=" color: #ffffff; border: none" (click)="valueIdColorText(colorTextNavbar.value)">Guardar</button>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+  <div id="offcanvas-overlay-logoText" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+      <h3>Cambiar Logo (Texto) | Navbar</h3>
+
+      <div class="w-75 mx-auto" >
+        <nav class="uk-navbar-container" uk-navbar style=" z-index: 1; border-radius: 20px;background:{{colorNavbar}}; color: {{colorText}}; {{styleLogo}} " uk-sticky="tanimation: uk-animation-slide-top; ">
+          <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+              <li class="uk-active"><a>{{logoText}}</a></li>
+              <li>
+                <a>Usuarios</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div style="text-align: center">
+        <p style="margin-top: 20px">Escriba el nombre de su empresa</p>
+        <div class="uk-margin">
+          <input class="uk-input" value="{{logoText}}" #idValueLogoText type="text" placeholder="Ejemplo: VxOS" style="border-radius: 10px">
+        </div>
+        <button type="submit" class="btn btn-primary ml-auto" style=" color: #ffffff; border: none" (click)="valueIdLogoText(idValueLogoText.value)">Guardar</button>
+      </div>
+
+      <div style="text-align: center">
+        <p style="margin-top: 20px">Añada CSS adicional (Opcional)</p>
+        <div class="uk-margin">
+          <textarea (keyup)="autoGrow()" #textArea class="uk-input" value="{{styleLogo}}"  type="text" placeholder="Ejemplo: font-size: 28px; " style="border-radius: 10px; height: 80px; max-height: 300px!important;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary ml-auto" style=" color: #ffffff; border: none" (click)="valueIdStyleLogo(textArea.value)">Guardar</button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div id="offcanvas-overlay-notificaciones" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+      <h3>Cambiar color Notificaciones | Navbar</h3>
+
+      <p>Cambien el color de fondo</p>
+      <div class="w-75 mx-auto" >
+            <span class="uk-badge" style="margin-top: 15px; padding: 25px; margin-right: 10px; background: {{notificationColor}}">
+              <a uk-icon="bell"></a>
+              <span class="uk-badge" style="margin-bottom: 2px; margin-left: 5px; background: #ff5c5c; ">0</span>
+            </span>
+      </div>
+
+      <div style="text-align: center">
+        <p style="margin-top: 20px">Seleccione su color:</p>
+        <div class="uk-margin">
+          <input class="uk-input" value="{{notificationColor}}" #idValueColorNotification type="color" placeholder="Ejemplo: #0B5345" style="border-radius: 10px">
+        </div>
+        <button type="submit" class="btn btn-primary ml-auto" style=" color: #ffffff; border: none" (click)="valueIdNotifications(idValueColorNotification.value)">Guardar</button>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="uk-tile uk-tile-primary w-75" style="margin-top: 70px; padding-top: 20px; padding-bottom: 20px; left: 25%; border-radius: 5px; background: #ff5c5c">
+    <p class="uk-h4">Estado de los servicios:</p>
+  </div>
+  <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match w-75 mx-auto" style="margin-top: 20px; margin-bottom: 30px" uk-grid>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body" style="border-radius: 20px">
+        <h3 class="uk-card-title">Servicio de Bot</h3>
+        <p *ngIf="servicesBot">Operativo</p>
+        <div uk-spinner *ngIf="!servicesBot"></div>
+        <h6>Sincronización</h6>
+        <p *ngIf="servicesBot">BOT + VxOS Platform: OK - 200</p>
+        <div uk-spinner *ngIf="!servicesBot"></div>
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-card-primary uk-card-body" style="border-radius: 20px">
+        <h3 class="uk-card-title">Servicio de notificaciones:</h3>
+        <p *ngIf="servicesNotification">BOT + VxOS Notification: OK - 200</p>
+        <div uk-spinner *ngIf="!servicesNotification"></div>
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-card-secondary uk-card-body" style="border-radius: 20px">
+        <h3 class="uk-card-title">Servicio de VxOS Platform</h3>
+        <p *ngIf="servicesPlatform">All services VxOS Platform: OK - 200</p>
+        <div uk-spinner *ngIf="!servicesPlatform"></div>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div class="uk-tile uk-tile-secondary w-75 mx-auto" style="padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px; border-radius: 5px; text-align: center">
+    <a class="uk-h4" style="text-align: center" (click)="reloadService()">Reiniciar servicios</a>
+  </div>
+
+  <div *ngIf="changeSettings"  uk-alert class="w-50 mx-auto notificationActive uk-animation-slide-bottom-medium" style="max-width: 400px!important;" >
+    <a class="uk-alert-close" uk-close></a>
+    <h5>Configuraciones guardadas</h5>
+    <p>Las configuraciones se han aplicado correctamente</p>
+  </div>
+
 
 </div>
 

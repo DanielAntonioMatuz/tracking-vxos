@@ -1,3 +1,5 @@
+/*
+!*
 .mg {
   margin-left: 35px;
   margin-right: 35px;
@@ -16,22 +18,20 @@
   margin-top: -145px;
   margin-left: 12%!important;
 }
+*!
 
 .vimeo-wrapper {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
+  position: fixed;
 }
 .vimeo-wrapper iframe {
   width: 100vw;
-  height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+  height: 56.25vw; !* Given a 16:9 aspect ratio, 9/16*100 = 56.25 *!
   min-height: 100vh;
-  min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+  min-width: 177.77vh; !* Given a 16:9 aspect ratio, 16/9*100 = 177.77 *!
   position: absolute;
   top: 50%;
   left: 50%;
@@ -39,3 +39,25 @@
 }
 
 
+
+body {
+  background-image: url("https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png");
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+*/
+
+
+.uk-search-large .uk-search-input {
+  height: 60px;
+  font-size: 1.325rem;
+  color: white!important;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #fff;
+  font-weight: 200;
+  font-size: 20px;
+}

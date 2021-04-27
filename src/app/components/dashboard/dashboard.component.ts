@@ -1,6 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, DoCheck, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {SocketService} from '../../services/socket.service';
+import {$} from 'protractor';
+import {MenuService} from '../../services/menu.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +21,8 @@ export class DashboardComponent implements OnInit {
   public data;
   public avance = 0;
   public progress = 0;
+  public menu = [];
+
 
   constructor(
     // tslint:disable-next-line:variable-name
@@ -25,10 +30,16 @@ export class DashboardComponent implements OnInit {
     // tslint:disable-next-line:variable-name
     private _router: Router,
     // tslint:disable-next-line:variable-name
-    private _userService: UserService
+    private _userService: UserService,
+    // tslint:disable-next-line:variable-name
+    private _socketService: SocketService,
+    private _menuService: MenuService
   ) { }
 
 // tslint:disable-next-line:typedef use-lifecycle-interface
+  private UIkit: any;
+
+  // tslint:disable-next-line:typedef use-lifecycle-interface
   ngDoCheck(){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -39,15 +50,18 @@ export class DashboardComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
 
+
+    // tslint:disable-next-line:only-arrow-functions typedef
+
     this._userService.get_user(this.token).subscribe(
       response => {
         this.users = response.users;
-        console.log(this.users.length);
+       // console.log(this.users.length);
         this.progress = 100 / this.users.length;
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.users.length; i++){
           // tslint:disable-next-line:triple-equals
-          if (this.users[i].estadoLicencia != '' && this.users[i].estadoLicencia != null){
+          if (this.users[i].estadoPedido != '' && this.users[i].estadoPedido != null){
             this.avance ++;
           }
         }
@@ -65,6 +79,10 @@ export class DashboardComponent implements OnInit {
         }
       }
     );
+
+    this._menuService.getMenu(this.identity._id, this.token).subscribe((data) => {
+      this.menu = data.menus;
+    });
   }
 
 

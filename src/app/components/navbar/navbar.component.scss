@@ -1,0 +1,45 @@
+.notificationData {
+  max-height: 400px;
+  margin-top: 80px;
+  border-radius: 10px!important;
+  margin-right: 2px;
+
+}
+.notificationService{
+  margin: 0px!important;
+  width: 100%!important;
+
+  background: #ff5c5c;
+  color: white;
+  border-radius: 10px;
+}
+
+.notificationActive{
+  position: fixed;
+  z-index: 100;
+  top:59%;
+  right:30px;
+  background: mediumseagreen;
+  color: white;
+  border-radius: 10px;
+}
+
+.scrollData::-webkit-scrollbar {display: none;}
+
+.deleteNotification {
+  background: transparent!important;
+  padding: 0px;
+  margin-right:25px!important;
+  border-radius: 5px;
+  margin-bottom: 8px!important;
+}
+
+.notification{
+  position: fixed;
+  z-index: 100;
+  top:60%;
+  right:1%;
+  background: #ff5c5c;
+  color: white;
+  border-radius: 10px;
+}

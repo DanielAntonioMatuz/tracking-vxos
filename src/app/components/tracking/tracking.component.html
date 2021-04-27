@@ -1,68 +1,163 @@
 <div *ngIf="identity">
   <app-navbar></app-navbar>
   <div>
-    <div class="uk-tile uk-tile-secondary">
-      <p class="uk-h4">Panel de avance de licencia</p>
-      <p class="uk-h5">Tracking de usuarios completados al {{progress}}%</p>
+    <div class="uk-tile uk-tile-secondary" style="max-height: 200px; padding-top: 10px; padding-bottom: 20px">
+      <p class="uk-h4">Panel de avance de pedidos/solicitudes</p>
+      <p class="uk-h5">Rastreo de solicitudes completadas al {{progress}}%</p>
       <progress id="js-progressbar" class="uk-progress" value="{{progress}}" max="100"></progress>
 
     </div>
   </div>
 
-  <nav class="uk-navbar-container border w-75 mx-auto" uk-navbar style="border-radius: 5px; margin-top: 15px">
-    <div class="uk-navbar-left">
-
-      <div class="uk-navbar-item">
-        <form class="uk-search uk-search-navbar">
-          <span uk-search-icon></span>
-          <input class="uk-search-input" type="search" (input)="onSearchChange($event.target.value)" placeholder="Buscar usuario...">
-        </form>
+  <div class="uk-child-width-1-2@s uk-grid-collapse uk-text-center w-75 mx-auto" style="margin-top: 20px"  uk-grid>
+    <div>
+      <div class="uk-tile uk-tile-muted border" style="padding: 10px;" *ngIf="!panel2">
+        <a class="uk-h4" (click)="changePanel()">Pendientes</a>
       </div>
-
+      <div class="uk-tile uk-tile-primary border" style="padding: 10px" *ngIf="panel2">
+        <p class="uk-h4" >Pendientes</p>
+      </div>
     </div>
-  </nav>
+    <div>
+      <div class="uk-tile uk-tile-muted border" style="padding: 10px" *ngIf="!panel1">
+        <a class="uk-h4" (click)="changePanel()">Entregados</a>
+      </div>
+      <div class="uk-tile uk-tile-primary border" style="padding: 10px" *ngIf="panel1">
+        <p class="uk-h4">Entregados</p>
+      </div>
+    </div>
+  </div>
 
   <div class="uk-overflow-auto w-75 mx-auto" style="margin-top: 20px">
-    <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+    <nav class="uk-navbar-container border  " uk-navbar style="border-radius: 5px; margin-top: 15px; font-size: 12px!important;">
+      <div class="uk-navbar-left">
+
+        <div class="uk-navbar-item">
+          <form class="uk-search uk-search-navbar">
+            <span uk-search-icon></span>
+            <input class="uk-search-input" type="search" (input)="onSearchChange($event.target.value)" placeholder="Buscar usuario...">
+          </form>
+        </div>
+
+      </div>
+    </nav>
+
+    <table class="uk-table uk-table-hover uk-table-middle uk-table-divider" *ngIf="!changeView">
       <thead>
       <tr>
         <th class="uk-table-shrink">ALL</th>
-        <th class="uk-table-shrink">Email</th>
-        <th class="uk-table-shrink">CENTRAL - VXOS</th>
-        <th class="uk-table-shrink">VXOS - ADB</th>
-        <th class="uk-table-shrink">ADB</th>
-        <th class="uk-table-shrink uk-text-nowrap">OK 200</th>
+        <th class="uk-table-shrink">SOLICITUD </th>
+        <th class="uk-table-shrink">ACEPTADO</th>
+        <th class="uk-table-shrink">PREPARANDO</th>
+        <th class="uk-table-shrink">EN RUTA</th>
+        <th class="uk-table-shrink uk-text-nowrap">ENTREGADO</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let i of users">
+      <tr *ngFor="let i of users; index as j">
 
 
 
-        <td *ngIf="!i.estadoLicencia; else elseBlock"><input (click)="valueId(idValue.value, i)" #idValue name="idValue" value="all" class="uk-checkbox" type="checkbox"></td>
-        <ng-template #elseBlock><td *ngIf="!i.estadoLicencia"><input  checked disabled (click)="valueId(idValue.value, i)" #idValue name="idValue" value="all" class="uk-checkbox" type="checkbox"></td></ng-template>
+        <td *ngIf="!i.estadoPedido; else elseBlock"><input (click)="valueId(idValue.value, i)" #idValue name="idValue" value="all" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock><td *ngIf="!i.estadoPedido"><input  checked disabled (click)="valueId(idValue.value, i)" #idValue name="idValue" value="all" class="uk-checkbox" type="checkbox"></td></ng-template>
 
 
-        <td *ngIf="!i.estadoLicencia"><p>{{i.email}}</p></td>
+        <td *ngIf="!i.estadoPedido">
+          <div class="uk-card uk-card-default" style="border-radius: 20px">
+            <div class="uk-card-header">
+              <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-auto">
+                </div>
+                <div class="uk-width-expand">
+                  <span *ngIf="i.act1 === '' || i.act1 === null" class="uk-badge" style="background: darkgray ">Pendiente por aceptar</span>
+                  <span *ngIf="i.act2 === ''" class="uk-badge" style="background: #1e87f0">Pendiente por preparar</span>
+                  <span *ngIf="i.act2 != '' && i.act1 != '' && i.act3 === ''" class="uk-badge" style="background: #ff5c5c ;  font-size: 10px;">confirmación del cliente para recoger el pedido</span>
+                  <span *ngIf="i.act3 != '' && i.act3 !=null  && i.act2 != '' && i.act2 != null" class="uk-badge" style="background: mediumseagreen ">Cliente en camino</span>
+
+                  <div *ngFor="let k of pedidoService">
+                    <div *ngIf="i.pedido === k._id">
+                      <h3 class="uk-card-title uk-margin-remove-bottom">Pedido: {{k.nombre}}</h3>
+                    </div>
+                  </div>
 
 
-        <td *ngIf="!i.act1 && !i.estadoLicencia; else elseBlock3"><input (click)="valueId(ctrl.value, i)"  #ctrl name="ctrl" value="ctrl" class="uk-checkbox" type="checkbox"></td>
-        <ng-template #elseBlock3><td *ngIf="!i.estadoLicencia"><input  checked disabled (click)="valueId(ctrl.value, i)"  #ctrl name="ctrl" value="ctrl" class="uk-checkbox" type="checkbox"></td></ng-template>
+                  <h6 class="">Usuario: {{i.nombre}}</h6>
+                  <p class="uk-text-meta uk-margin-remove-top"><time am-time-ago="myDate|amFromUnix">{{(i.fechaOrden | amFromUnix) | amLocale: 'es' | amTimeAgo }}</time></p>
+                </div>
+              </div>
+            </div>
+            <div class="uk-card-body">
+              <div *ngFor="let k of pedidoService">
+                <div *ngIf="i.pedido === k._id" class="mx-auto" style="text-align: center">
+                  <img class="border" style="border-radius: 10px" width="250" height="300" src="{{k.imagen}}">
+                </div>
+              </div>
+            </div>
+            <div class="uk-card-footer">
+              <a  class="uk-button uk-button-text">Código: {{i.referencia}}</a>
+            </div>
+          </div>
+        </td>
 
 
-        <td *ngIf="!i.act2 && !i.estadoLicencia; else elseBlock4"><input (click)="valueId(vxos.value, i)"  #vxos name="vxos" value="vxos" class="uk-checkbox" type="checkbox"></td>
-        <ng-template #elseBlock4><td *ngIf="!i.estadoLicencia"><input  checked disabled #vxos name="vxos" value="vxos" class="uk-checkbox" type="checkbox"></td></ng-template>
+
+        <td *ngIf="!i.act1 && !i.estadoPedido; else elseBlock3"><input (click)="valueId(ctrl.value, i)"  #ctrl name="ctrl" value="ctrl" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock3><td *ngIf="!i.estadoPedido"><input  checked disabled (click)="valueId(ctrl.value, i)"  #ctrl name="ctrl" value="ctrl" class="uk-checkbox" type="checkbox"></td></ng-template>
 
 
-        <td *ngIf="!i.act3 && !i.estadoLicencia; else elseBlock5"><input (click)="valueId(adb.value, i)"  #adb name="adb" value="adb" class="uk-checkbox" type="checkbox"></td>
-        <ng-template #elseBlock5><td *ngIf="!i.estadoLicencia"><input  checked disabled #adb name="adb" value="adb" class="uk-checkbox" type="checkbox"></td></ng-template>
+        <td *ngIf="!i.act2 && !i.estadoPedido; else elseBlock4"><input (click)="valueId(vxos.value, i)"  #vxos name="vxos" value="vxos" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock4><td *ngIf="!i.estadoPedido"><input  checked disabled #vxos name="vxos" value="vxos" class="uk-checkbox" type="checkbox"></td></ng-template>
 
 
-        <td *ngIf="!i.estadoLicencia; else elseBlock6"><input (click)="valueId(ok.value, i)"  #ok name="ok" value="ok" class="uk-checkbox" type="checkbox"></td>
-        <ng-template #elseBlock6><td *ngIf="!i.estadoLicencia"><input  checked disabled #ok name="ok" value="ok" class="uk-checkbox" type="checkbox"></td></ng-template>
+        <td *ngIf="!i.act3 && !i.estadoPedido; else elseBlock5"><input (click)="valueId(adb.value, i)"  #adb name="adb" value="adb" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock5><td *ngIf="!i.estadoPedido"><input  checked disabled #adb name="adb" value="adb" class="uk-checkbox" type="checkbox"></td></ng-template>
+
+
+        <td *ngIf="!i.estadoPedido; else elseBlock6"><input (click)="valueId(ok.value, i)"  #ok name="ok" value="ok" class="uk-checkbox" type="checkbox"></td>
+        <ng-template #elseBlock6><td *ngIf="!i.estadoPedido"><input  checked disabled #ok name="ok" value="ok" class="uk-checkbox" type="checkbox"></td></ng-template>
       </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div *ngIf="changeView">
+
+  <div class="uk-grid-small uk-child-width-1-4@s uk-flex-center uk-text-center" uk-grid style="margin-top: 20px">
+    <div *ngFor="let i of users; index as j">
+      <div *ngIf="i.estadoPedido">
+        <div class="uk-card uk-card-default" style="border-radius: 20px">
+          <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-auto">
+              </div>
+              <div class="uk-width-expand">
+                <span class="uk-badge" style="text-align: left; background: mediumseagreen">Entregado</span>
+                <div *ngFor="let k of historialPedidos">
+                  <div *ngIf="i.pedido === k._id">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">Pedido: {{k.nombre}}</h3>
+                  </div>
+                </div>
+
+
+                <h6 class="">Usuario: {{i.nombre}}</h6>
+                <p class="uk-text-meta uk-margin-remove-top">{{i.fechaOrden}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="uk-card-body">
+            <div *ngFor="let k of historialPedidos">
+              <div *ngIf="i.pedido === k._id" class="mx-auto" style="text-align: center">
+                <img class="border" style="border-radius: 10px" width="250" height="300" src="{{k.imagen}}">
+              </div>
+            </div>
+          </div>
+          <div class="uk-card-footer">
+            <a  class="uk-button uk-button-text">Código: {{i.referencia}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

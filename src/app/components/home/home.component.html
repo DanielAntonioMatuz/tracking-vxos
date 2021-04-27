@@ -1,81 +1,2356 @@
-<div class="uk-animation-fade">
+<!--
+<div class="uk-animation-fade" xmlns:https="http://www.w3.org/1999/xhtml" *ngIf="ciudadOrigen">
+  &lt;!&ndash;
+    <ngx-spinner
+      bdColor="rgba(51,51,51,0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-scale-multiple"
+    >
+      <p style="font-size: 20px; color: white">Cargando...</p>
+    </ngx-spinner>
 
-  <ngx-spinner
-    bdColor="rgba(51,51,51,0.8)"
-    size="medium"
-    color="#fff"
-    type="ball-scale-multiple"
-  >
-    <p style="font-size: 20px; color: white">Cargando...</p>
-  </ngx-spinner>
-
-
+  &ndash;&gt;
+  <div class="vimeo-wrapper">
+    <iframe src="https://player.vimeo.com/video/150361117?background=1&autoplay=1&loop=1&byline=0&title=0"
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+    </iframe>
+  </div>
   <body>
 
-  <div class="vimeo-wrapper">
-    <iframe src="https://player.vimeo.com/video/333837997?background=1&autoplay=1&loop=1&byline=0&title=0"
-            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  </div>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">VxOS Software</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 300;" uk-sticky="bottom: #offset">
+    <a class="navbar-brand" href="#">
+      <img style="max-height: 40px; margin-left: 20px"
+           src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png"
+           alt="Tlint">
+    </a>
     <div class="collapse navbar-collapse " id="navbarNav">
-      <ul class="navbar-nav mx-auto">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      &lt;!&ndash;<ul class="navbar-nav mx-auto">
         <li class="nav-item active mg">
           <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item mg">
           <a class="nav-link" routerLink="/contact">Contacto</a>
         </li>
-      </ul>
+      </ul>&ndash;&gt;
     </div>
     <form class="form-inline my-2 my-lg-0">
-      <button class="uk-button uk-button-secondary my-sm-2" routerLink="/login" style="border-radius: 5px">Iniciar sesión</button>
-
+      <button class="uk-button uk-button-secondary my-sm-2" routerLink="/login"
+              style="border-radius: 5px; background: #ff5c5c">Iniciar sesión
+      </button>
     </form>
-
   </nav>
 
-
-  <div class="">
-    <h1 style="text-align: center; color: #fff!important;" class="content-search">Ingrese su ID</h1>
-    <div class="uk-text-meta content-search w-75" style="  margin-top: -95px!important; color: #fff!important;">Su ID de rastreo de 5 dígitos, haga click <span class="badge badge-secondary" data-toggle="modal" data-target="#exampleModal">aquí</span> para más información </div>
-    <div style=" background: gainsboro; ;width: 75%; border-radius: 8px" class="mx-auto search d-flex">
-      <div class="uk-search uk-search-large">
-        <span uk-search-icon></span>
-        <input (keyup.enter)="valueId(idValue.value)" class="uk-search-input" type="search" placeholder="..." #idValue name="idValue">
+  <div class="uk-position-large uk-position-center" style="width: 100%; margin-top: 5%; " uk-sticky="top: 350">
+    <h2 style="text-align: center; margin-bottom: 30px; font-weight: 200; color: white; font-size: 50px"> Servicios y
+      restaurantes locales favoritos, aquí </h2>
+    <div style=" background: #ff5c5c; ;width: 90%!important; border-radius: 8px" class="mx-auto search d-flex;">
+      <div class="uk-search uk-search-large"
+           style="color: white!important; width: 75%!important; margin-left: 10px!important; font-size: 15px!important; z-index: 980;"  >
+        <input (keyup.enter)="valueId(idValue.value)" class="uk-search-input" type="search"
+               placeholder="Busca algún restaurante, agencia, servicio o descubre un nuevo lugar" #idValue
+               name="idValue" style="color: #fff!important;">
       </div>
-      <button type="submit" class="btn btn-primary ml-auto float-right" style="background: transparent!important; color: #666666; border: none" (click)="valueId(idValue.value)">Buscar</button>
-    </div>
-    <div *ngIf="!estatus" class="alert alert-warning" role="alert">
-      {{this.details}}
+      <button type="submit" class="btn btn-primary ml-auto float-right "
+              style="background: #ff5c5c!important; color: #ffffff; border: none; " (click)="valueId(idValue.value);">
+        <span uk-search-icon style="color: white; margin-top: 25px; margin-bottom: 23px"></span>
+      </button>
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Información sobre su ID</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
+  <div class="uk-card uk-card-default" >
+    <div style="background: transparent; margin-top: 850px;">
+      <h2 style="text-align: center; padding-top: 40px; font-weight: 400">Tiendas, restaurantes, servicios y comercios
+        locales de tu ciudad</h2>
+    </div>
+    <div class="uk-child-width-1-3@m mx-auto " style="width: 90%; " uk-grid >
+      <div style="margin-top: 20px;  ">
+        <div class="uk-card uk-card-default" >
+          <div class="uk-card-media-top">
+            <img style="border-top-right-radius: 10px; border-top-left-radius: 10px!important;"
+              src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png"
+              alt="">
+          </div>
+          <div class="uk-card-body" >
+            <h3 class="uk-card-title">Apoyemos el consumo local</h3>
+            <p style="font-weight: 500">Pequeñas y medianas empresas, todos sus productos, aquí</p>
+            &lt;!&ndash;<p>Explora una variedad de pequeños y medianos restaurantes, así como comercios de todo tipo, comprar
+              sus productos a través de Tlint, es muy sencillo, apoya al consumo local y con la facilidad de hacerlo
+              desde tu hogar</p>&ndash;&gt;
+          </div>
         </div>
-        <div class="modal-body">
-          Su ID de licencia es una expresión alfanúmerica de 5 digitos, por ejemplo:
-          ABCD1, ABC11, AB111
+      </div>
+
+
+      <div style="margin-top: 20px">
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <img style="border-top-right-radius: 10px; border-top-left-radius: 10px!important;"
+              src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png"
+              alt="">
+          </div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Voy por él, o nos apoyamos entre sí</h3>
+            <p style="font-weight: 500">Pasar a recoger o apoyar al servicio local</p>
+            &lt;!&ndash;<p>Puede que muchos productos no ofrescan envío a tu hogar, sin embargo, puedes pedir o solicitar ya sea un
+              servicio
+              o producto, y recogerlo tu mismo o bien, apoyar a los repartidores locales para que lleven tu producto a
+              tu hogar</p>&ndash;&gt;
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
+      </div>
+
+      <div style="margin-top: 20px">
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <img style="border-top-right-radius: 10px; border-top-left-radius: 10px!important;"
+              src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png"
+              alt="">
+          </div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">100% mi ciudad</h3>
+            <p style="font-weight: 500">Productos de tiendas, comercios, restaurantes y servicios de tu ciudad</p>
+            &lt;!&ndash;<p>Adquirir tus productos y servicios en Tlint, es apoyar a decenas de comerciantes y empresarios
+              originarios de tu ciudad,
+              el consumo local mejora la economía de todos, Tlint te facilita conectarte con ellos, ver sus productos o
+              servicios, y adquirirlos, de forma
+              fácil</p>&ndash;&gt;
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="w-75 mx-auto">
+      <h2 style="text-align: left; margin-top: 40px; font-weight: 400">Lo que puedes encontrar</h2>
+      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+
+        <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid" style="margin-top: 30px; margin-bottom: 30px">
+          <li>
+            <div class="uk-panel">
+              <img style="border-radius: 10px" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png" alt="">
+              <div class="uk-position-center uk-panel"><h4>Restaurantes</h4></div>
+            </div>
+          </li>
+          <li>
+            <div class="uk-panel">
+              <img style="border-radius: 10px" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png" alt="">
+              <div class="uk-position-center uk-panel"><h4>Papelerias</h4></div>
+            </div>
+          </li>
+          <li>
+            <div class="uk-panel">
+              <img style="border-radius: 10px" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png" alt="">
+              <div class="uk-position-center uk-panel"><h4>Artesanias</h4></div>
+            </div>
+          </li>
+          <li>
+            <div class="uk-panel">
+              <img style="border-radius: 10px" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png" alt="">
+              <div class="uk-position-center uk-panel"><h4>Servicios</h4></div>
+            </div>
+          </li>
+          <li>
+            <div class="uk-panel">
+              <img style="border-radius: 10px" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png" alt="">
+              <div class="uk-position-center uk-panel"><h4>Comercios</h4></div>
+            </div>
+          </li>
+          <li>
+            <div class="uk-panel">
+              <img style="border-radius: 10px" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598225785/resources-tlint/Web_1920_1_fpujt5.png" alt="">
+              <div class="uk-position-center uk-panel"><h4>Tiendas</h4></div>
+            </div>
+          </li>
+        </ul>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+      </div>
+
+      <h2 style="text-align: left; margin-top: 40px; font-weight: 400">Zonas donde opera Tlint</h2>
+
+    </div>
+
   </div>
+  &lt;!&ndash;
+    <div class="">
+      <h1 style="text-align: center; color: #fff!important;" class="content-search">Ingrese su ID</h1>
+      <div class="uk-text-meta content-search w-75" style="  margin-top: -95px!important; color: #fff!important;">Su ID de rastreo de 5 dígitos, haga click <a class="uk-badge" uk-toggle="target: #modal-example" style="margin-bottom: 2px; color: white; z-index: 100">aquí</a>
+        para más información </div>
+      <div style=" background: gainsboro; ;width: 75%; border-radius: 8px" class="mx-auto search d-flex">
+        <div class="uk-search uk-search-large">
+          <span uk-search-icon></span>
+          <input (keyup.enter)="valueId(idValue.value)" class="uk-search-input" type="search" placeholder="..." #idValue name="idValue">
+        </div>
+        <button type="submit" class="btn btn-primary ml-auto float-right" style="background: transparent!important; color: #666666; border: none" (click)="valueId(idValue.value)">Buscar</button>
+      </div>
+      <div *ngIf="!estatus" class="alert alert-warning" role="alert">
+        {{this.details}}
+      </div>
+    </div>
+
+
+    <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+      <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+        <h3>Title</h3>
+
+        <p>Su ID de licencia es una expresión alfanúmerica de 5 digitos, por ejemplo:
+          ABCD1, ABC11, AB111, A1000
+        </p>
+
+      </div>
+    </div>
+
+    <div id="modal-example" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Información de código de rastreo</h2>
+        <p>Su ID de licencia es una expresión alfanúmerica de 5 digitos, por ejemplo:
+          ABCD1, ABC11, AB111, A1000
+        </p>
+        <p class="uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">cerrar</button>
+        </p>
+      </div>
+    </div>
+  &ndash;&gt;
 
   </body>
 
+
+
+  <div *ngIf="cookies" uk-alert class="uk-position-bottom" style="margin-bottom:0px; background: black; color: #f0f0f0">
+    <a class="uk-alert-close " uk-close (click)="acceptCookies()"></a>
+    <h3>Uso de cookies & datos</h3>
+    <p>Los datos introducidos en la plataforma, se operan de forma segura, algunos datos pueden ser recopilados para
+      fines de mejorar los servicios, ningun dato sensible será comprometido bajo las normas de la empresa</p>
+  </div>
+
 </div>
+
+
+<div *ngIf="!ciudadOrigen">
+  <div class="vimeo-wrapper">
+    <iframe src="https://player.vimeo.com/video/150361117?background=1&autoplay=1&loop=1&byline=0&title=0"
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img style="max-height: 40px; margin-left: 20px"
+           src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png"
+           alt="Tlint">
+    </a>
+    <div class="collapse navbar-collapse " id="navbarNavA">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      &lt;!&ndash;<ul class="navbar-nav mx-auto">
+        <li class="nav-item active mg">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mg">
+          <a class="nav-link" routerLink="/contact">Contacto</a>
+        </li>
+      </ul>&ndash;&gt;
+    </div>
+  </nav>
+
+  <div class="uk-position-large uk-position-center" style="width: 100%; margin-top: 5%;">
+    <h2 style="text-align: center; margin-bottom: 30px; font-weight: 200; color: white; font-size: 40px"> Servicios y
+      restaurantes locales favoritos, aquí, próximamente</h2>
+    <h5 style="text-align: center; font-weight: 300; color: white">Aún no nos encontramos disponibles en tu ciudad, esperemos en un futuro poder expandir nuestros servicios</h5>
+
+  </div>
+</div>
+-->
+<!--<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#3ed2a7">
+</head>
+<body data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="minimal" data-mobile-nav-shceme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
+
+<div id="wrap">
+
+  <header class="main-header main-header-overlay" style="z-index: 980; background: white" uk-sticky="bottom: #offset">
+
+    <div class="mainbar-wrap">
+
+      <div class="container mainbar-container">
+        <div class="mainbar">
+          <div class="row mainbar-row align-items-lg-stretch">
+
+            <div class="col">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="index-services.html" rel="home">
+										<span class="navbar-brand-inner">
+											<img style="height: 40px" class="logo-default" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint">
+										</span>
+                </a>
+                <button type="button" class="navbar-toggle collapsed nav-trigger style-mobile" data-toggle="collapse" data-target="#main-header-collapse" aria-expanded="false" data-changeclassnames='{ "html": "mobile-nav-activated overflow-hidden" }'>
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="bars">
+											<span class="bar"></span>
+											<span class="bar"></span>
+											<span class="bar"></span>
+										</span>
+                </button>
+              </div>&lt;!&ndash; /.navbar-header &ndash;&gt;
+            </div>&lt;!&ndash; /.col &ndash;&gt;
+
+            <div class="col text-center">
+
+              <div class="collapse navbar-collapse" id="main-header-collapse" aria-expanded="false" role="tablist">
+
+                <ul id="primary-nav" class="main-nav main-nav-hover-underline-2 nav align-items-lg-stretch justify-content-lg-center" data-submenu-options='{ "toggleType": "fade", "handler": "mouse-in-out" }'>
+                  <li>
+                    <a href="#">
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">INICIO</span>
+												</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">EXPLORA</span>
+												</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">SERVICIOS</span>
+												</span>
+                    </a>
+                  </li>
+                </ul>
+
+              </div>&lt;!&ndash; /.collapse &ndash;&gt;
+
+            </div>&lt;!&ndash; /.col &ndash;&gt;
+
+            <div class="col text-right">
+
+              <div class="header-module">
+
+                <a routerLink="/login" style="background: #ff5c5c" class="btn btn-default text-uppercase btn-sm circle btn-bordered border-thin btn-gradient font-size-13 font-weight-bold ltr-sp-1 px-3 color-secondary">
+										<span>
+											<span class="btn-txt" style="color: white">Iniciar sesión</span>
+											<span class="btn-gradient-bg btn-gradient-bg-hover" style="background: black"></span>
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" class="btn-gradient-border" width="100%" height="100%">
+												<defs>
+													<linearGradient id="svg-border-1" x1="0%" y1="0%" x2="100%" y2="0%">
+														<stop offset="0%" style="stop-color: #ff5c5c;"></stop>
+														<stop offset="100%" style="stop-color: #ff5c5c;"></stop>
+													</linearGradient>
+												</defs>
+												<rect x="0.5" y="0.5" rx="25" ry="25" width="100%" height="100%" stroke="url(#svg-border-1)"></rect>
+											</svg>
+										</span>
+                </a>
+
+              </div>&lt;!&ndash; /.header-module &ndash;&gt;
+
+            </div>&lt;!&ndash; /.col &ndash;&gt;
+
+          </div>&lt;!&ndash; /.maonbar-row &ndash;&gt;
+        </div>&lt;!&ndash; /.mainbar &ndash;&gt;
+      </div>&lt;!&ndash; /.mainbar-container &ndash;&gt;
+
+    </div>&lt;!&ndash; /.mainbar-wrap &ndash;&gt;
+
+  </header>
+
+  <main id="content" class="content">
+
+    <section class="vc_row fullheight d-flex flex-wrap align-items-stretch">
+
+      <div class="lqd-particles-bg-wrap" style="height: 400px;">
+
+        <div class="ld-particles-container">
+          <div
+            class="ld-particles-inner"
+            id="ld-1527244273759-519b63e0-a9d6"
+            data-particles="true"
+            data-particles-options='{"particles":{"shape":{"type":["triangle"]},"move":{"enable":true,"direction":"right","out_mode":"out","attract":{"enable":true}}},"interactivity":[]}'>
+          </div>
+        </div>
+
+      </div>&lt;!&ndash; /.lqd-particles-bg-wrap &ndash;&gt;
+
+      <div class="container d-flex align-items-stretch">
+        <div class="row d-flex flex-wrap align-items-stretch w-100">
+
+          <div class="lqd-column col-md-10 col-md-offset-1 py-8s bg-white d-flex flex-wrap align-items-center justify-content-center white-box-shadow">
+
+            <div
+              class="lqd-column-inner w-100 text-center"
+              data-custom-animations="true"
+              data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"150","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":26,"opacity":0},"animations":{"translateY":0,"opacity":1}}'
+            >
+
+              <h4
+                class="mt-md-6 mt-0 mb-4 mb-2 lh-1"
+                data-fittext="true"
+                data-fittext-options='{ "compressor":0.5,"maxFontSize": 90,"minFontSize": 62 }'
+                data-split-text="true"
+                data-split-options='{"type":"words"}'
+              >Tiendas, comercios, servicios</h4>
+
+              <div class="row">
+                <div
+                  class="lqd-column col-md-8 col-md-offset-2 px-3"
+                  data-custom-animations="true"
+                  data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"150", "startDelay": 120,"easing":"easeOutQuint","direction":"forward","initValues":{"translateY":26,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+                  <p class="font-size-20 px-md-4 mb-md-7" data-split-text="true" data-split-options='{"type":"lines"}'>Un lugar donde las pequeñas y medianas empresas, comercios y servicios locales, puedan potenciar sus productos</p>
+
+              &lt;!&ndash;    &ndash;&gt;
+
+                  <div style="width: 100%;" >
+                    <nav class="uk-navbar-container" uk-navbar style="background: #ff5c5c;  border-radius: 10px">
+                      <div class="uk-navbar-left">
+
+                        <div class="uk-navbar-item">
+                          <form class="uk-search uk-search-navbar" style="width: 100%">
+                            <span uk-search-icon style="color: white"></span>
+                            <input style="color: white" class="uk-search-input" type="search" placeholder="Buscar un restaurante, comercio o servicio...">
+                          </form>
+                        </div>
+
+                      </div>
+                    </nav>
+                  </div>
+
+
+
+                </div>&lt;!&ndash; /.col-md-8 col-md-offset-2 &ndash;&gt;
+              </div>&lt;!&ndash; /.row &ndash;&gt;
+
+            </div>&lt;!&ndash; /.lqd-column-inner &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-6 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+
+    </section>
+
+    <section class="vc_row pt-140 pb-120 bg-light">
+
+      <div class="container">
+        <div class="row d-flex flex-wrap align-items-center">
+
+          <div
+            class="lqd-column col-lg-4"
+            data-custom-animations="true"
+            data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"150","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":52,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+            <header class="fancy-title mb-40">
+              <h6 class="font-size-13 text-uppercase ltr-sp-05">APOYAMOS LOCALMENTE</h6>
+              <h2 class="mt-4" data-split-text="true" data-split-options='{"type":"lines"}'>Un completo lugar <span class="text-secondary">donde podremos comprar localmente</span></h2>
+            </header>
+
+            <div class="accordion accordion-square accordion-title-bordered accordion-title-circle accordion-active-has-shadow accordion-active-has-fill accordion-sm accordion-active-bg-white" id="accordion-1" role="tablist">
+
+              <div class="accordion-item panel active">
+
+                <div class="accordion-heading" role="tab" id="heading1-1">
+                  <h4 class="accordion-title font-size-18 lh-2">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion-1" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                      100% mi ciudad
+                      <span class="accordion-expander">
+													<i class="fa fa-angle-down"></i>
+													<i class="fa fa-angle-up"></i>
+												</span>
+                    </a>
+                  </h4>
+                </div>&lt;!&ndash; /.accordion-headeing &ndash;&gt;
+
+                <div id="collapse1" class="accordion-collapse collapse in" role="tabpanel" aria-labelledby="heading1-1">
+
+                  <div class="accordion-content">
+                    <p>Adquirir tus productos y servicios en Tlint, es apoyar a decenas de comerciantes y empresarios
+                      originarios de tu ciudad,
+                      el consumo local mejora la economía de todos, Tlint te facilita conectarte con ellos, ver sus productos o
+                      servicios, y adquirirlos, de forma
+                      fácil</p>
+                  </div>&lt;!&ndash; /accordion-content &ndash;&gt;
+
+                </div>&lt;!&ndash; /accordion-collapse &ndash;&gt;
+
+              </div>&lt;!&ndash; /.accordion-item &ndash;&gt;
+
+              <div class="accordion-item panel">
+
+                <div class="accordion-heading" role="tab" id="heading2">
+                  <h4 class="accordion-title font-size-18 lh-2">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-1" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                      Apoyemos el consumo local
+                      <span class="accordion-expander">
+													<i class="fa fa-angle-down"></i>
+													<i class="fa fa-angle-up"></i>
+												</span>
+                    </a>
+                  </h4>
+                </div>&lt;!&ndash; /.accordion-headeing &ndash;&gt;
+
+                <div id="collapse2" class="accordion-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+
+                  <div class="accordion-content">
+                    <p>Explora una variedad de pequeños y medianos restaurantes, así como comercios de todo tipo, comprar
+                    sus productos a través de Tlint, es muy sencillo, apoya al consumo local y con la facilidad de hacerlo
+                    desde tu hogar
+                    </p>
+                  </div>&lt;!&ndash; /accordion-content &ndash;&gt;
+
+                </div>&lt;!&ndash; /accordion-collapse &ndash;&gt;
+
+              </div>&lt;!&ndash; /.accordion-item &ndash;&gt;
+
+
+            </div>&lt;!&ndash; /.accordion &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-lg-4 &ndash;&gt;
+
+          <div class="lqd-column col-lg-6 col-lg-offset-2">
+
+            <div class="liquid-img-group-container stretch-to-right">
+              <div class="liquid-img-group-inner">
+                <div class="liquid-img-group-single liquid-img-group-browser" data-shadow-style="4" data-inview="true" data-animate-shadow="true" data-reveal="true" data-reveal-options='{"direction":"lr"}'>
+&lt;!&ndash;
+                  <span class="liquid-img-group-url"><span>http://</span>ave.com/</span>
+&ndash;&gt;
+                  <div class="liquid-img-group-img-container">
+                    <div class="liquid-img-group-content content-floated-mid-left">
+                      <a href="https://www.youtube.com/watch?v=JN-suUcRdqQ" class="btn btn-naked text-uppercase btn-gradient fresco btn-icon-block btn-icon-top btn-icon-xlg btn-icon-circle btn-icon-solid font-size-13 text-dark">
+													<span>
+														<span class="btn-txt">See how it works</span>
+														<span class="btn-icon bg-gradient-secondary-lr font-size-24"><i class="fa fa-play"></i></span>
+													</span>
+                      </a>
+                    </div>&lt;!&ndash; /.liquid-img-group-content &ndash;&gt;
+                    <div class="liquid-img-container-inner">
+                      <figure data-responsive-bg="true">
+                        <img src="../../../assets/demo/misc/browser-sc.jpg" alt="Ave" />
+                      </figure>
+                    </div>&lt;!&ndash; /.liquid-img-container-inner &ndash;&gt;
+                  </div>&lt;!&ndash; /.liquid-img-group-img-container &ndash;&gt;
+                </div>&lt;!&ndash; /.liquid-img-group-single &ndash;&gt;
+              </div>&lt;!&ndash; /.liquid-img-group-inner &ndash;&gt;
+            </div>&lt;!&ndash; /.liquid-img-group-container &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-lg-6 col-lg-offset-2 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+
+    </section>
+
+    <section class="vc_row pt-150 pb-75">
+      <div class="container">
+
+        <div
+          class="row d-flex flex-wrap align-items-center mb-5"
+          data-custom-animations="true"
+          data-ca-options='{"triggerHandler":"inview","animationTarget":".split-inner","duration":700,"startDelay":"180","delay":100,"easing":"easeOutQuint","direction":"forward","initValues":{"translateY":50,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+          <div class="lqd-column col-lg-5">
+
+            <header class="fancy-title mb-40">
+              <h6 class="font-size-13 text-uppercase ltr-sp-05">EXCLUSIVE PORTFOLIO</h6>
+              <h2
+                class="mt-4 pr-lg-6"
+                data-split-text="true"
+                data-split-options='{"type": "lines"}'
+              >Having attractive showcase has never been <span class="text-secondary">easier</span></h2>
+            </header>
+
+          </div>&lt;!&ndash; /.col-lg-5 &ndash;&gt;
+
+          <div class="lqd-column col-lg-4 col-md-6 pr-lg-6">
+
+            <p data-split-text="true" data-split-options='{"type":"lines"}'>We’re a brand strategy and digital design agency, building brands that matter in culture. With more than ten years of knowledge and expertise.</p>
+
+          </div>&lt;!&ndash; /.col-lg-4 col-md-6 &ndash;&gt;
+
+          <div class="lqd-column col-lg-3 col-md-6">
+
+            <p data-split-text="true" data-split-options='{"type":"lines"}'>We work with people who are as dedicated to their craft. We do everything with our core values of honesty, hard work, and trust.</p>
+
+          </div>&lt;!&ndash; /.col-lg-3 col-md-6 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+
+        <div class="row">
+
+          <div class="lqd-column col-md-12">
+
+            <div class="liquid-portfolio-list">
+
+              <div class="row" >
+
+                <div class="lqd-column col-md-12">
+
+                  <div class="liquid-filter-items justify-content-between align-items-center mb-6">
+
+                    <div class="liquid-filter-items-inner">
+
+                      <ul class="filter-list text-uppercase ltr-sp-1 filter-list-inline size-sm mb-0" id="pf-grid-1">
+                        <li class="active" data-filter="*"><span>Selected Work</span></li>
+                        <li data-filter=".brand"><span>Branded Ecommerce</span></li>
+                        <li data-filter=".digital"><span>Digital Experiences</span></li>
+                        <li data-filter=".branding"><span>Branding Strategy</span></li>
+                      </ul>
+
+                      <a href="#" class="btn btn-lg wide btn-solid btn-gradient circle text-uppercase font-weight-bold color-secondary" style="font-size: 12px;">
+													<span>
+														<span class="btn-gradient-bg"></span>
+														<span class="btn-txt">See all work</span>
+														<span class="btn-gradient-bg btn-gradient-bg-hover"></span>
+													</span>
+                      </a>
+
+                    </div>&lt;!&ndash; /.liquid-filter-items-inner &ndash;&gt;
+
+                  </div>&lt;!&ndash; /.liquid-filter-items &ndash;&gt;
+
+                </div>&lt;!&ndash; /.col-md-12 &ndash;&gt;
+
+              </div>&lt;!&ndash; /.row &ndash;&gt;
+
+              <div class="row liquid-portfolio-list-row" data-liquid-masonry="true" data-masonry-options='{ "filtersID": "#pf-grid-1" }'>
+
+                <div class="lqd-column col-lg-4 col-sm-6 px-4 masonry-item brand">
+
+                  <div class="ld-pf-item ld-pf-dark pf-details-visible pf-bg-hidden title-size-30 pf-hover-shadow pf-hover-shadow-alt">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure>
+                          <img src="./assets/demo/portfolio/pf-31.jpg" alt="Portfolio Image">
+                        </figure>
+                        <div class="ld-pf-bg bg-gradient-primary-lr opacity-09">
+                          <a href="#" class="btn btn-xsm btn-naked text-uppercase font-weight-bold text-white">
+															<span>
+																<span class="btn-txt">Discover more</span>
+															</span>
+                          </a>
+                        </div>&lt;!&ndash; /.ld-pf-bg &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-image &ndash;&gt;
+
+                      <div class="ld-pf-details pl-0 py-3">
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4">Orange tree</h3>
+                          <div class="ld-pf-category size-md">
+                            <a href="#">Branding</a>
+                          </div>&lt;!&ndash; /.ld-pf-category &ndash;&gt;
+                        </div>&lt;!&ndash; /.ld-pf-details-inner &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-details &ndash;&gt;
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div>&lt;!&ndash; /.ld-pf-inner &ndash;&gt;
+
+                  </div>&lt;!&ndash; /.ld-pf-item &ndash;&gt;
+
+                </div>&lt;!&ndash; /.col-lg-4 col-md-6 &ndash;&gt;
+
+                <div class="lqd-column col-lg-4 col-sm-6 px-4 masonry-item digital branding">
+
+                  <div class="ld-pf-item ld-pf-dark pf-details-visible pf-bg-hidden title-size-30 pf-hover-shadow pf-hover-shadow-alt">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure>
+                          <img src="./assets/demo/portfolio/pf-32.jpg" alt="Portfolio Image">
+                        </figure>
+                        <div class="ld-pf-bg bg-gradient-primary-lr opacity-09">
+                          <a href="#" class="btn btn-xsm btn-naked text-uppercase font-weight-bold text-white">
+															<span>
+																<span class="btn-txt">Discover more</span>
+															</span>
+                          </a>
+                        </div>&lt;!&ndash; /.ld-pf-bg &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-image &ndash;&gt;
+
+                      <div class="ld-pf-details pl-0 py-3">
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4">Feeling</h3>
+                          <div class="ld-pf-category size-md">
+                            <a href="#">Branding</a>
+                          </div>&lt;!&ndash; /.ld-pf-category &ndash;&gt;
+                        </div>&lt;!&ndash; /.ld-pf-details-inner &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-details &ndash;&gt;
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div>&lt;!&ndash; /.ld-pf-inner &ndash;&gt;
+
+                  </div>&lt;!&ndash; /.ld-pf-item &ndash;&gt;
+
+                </div>&lt;!&ndash; /.col-lg-4 col-md-6 &ndash;&gt;
+
+                <div class="lqd-column col-lg-4 col-sm-6 px-4 masonry-item digital">
+
+                  <div class="ld-pf-item ld-pf-dark pf-details-visible pf-bg-hidden title-size-30 pf-hover-shadow pf-hover-shadow-alt">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure>
+                          <img src="./assets/demo/portfolio/pf-33.jpg" alt="Portfolio Image">
+                        </figure>
+                        <div class="ld-pf-bg bg-gradient-primary-lr opacity-09">
+                          <a href="#" class="btn btn-xsm btn-naked text-uppercase font-weight-bold text-white">
+															<span>
+																<span class="btn-txt">Discover more</span>
+															</span>
+                          </a>
+                        </div>&lt;!&ndash; /.ld-pf-bg &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-image &ndash;&gt;
+
+                      <div class="ld-pf-details pl-0 py-3">
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4">Watermelon</h3>
+                          <div class="ld-pf-category size-md">
+                            <a href="#">Branding</a>
+                          </div>&lt;!&ndash; /.ld-pf-category &ndash;&gt;
+                        </div>&lt;!&ndash; /.ld-pf-details-inner &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-details &ndash;&gt;
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div>&lt;!&ndash; /.ld-pf-inner &ndash;&gt;
+
+                  </div>&lt;!&ndash; /.ld-pf-item &ndash;&gt;
+
+                </div>&lt;!&ndash; /.col-lg-4 col-md-6 &ndash;&gt;
+
+                <div class="lqd-column col-lg-4 col-sm-6 px-4 masonry-item branded">
+
+                  <div class="ld-pf-item ld-pf-dark pf-details-visible pf-bg-hidden title-size-30 pf-hover-shadow pf-hover-shadow-alt">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure>
+                          <img src="./assets/demo/portfolio/pf-34.jpg" alt="Portfolio Image">
+                        </figure>
+                        <div class="ld-pf-bg bg-gradient-primary-lr opacity-09">
+                          <a href="#" class="btn btn-xsm btn-naked text-uppercase font-weight-bold text-white">
+															<span>
+																<span class="btn-txt">Discover more</span>
+															</span>
+                          </a>
+                        </div>&lt;!&ndash; /.ld-pf-bg &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-image &ndash;&gt;
+
+                      <div class="ld-pf-details pl-0 py-3">
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4">Magic water</h3>
+                          <div class="ld-pf-category size-md">
+                            <a href="#">Branding</a>
+                          </div>&lt;!&ndash; /.ld-pf-category &ndash;&gt;
+                        </div>&lt;!&ndash; /.ld-pf-details-inner &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-details &ndash;&gt;
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div>&lt;!&ndash; /.ld-pf-inner &ndash;&gt;
+
+                  </div>&lt;!&ndash; /.ld-pf-item &ndash;&gt;
+
+                </div>&lt;!&ndash; /.col-lg-4 col-md-6 &ndash;&gt;
+
+                <div class="lqd-column col-lg-4 col-sm-6 px-4 masonry-item brand branded">
+
+                  <div class="ld-pf-item ld-pf-dark pf-details-visible pf-bg-hidden title-size-30 pf-hover-shadow pf-hover-shadow-alt">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure>
+                          <img src="./assets/demo/portfolio/pf-36.jpg" alt="Portfolio Image">
+                        </figure>
+                        <div class="ld-pf-bg bg-gradient-primary-lr opacity-09">
+                          <a href="#" class="btn btn-xsm btn-naked text-uppercase font-weight-bold text-white">
+															<span>
+																<span class="btn-txt">Discover more</span>
+															</span>
+                          </a>
+                        </div>&lt;!&ndash; /.ld-pf-bg &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-image &ndash;&gt;
+
+                      <div class="ld-pf-details pl-0 py-3">
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4">Peaceful night</h3>
+                          <div class="ld-pf-category size-md">
+                            <a href="#">Branding</a>
+                          </div>&lt;!&ndash; /.ld-pf-category &ndash;&gt;
+                        </div>&lt;!&ndash; /.ld-pf-details-inner &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-details &ndash;&gt;
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div>&lt;!&ndash; /.ld-pf-inner &ndash;&gt;
+
+                  </div>&lt;!&ndash; /.ld-pf-item &ndash;&gt;
+
+                </div>&lt;!&ndash; /.col-lg-4 col-md-6 &ndash;&gt;
+
+                <div class="lqd-column col-lg-4 col-sm-6 px-4 masonry-item brand branded">
+
+                  <div class="ld-pf-item ld-pf-dark pf-details-visible pf-bg-hidden title-size-30 pf-hover-shadow pf-hover-shadow-alt">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure>
+                          <img src="./assets/demo/portfolio/pf-35.jpg" alt="Portfolio Image">
+                        </figure>
+                        <div class="ld-pf-bg bg-gradient-primary-lr opacity-09">
+                          <a href="#" class="btn btn-xsm btn-naked text-uppercase font-weight-bold text-white">
+															<span>
+																<span class="btn-txt">Discover more</span>
+															</span>
+                          </a>
+                        </div>&lt;!&ndash; /.ld-pf-bg &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-image &ndash;&gt;
+
+                      <div class="ld-pf-details pl-0 py-3">
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4">Tropical rebrand</h3>
+                          <div class="ld-pf-category size-md">
+                            <a href="#">Branding</a>
+                          </div>&lt;!&ndash; /.ld-pf-category &ndash;&gt;
+                        </div>&lt;!&ndash; /.ld-pf-details-inner &ndash;&gt;
+                      </div>&lt;!&ndash; /.ld-pf-details &ndash;&gt;
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div>&lt;!&ndash; /.ld-pf-inner &ndash;&gt;
+
+                  </div>&lt;!&ndash; /.ld-pf-item &ndash;&gt;
+
+                </div>&lt;!&ndash; /.col-lg-4 col-md-6 &ndash;&gt;
+
+              </div>&lt;!&ndash; /.row liquid-portfolio-list-row &ndash;&gt;
+
+            </div>&lt;!&ndash; /.liquid-portfolio-list &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-12 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+    </section>
+
+    <section class="vc_row pt-75 pb-40" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":".lqd-column","duration":"1200","delay":"150","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":43,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+      <div class="container">
+
+        <div class="row" >
+
+          <div class="lqd-column col-md-6 col-md-offset-3 mb-80">
+
+            <header class="fancy-title mb-40 text-center">
+              <h2 class="mt-0"><span class="text-secondary">Amazing</span> features</h2>
+              <p class="font-size-18">Ave provides a collection of pre-designed pages, carefully crafted elements and easily customizable templates.</p>
+            </header>
+
+          </div>&lt;!&ndash; /.lqd-column col-md-6 col-md-offset-6 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+
+        <div class="row">
+
+          <div class="lqd-column col-md-4 col-sm-6">
+
+            <div class="iconbox iconbox-wavebg px-3" data-animate-icon="true" data-plugin-options='{"color": "#ffb09f"}'>
+
+              <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+
+										<span class="icon-wave-bg">
+											<svg xmlns="http://www.w3.org/2000/svg" width="125.062" height="88.62" viewBox="0 0 125.062 88.62"><path d="M488.806,2544.02s35.988-16.17,53.518-7.45S565,2541.44,574,2549s18.09,19.21,14.009,41.12c-3.62,19.44-25.466,15.87-37.2,27.79-10.557,10.72-68.616,1.88-74.4-12.88-6.841-17.45-13.114-17.84-12.406-34.03C464.452,2560.66,475.315,2554.71,488.806,2544.02Z" transform="translate(-463.938 -2534)"></path> </svg>
+										</span>
+										<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <rect x="1" y="32" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="31" height="31" /> <rect x="32" y="32" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="31" height="31" /> <rect x="1" y="1" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="31" height="31" /> <rect x="32" y="1" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="31" height="31" /> </svg>
+									</span>
+              </div>&lt;!&ndash; /.iconbox-icon-wrap &ndash;&gt;
+
+              <div class="contents">
+                <h3>No rocket science</h3>
+                <p>Praesent porttitor nunc vitae lacus vehicula, nec mollis eros congue.</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-4 col-sm-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-4 col-sm-6">
+
+            <div class="iconbox iconbox-wavebg px-3" data-animate-icon="true" data-plugin-options='{"color": "#ad78ef", "delay": 150}'>
+
+              <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<span class="icon-wave-bg">
+											<svg xmlns="http://www.w3.org/2000/svg" width="125.062" height="88.62" viewBox="0 0 125.062 88.62"> <path style="fill: #ad78ef !important" d="M488.806,2544.02s35.988-16.17,53.518-7.45S565,2541.44,574,2549s18.09,19.21,14.009,41.12c-3.62,19.44-25.466,15.87-37.2,27.79-10.557,10.72-68.616,1.88-74.4-12.88-6.841-17.45-13.114-17.84-12.406-34.03C464.452,2560.66,475.315,2554.71,488.806,2544.02Z" transform="translate(-463.938 -2534)"></path> </svg>
+										</span>
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32.001,0.887c17.184,0,31.113,13.929,31.112,31.113 C63.114,49.185,49.184,63.115,32,63.113C14.815,63.114,0.887,49.185,0.888,32.001C0.885,14.816,14.815,0.887,32.001,0.887z" /> <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M10,32c0-5.63,2.148-11.26,6.444-15.556 c8.591-8.593,22.521-8.593,31.112,0C51.852,20.74,54,26.37,54,32" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="24" y1="26" x2="30.333" y2="33.333" /> <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="35" r="2" /> </svg>
+									</span>
+              </div>&lt;!&ndash; /.iconbox-icon-wrap &ndash;&gt;
+
+              <div class="contents">
+                <h3>Blazing Performance</h3>
+                <p>Praesent porttitor nunc vitae lacus vehicula, nec mollis eros congue.</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-4 col-sm-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-4 col-sm-6">
+
+            <div class="iconbox iconbox-wavebg px-3" data-animate-icon="true" data-plugin-options='{"color": "#3ed2a7", "delay": 300}'>
+
+              <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<span class="icon-wave-bg">
+											<svg xmlns="http://www.w3.org/2000/svg" width="125.062" height="88.62" viewBox="0 0 125.062 88.62"> <path style="fill: #3ed2a7 !important" d="M488.806,2544.02s35.988-16.17,53.518-7.45S565,2541.44,574,2549s18.09,19.21,14.009,41.12c-3.62,19.44-25.466,15.87-37.2,27.79-10.557,10.72-68.616,1.88-74.4-12.88-6.841-17.45-13.114-17.84-12.406-34.03C464.452,2560.66,475.315,2554.71,488.806,2544.02Z" transform="translate(-463.938 -2534)"></path> </svg>
+										</span>
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <rect x="1" y="7" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="62" height="50" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="15" x2="63" y2="15" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="10" y1="11" x2="6" y2="11" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="18" y1="11" x2="14" y2="11" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="26" y1="11" x2="22" y2="11" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="6" y1="25" x2="33" y2="25" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="6" y1="33" x2="33" y2="33" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="6" y1="41" x2="33" y2="41" /> <rect x="38" y="25" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="19" height="16" /> </svg>
+									</span>
+              </div>&lt;!&ndash; /.iconbox-icon-wrap &ndash;&gt;
+
+              <div class="contents">
+                <h3>Unlimited Layouts</h3>
+                <p>Praesent porttitor nunc vitae lacus vehicula, nec mollis eros congue.</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-4 col-sm-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-4 col-sm-6">
+
+            <div class="iconbox iconbox-wavebg px-3" data-animate-icon="true" data-plugin-options='{"color": "#edba57", "delay": 450}'>
+
+              <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<span class="icon-wave-bg">
+											<svg xmlns="http://www.w3.org/2000/svg" width="125.062" height="88.62" viewBox="0 0 125.062 88.62"> <path style="fill: #edba57 !important" d="M488.806,2544.02s35.988-16.17,53.518-7.45S565,2541.44,574,2549s18.09,19.21,14.009,41.12c-3.62,19.44-25.466,15.87-37.2,27.79-10.557,10.72-68.616,1.88-74.4-12.88-6.841-17.45-13.114-17.84-12.406-34.03C464.452,2560.66,475.315,2554.71,488.806,2544.02Z" transform="translate(-463.938 -2534)"></path> </svg>
+										</span>
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <rect x="1" y="1" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="46" height="62" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="9" y1="63" x2="9" y2="2" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="14" y1="15" x2="42" y2="15" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="14" y1="21" x2="42" y2="21" /> <polygon fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="63,3 63,53 59,61 55,53 55,3 " /> <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="55,7 51,7 51,17 " /> </svg>
+									</span>
+              </div>&lt;!&ndash; /.iconbox-icon-wrap &ndash;&gt;
+
+              <div class="contents">
+                <h3>Unlimited Layouts</h3>
+                <p>Praesent porttitor nunc vitae lacus vehicula, nec mollis eros congue.</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-4 col-sm-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-4 col-sm-6">
+
+            <div class="iconbox iconbox-wavebg px-3" data-animate-icon="true" data-plugin-options='{"color": "#577eed", "delay": 600}'>
+
+              <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<span class="icon-wave-bg">
+											<svg xmlns="http://www.w3.org/2000/svg" width="125.062" height="88.62" viewBox="0 0 125.062 88.62"> <path style="fill: #577eed !important" d="M488.806,2544.02s35.988-16.17,53.518-7.45S565,2541.44,574,2549s18.09,19.21,14.009,41.12c-3.62,19.44-25.466,15.87-37.2,27.79-10.557,10.72-68.616,1.88-74.4-12.88-6.841-17.45-13.114-17.84-12.406-34.03C464.452,2560.66,475.315,2554.71,488.806,2544.02Z" transform="translate(-463.938 -2534)"></path> </svg>
+										</span>
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <g> <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="29,6 46,6 63,27 32,58 1,27 18,6 32,6 32,58 	" /> <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="32,57 18,27 24,6 	" /> <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="32,57 46,27 40,6 	" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="27" x2="63" y2="27" /> </g> </svg>
+									</span>
+              </div>&lt;!&ndash; /.iconbox-icon-wrap &ndash;&gt;
+
+              <div class="contents">
+                <h3>Ready to rock?</h3>
+                <p>Praesent porttitor nunc vitae lacus vehicula, nec mollis eros congue.</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-4 col-sm-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-4 col-sm-6">
+
+            <div class="iconbox iconbox-wavebg px-3" data-animate-icon="true" data-plugin-options='{"color": "#577eed", "delay": 750}'>
+
+              <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<span class="icon-wave-bg">
+											<svg xmlns="http://www.w3.org/2000/svg" width="125.062" height="88.62" viewBox="0 0 125.062 88.62"> <path style="fill: #28b5f0 !important" d="M488.806,2544.02s35.988-16.17,53.518-7.45S565,2541.44,574,2549s18.09,19.21,14.009,41.12c-3.62,19.44-25.466,15.87-37.2,27.79-10.557,10.72-68.616,1.88-74.4-12.88-6.841-17.45-13.114-17.84-12.406-34.03C464.452,2560.66,475.315,2554.71,488.806,2544.02Z" transform="translate(-463.938 -2534)"></path> </svg>
+										</span>
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="31" /> <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="15" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="26" y1="18" x2="26" y2="1" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="38" y1="18" x2="38" y2="1" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="26" y1="63" x2="26" y2="46" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="38" y1="63" x2="38" y2="46" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="46" y1="26" x2="63" y2="26" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="46" y1="38" x2="63" y2="38" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="26" x2="18" y2="26" /> <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="38" x2="18" y2="38" /> </svg>
+									</span>
+              </div>&lt;!&ndash; /.iconbox-icon-wrap &ndash;&gt;
+
+              <div class="contents">
+                <h3>Free Updates</h3>
+                <p>Praesent porttitor nunc vitae lacus vehicula, nec mollis eros congue.</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-4 col-sm-6 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+    </section>
+
+    <section class="vc_row pt-40 pb-40">
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-6">
+
+            <div class="ld-tm-circ mb-5 mb-md-0" data-custom-animations="true" data-ca-options='{"triggerHandler": "inview", "animationTarget": ".ld-tm-bg", "duration": 700, "delay": 100, "easing": "easeOutBack", "initValues": { "scale": 0 }, "animations": { "scale": 1 }}'>
+              <div class="ld-tm-container" data-custom-animations="true" data-ca-options='{"triggerHandler": "inview", "animationTarget": ".ld-tm-avatar", "duration": 700, "delay": 150, "easing": "easeOutBack", "initValues": { "scale": 0 }, "animations": { "scale": 1 }}'>
+
+
+                <div class="ld-tm-circ-inner">
+
+                  <div class="ld-tm-bg"></div>&lt;!&ndash; /.ld-tm-bg &ndash;&gt;
+                  <div class="ld-tm-avatar" style="top: -5%; right: 1%;">
+                    <figure>
+                      <img src="./assets/demo/team/team-12.jpg" alt="Team Member">
+                    </figure>
+                  </div>&lt;!&ndash; /.ld-tm-avatar &ndash;&gt;
+
+                </div>&lt;!&ndash; /.ld-tm-circ-inner &ndash;&gt;
+
+                <div class="ld-tm-circ-middle">
+
+                  <div class="ld-tm-bg"></div>&lt;!&ndash; /.ld-tm-bg &ndash;&gt;
+                  <div class="ld-tm-avatar" style="top: -5%; left: 20%;">
+                    <figure>
+                      <img src="./assets/demo/team/team-11.jpg" alt="Team Member">
+                    </figure>
+                  </div>&lt;!&ndash; /.ld-tm-avatar &ndash;&gt;
+
+                  <div class="ld-tm-avatar" style="bottom: 11%; left: 1%;">
+                    <figure>
+                      <img src="./assets/demo/team/team-14.jpg" alt="Team Member">
+                    </figure>
+                  </div>&lt;!&ndash; /.ld-tm-avatar &ndash;&gt;
+
+                </div>&lt;!&ndash; /.ld-tm-circ-middle &ndash;&gt;
+
+                <div class="ld-tm-circ-outer">
+
+                  <div class="ld-tm-bg"></div>&lt;!&ndash; /.ld-tm-bg &ndash;&gt;
+                  <div class="ld-tm-avatar" style="top: 30%; left: -5%;">
+                    <figure>
+                      <img src="./assets/demo/team/team-13.jpg" alt="Team Member">
+                    </figure>
+                  </div>&lt;!&ndash; /.ld-tm-avatar &ndash;&gt;
+
+                  <div class="ld-tm-avatar" style="bottom: 15%; right: 5%;">
+                    <figure>
+                      <img src="./assets/demo/team/team-15.png" alt="Team Member">
+                    </figure>
+                  </div>&lt;!&ndash; /.ld-tm-avatar &ndash;&gt;
+
+                </div>&lt;!&ndash; /.ld-tm-circ-outer &ndash;&gt;
+
+              </div>&lt;!&ndash; /.ld-tm-container &ndash;&gt;
+            </div>&lt;!&ndash; /.ld-tm-circ &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-4 col-md-offset-2" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"150","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":48,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+            <header class="fancy-title mb-40">
+              <h6 class="font-size-13 text-uppercase ltr-sp-05">Meat the team</h6>
+              <h2 class="mt-4 mb-4" data-split-text="true" data-split-options='{"type":"lines"}'>Complete design We are optimists who love to work <span class="text-secondary">together</span></h2>
+              <p data-split-text="true" data-split-options='{"type":"lines"}'>Take your career to next level. Apply to our team and see what we can do together. You’re good enough, right ?</p>
+            </header>
+
+            <a href="#" class="btn btn-solid text-uppercase circle btn-solid border-thin btn-gradient font-size-13 font-weight-bold ltr-sp-1 px-2 color-secondary">
+								<span>
+									<span class="btn-gradient-bg"></span>
+									<span class="btn-txt">Join the team</span>
+									<span class="btn-gradient-bg btn-gradient-bg-hover"></span>
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" class="btn-gradient-border" width="100%" height="100%">
+										<defs>
+											<linearGradient id="svg-border-5c580d72262d1" x1="0%" y1="0%" x2="100%" y2="0%">
+												<stop offset="0%" style="stop-color: #3ed2a7"></stop>
+												<stop offset="100%" style="stop-color: #4fda91;"></stop>
+											</linearGradient>
+										</defs>
+										<rect x="0.5" y="0.5" rx="28.5" ry="28.5" width="100%" height="100%" stroke="url(#svg-border-5c580d72262d1)"></rect>
+									</svg>
+								</span>
+            </a>
+
+          </div>&lt;!&ndash; /.col-md-4 col-md-offset-2 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+    </section>
+
+
+    <section class="vc_row overflow-hidden">
+
+      <div class="lqd-particles-bg-wrap" style="height: 400px;">
+
+        <div class="ld-particles-container">
+          <div
+            class="ld-particles-inner"
+            id="ld-1527244273759"
+            data-particles="true"
+            data-particles-options='{"particles":{"shape":{"type":["triangle"]},"move":{"enable":true,"direction":"right","out_mode":"out"}},"interactivity":[]}'>
+          </div>
+        </div>
+
+      </div>&lt;!&ndash; /.lqd-particles-bg-wrap &ndash;&gt;
+
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-8 col-md-offset-2 text-center bg-white white-box-shadow pt-70 pb-50">
+
+            <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+
+                <header class="fancy-title mb-40 px-3">
+                  <h2 class="mt-4">Subscribe <span class="text-secondary">Newsletter</span></h2>
+                  <p class="font-size-18">Get weekly updates on the newest design stories, case studies and tips right in your mailbox. Subscribe now!</p>
+                </header>
+
+                <div class="ld-sf ld-sf&#45;&#45;input-solid ld-sf&#45;&#45;button-solid ld-sf&#45;&#45;size-lg ld-sf&#45;&#45;circle ld-sf&#45;&#45;border-thin ld-sf&#45;&#45;input-shadow ld-sf&#45;&#45;button-show">
+                  <form id="ld_subscribe_form" class="ld_sf_form" action="https://liquid-themes.us20.list-manage.com/subscribe/post?u=7f582d555cef808a99ea001a7&amp;id=58ab120d89" name="mc-embedded-subscribe-form" method="post">
+                    <p class="ld_sf_paragraph pr-2">
+                      <input type="email" class="ld_sf_text" id="mce-EMAIL" name="EMAIL" placeholder="Enter your email address" value="">
+                    </p>
+                    <button type="submit" class="ld_sf_submit font-weight-semibold bg-gradient-secondary-lr">
+												<span class="submit-icon font-size-26">
+													<i class="icon-md-paper-plane"></i>
+												</span>
+                      <span class="submit-text">Subscribe me</span>
+                      <span class="ld-sf-spinner">
+													<span>Sending </span>
+												</span>
+                    </button>
+                  </form>
+                  <div class="ld_sf_response"></div>
+                </div>&lt;!&ndash; /.ld-sf &ndash;&gt;
+
+              </div>&lt;!&ndash; /.col-md-10 col-md-offset-1 &ndash;&gt;
+            </div>&lt;!&ndash; /.row &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-6 col-md-offset-3 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+
+    </section>
+
+  </main>
+
+  <footer class="main-footer pt-100 pb-90">
+
+    <section>
+      <div class="container">
+        <div class="row d-md-flex flex-wrap align-items-center">
+
+          <div class="lqd-column col-md-4 col-sm-12">
+
+            <ul class="social-icon social-icon-md mb-25">
+              <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" target="_blank"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+            </ul>
+            <p class="font-size-16">Copyright 2019 <span class="text-secondary font-weight-bold">Ave</span>. All Rights Reserved.</p>
+
+          </div>&lt;!&ndash; /.col-md-4 &ndash;&gt;
+
+          <div class="lqd-column col-md-2 col-xs-6">
+
+            <h3 class="widget-title">Main Navigation</h3>
+            <ul class="lqd-custom-menu reset-ul font-size-16 lh-2">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Product</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Pricing</a></li>
+            </ul>
+
+          </div>&lt;!&ndash; /.col-md-2 &ndash;&gt;
+
+          <div class="lqd-column col-md-2 col-xs-6">
+
+            <h3 class="widget-title">Abous Us</h3>
+            <ul class="lqd-custom-menu reset-ul font-size-16 lh-2">
+              <li><a href="#">Company</a></li>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+
+          </div>&lt;!&ndash; /.col-md-2 &ndash;&gt;
+
+          <div class="lqd-column col-md-2 col-xs-6">
+
+            <h3 class="widget-title">Abous Us</h3>
+            <ul class="lqd-custom-menu reset-ul font-size-16 lh-2">
+              <li><a href="#">Managment</a></li>
+              <li><a href="#">Reporting</a></li>
+              <li><a href="#">Tracking</a></li>
+              <li><a href="#">All Users</a></li>
+            </ul>
+
+          </div>&lt;!&ndash; /.col-md-2 &ndash;&gt;
+
+          <div class="lqd-column col-md-2 col-xs-6">
+
+            <h3 class="widget-title">Resources</h3>
+            <ul class="lqd-custom-menu reset-ul font-size-16 lh-2">
+              <li><a href="#">Ave Guide</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Integrations</a></li>
+              <li><a href="#">Cummunity</a></li>
+            </ul>
+
+          </div>&lt;!&ndash; /.col-md-2 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+    </section>
+
+  </footer>&lt;!&ndash; /.main-footer &ndash;&gt;
+
+</div>&lt;!&ndash; /#wrap &ndash;&gt;
+
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#3ed2a7">
+</head>
+<body data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="minimal" data-mobile-nav-shceme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
+
+<div id="wrap">
+
+  <header class="main-header main-header-overlay " style="z-index: 980; background: white" uk-sticky="bottom: #offset">
+
+    <div class="mainbar-wrap">
+      <div class="megamenu-hover-bg"></div><!-- /.megamenu-hover-bg -->
+      <div class="container-fluid mainbar-container">
+        <div class="mainbar">
+          <div class="row mainbar-row align-items-lg-stretch px-4">
+
+            <div class="col-auto pr-5 ">
+              <div class="navbar-header">
+                <a class="navbar-brand" routerLink="/" rel="home">
+										<span class="navbar-brand-inner">
+											<img class="logo-dark" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="logo-sticky" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="mobile-logo-default" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="logo-default" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+										</span>
+                </a>
+                <button type="button" class="navbar-toggle collapsed nav-trigger style-mobile" data-toggle="collapse" data-target="#main-header-collapse" aria-expanded="false" data-changeclassnames='{ "html": "mobile-nav-activated overflow-hidden" }'>
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="bars">
+											<span class="bar"></span>
+											<span class="bar"></span>
+											<span class="bar"></span>
+										</span>
+                </button>
+              </div><!-- /.navbar-header -->
+            </div><!-- /.col -->
+
+            <div class="col">
+
+              <div class="collapse navbar-collapse " id="main-header-collapse">
+
+                <ul id="primary-nav" class="main-nav nav align-items-lg-stretch justify-content-lg-start" data-submenu-options='{ "toggleType":"fade", "handler":"mouse-in-out" }' data-localscroll="true">
+
+                  <li>
+                    <a href="#content">
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Inicio</span>
+												</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a >
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Works</span>
+												</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a >
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Services</span>
+												</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#about">
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">About</span>
+												</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Testimonials</span>
+												</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="link-icon"></span>
+                      <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">News</span>
+												</span>
+                    </a>
+                  </li>
+
+                </ul><!-- /#primary-nav  -->
+
+              </div><!-- /#main-header-collapse -->
+
+            </div><!-- /.col -->
+
+            <div class="col text-right">
+
+              <div class="header-module">
+
+                <a routerLink="/login" target="_blank" class="btn btn-default text-uppercase circle btn-bordered border-thick font-size-12 font-weight-semibold btn-white">
+									<span style="background: #ff5c5c">
+										<span class="btn-txt">Iniciar sesión</span>
+									</span>
+                </a>
+
+              </div><!-- /.header-module -->
+
+            </div><!-- /.col -->
+
+          </div><!-- /.mainbar-row -->
+        </div><!-- /.mainbar -->
+      </div><!-- /.mainbar-container -->
+    </div><!-- /.mainbar-wrap -->
+
+  </header>
+  <main id="content" class="content">
+
+    <section class="vc_row fullheight d-flex flex-wrap align-items-center pb-50">
+
+      <div class="lqd-particles-bg-wrap">
+
+        <div class="ld-particles-container">
+          <div
+            class="ld-particles-inner"
+            id="ld-1527244273759-519b63e0-a9d6"
+            data-particles="true"
+            data-particles-options='{"particles":{"number":{"value":5,"density":2},"color":{"value":["#ff5c5c","#60eacb","#ff5c5c","#4e6bff"]},"shape":{"type":["circle","edge","triangle"]},"size":{"value":155,"random":true,"anim":{"enable":true,"size_min":40,"speed":5}},"move":{"enable":true,"direction":"right","speed":1,"random":true,"out_mode":"out","attract":{"enable":true,"rotateX":1200,"rotateY":600}}},"interactivity":[],"retina_detect":true}'>
+          </div>
+        </div>
+
+      </div><!-- /.lqd-particles-bg-wrap -->
+
+      <div class="container">
+        <div class="row d-flex flex-wrap align-items-center">
+
+          <div class="lqd-column col-lg-5 col-md-6 lqd-column" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":1200,"delay":100,"initValues":{"translateY":51,"opacity":0},"animations":{"translateY":0,"opacity":1}}' >
+
+            <div class="ld-fancy-heading mask-text">
+              <h1
+                data-split-text="true"
+                data-custom-animations="true"
+                data-ca-options='{"triggerHandler":"inview","animationTarget":".split-inner","duration":1200,"delay":100,"easing":"easeOutQuint","direction":"forward","initValues":{"scale":1},"animations":{"scale":1}}'
+                data-split-options='{"type":"lines"}'
+              >
+                <span class="ld-fh-txt"> Restaurantes, comercios, tiendas y negocios locales</span>
+              </h1>
+            </div><!-- /.ld-fancy-heading -->
+
+            <div class="ld-fancy-heading mask-text mb-75" style="margin-bottom: 45px!important;">
+              <p
+                data-split-text="true"
+                data-custom-animations="true"
+                data-ca-options='{"triggerHandler":"inview","animationTarget":".split-inner","duration":1200,"delay":100,"easing":"easeOutQuint","direction":"forward","initValues":{"scale":1},"animations":{"scale":1}}'
+                data-split-options='{"type":"lines"}'>
+                <span class="ld-fh-txt"> Tlint es donde reune todos los comercios posibles de tu localidad, dónde podras ver y adquirir sus productos y apoyar a la economía de pequeños y medianos negocios</span>
+              </p>
+            </div><!-- /.ld-fancy-heading -->
+
+            <div class="row">
+
+              <div class="lqd-column col-sm-12 mb-3 mb-md-0">
+                <div style="width: 100%;">
+                  <div style=" background: #ff5c5c; ;width: 90%!important; border-radius: 8px; border: white!important;" class="search d-flex;">
+                    <div class="uk-search uk-search-large"
+                         style="color: white!important; width: 75%!important; margin-left: 10px!important; font-size: 15px!important; z-index: 980;"  >
+                      <input (keyup.enter)="valueId(idValue.value)" class="uk-search-input" type="search"
+                             placeholder="Busca algún restaurante, agencia, servicio o descubre un nuevo lugar" #idValue
+                             name="idValue" style="color: #fff!important;">
+                    </div>
+                    <button type="submit" class="btn btn-primary ml-auto float-right "
+                            style="background: transparent!important; color: #ffffff; border: none; padding: 0px; outline: none!important;" (click)="valueId(idValue.value);">
+                      <span uk-search-icon style="background: transparent!important; color: white; margin-top: 25px; margin-bottom: 23px; padding: 0px; float:left; margin-left: 10px"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+
+            </div><!-- /.row -->
+
+          </div><!-- /.col-lg-5 col-md-6 -->
+
+          <div class="lqd-column col-lg-7 col-md-6 hidden-xs hidden-sm hidden-md">
+
+            <div class="ld-masked-image" data-dynamic-shape="true">
+              <svg version="1.1" class="scene" width="0" height="0" preserveAspectRatio="none" viewBox="0 0 1440 800">
+                <defs>
+                  <clipPath id="masked-image-1">
+                    <path
+                      fill="black"
+                      d="M131,40 C84.135,83.534 96.819,148.446 63.283,217.394 C31.508,282.723 -3.621,324.812 1.461,394.323 C3.451,421.533 12.117,449.828 29.796,480.002 C87.412,578.34 -15.301,663.448 94.611,833.387 C156.302,928.77 316.559,918.015 435.971,936.052 C572.741,956.711 653.384,1003.601 753.566,971.715 C877.689,932.209 924.99262,809.932822 972.63862,707.700822 C1063.84662,512.000822 1038.71071,197.732895 884.476705,67.2268952 C788.919705,-13.6291048 714.704,70.008 529,43 C339.693,15.468 212.609,-35.808 131,40 Z"
+                      pathdata:id="
+											M175.270836,26.7977911 C128.405836,70.3317911 129.938279,144.739124 96.4022789,213.687124 C64.6272789,279.016124 41.242383,286.071679 46.324383,355.582679 C48.314383,382.792679 79.5246278,459.251586 88.7738696,492.334164 C116.497714,591.496483 -75.3047466,680.552915 34.6072534,850.491915 C96.2982534,945.874915 281.559,906.015 400.971,924.052 C537.741,944.711 678.161685,902.348368 778.343685,870.462368 C902.466685,830.956368 927.354,806.232 975,704 C1066.208,508.3 1058.68971,185.848951 904.455709,55.3429506 C808.898709,-25.5130494 786.027661,117.60054 600.323661,90.5925401 C411.016661,63.0605401 256.879836,-49.0102089 175.270836,26.7977911 Z;
+											M200.391256,6 C138.06059,22.7990703 77.9622177,42.6445401 44.4262177,111.59254 C12.6512177,176.92154 -4.1051307,212.01786 0.976869296,281.52886 C2.9668693,308.73886 99.0297526,534.545109 108.278994,567.627688 C136.002839,666.790006 -29.1381304,721.523368 80.7738696,891.462368 C142.46487,986.845368 331.636556,840.153183 451.048556,858.190183 C587.818556,878.849183 705.371102,948.496676 805.553102,916.610676 C929.676102,877.104676 941.497784,689.3436 989.143784,587.1116 C1080.35178,391.4116 1050.68971,206.848951 896.455709,76.3429506 C800.898709,-4.5130494 778.027661,138.60054 592.323661,111.59254 C403.016661,84.0605401 312.765712,-24.2866392 200.391256,6 Z"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+              <figure class="clip-svg" data-responsive-bg="true" style="clip-path: url(#masked-image-1); -webkit-clip-path: url(#masked-image-1);">
+                <img src="./assets/resources/screen-1.svg" alt="Image">
+              </figure>
+            </div><!-- /ld-masked-image -->
+
+          </div><!-- /.col-lg-7 col-md-6 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>
+
+    <section class="vc_row pt-80 pb-120">
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-lg-6">
+
+            <header class="fancy-title" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":1200,"delay":100,"easing":"easeOutQuint","direction":"forward","initValues":{"translateX":-32,"opacity":0},"animations":{"translateX":0,"opacity":1}}'>
+
+              <h6 class="text-uppercase ltr-sp-2 font-size-12 font-weight-semibold text-secondary" style="color: #ff5c5c!important;">UN LUGAR PARA EMPEZAR</h6>
+              <h2 class="mt-md-4 pr-md-7 mb-4">Conoce y compra productos de emprendedores y negocios locales, o adquiere un servicio</h2>
+
+              <div class="row">
+
+                <div class="lqd-column col-xs-4 col-sm-2 pt-3 mb-4">
+
+                  <div class="lqd-h-sep">
+                    <span class="lqd-h-sep-inner"></span><!-- /.lqd-h-sep-inner -->
+                  </div><!-- /.lqd-h-sep -->
+
+                </div><!-- /.col-sm-2 -->
+
+                <div class="lqd-column col-sm-10 col-xs-12">
+                  <p>Además de impulsar a los pequeños y medianos negocios, y que puedas comprar sus productos, también puedes registrar y adquirir servicios
+                   de comercios, hacer citas en deparatamentos o consulta de información y explorar nuevos negocios locales</p>
+                </div><!-- /.col-sm-10 -->
+
+              </div><!-- /.row -->
+
+            </header><!-- /.fancy-title -->
+
+          </div><!-- /.col-lg-6 -->
+
+          <div class="lqd-column col-lg-5 col-md-6 col-lg-offset-1">
+
+            <div class="lqd-iconbox-stack" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","startDelay":"400","delay":"100","easing":"easeOutQuint","direction":"forward","initValues":{"scaleX":0.25,"scaleY":0.25,"opacity":0},"animations":{"scaleX":1,"scaleY":1,"opacity":1}}'>
+
+              <div class="iconbox iconbox-round iconbox-shadow iconbox-heading-xs iconbox-filled d-inline-flex iconbox-blue" data-plugin-options='{"color": "#3d59e8"}'>
+
+                <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <defs xmlns="http://www.w3.org/2000/svg"> <linearGradient gradientUnits="userSpaceOnUse" id="grad874540" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" stop-color="rgb(61, 89, 232)"></stop> <stop offset="100%" stop-color="rgb(61, 89, 232)"></stop> </linearGradient> </defs> <g> <rect x="1" y="10" fill="none" stroke="url(#grad874540)" stroke-width="2" stroke-miterlimit="10" width="62" height="41"></rect> <line fill="none" stroke="url(#grad874540)" stroke-width="2" stroke-miterlimit="10" x1="22" y1="63" x2="42" y2="63"></line> <line fill="none" stroke="url(#grad874540)" stroke-width="2" stroke-miterlimit="10" x1="32" y1="63" x2="32" y2="51"></line> </g> <line fill="none" stroke="url(#grad874540)" stroke-width="2" stroke-miterlimit="10" x1="1" y1="43" x2="64" y2="43"></line> </svg>
+									</span>
+                </div><!-- /.iconbox-icon-wrap -->
+                <div class="contents">
+                  <p class="font-size-14">
+                    <strong>BUSCA</strong>
+                  </p>
+                </div><!-- /.contents -->
+
+              </div><!-- /.iconbox -->
+
+              <div class="iconbox iconbox-round iconbox-shadow iconbox-heading-xs iconbox-filled d-inline-flex iconbox-pink" data-plugin-options='{"color": "#fe688b"}'>
+
+                <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><defs xmlns="http://www.w3.org/2000/svg"><linearGradient gradientUnits="userSpaceOnUse" id="grad681643" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgb(254, 104, 139)"></stop><stop offset="100%" stop-color="rgb(254, 104, 139)"></stop></linearGradient></defs> <polygon fill="none" stroke="url(#grad681643)" stroke-width="2" stroke-miterlimit="10" points="1,25 12,59 52,59 63,25 "></polygon> <line fill="none" stroke="url(#grad681643)" stroke-width="2" stroke-miterlimit="10" x1="14" y1="25" x2="22" y2="5"></line> <line fill="none" stroke="url(#grad681643)" stroke-width="2" stroke-miterlimit="10" x1="50" y1="25" x2="42" y2="5"></line> <polyline fill="none" stroke="url(#grad681643)" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="23,41 30,48 43,35 "></polyline> </svg>
+									</span>
+                </div><!-- /.iconbox-icon-wrap -->
+                <div class="contents">
+                  <p class="font-size-14">
+                    <strong>COMPRA</strong>
+                  </p>
+                </div><!-- /.contents -->
+
+              </div><!-- /.iconbox -->
+
+              <div class="iconbox iconbox-round iconbox-shadow iconbox-heading-xs iconbox-filled d-inline-flex iconbox-green" data-plugin-options='{"color": "#28d5a7"}'>
+
+                <div class="iconbox-icon-wrap">
+									<span class="iconbox-icon-container">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><defs xmlns="http://www.w3.org/2000/svg"><linearGradient gradientUnits="userSpaceOnUse" id="grad395875" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgb(40, 213, 167)"></stop><stop offset="100%" stop-color="rgb(40, 213, 167)"></stop></linearGradient></defs> <rect x="1" y="7" fill="none" stroke="url(#grad395875)" stroke-width="2" stroke-miterlimit="10" width="62" height="50"></rect> <line fill="none" stroke="url(#grad395875)" stroke-width="2" stroke-miterlimit="10" x1="1" y1="15" x2="63" y2="15"></line> <line fill="none" stroke="url(#grad395875)" stroke-width="2" stroke-miterlimit="10" x1="10" y1="11" x2="6" y2="11"></line> <line fill="none" stroke="url(#grad395875)" stroke-width="2" stroke-miterlimit="10" x1="18" y1="11" x2="14" y2="11"></line> <line fill="none" stroke="url(#grad395875)" stroke-width="2" stroke-miterlimit="10" x1="26" y1="11" x2="22" y2="11"></line> <polyline fill="none" stroke="url(#grad395875)" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="23,35 30,42 43,29 "></polyline> </svg>
+									</span>
+                </div><!-- /.iconbox-icon-wrap -->
+                <div class="contents">
+                  <p class="font-size-14">
+                    <strong>RECOGE</strong>
+                  </p>
+                </div><!-- /.contents -->
+
+              </div><!-- /.iconbox -->
+
+            </div><!-- /.lqd-iconbox-stack -->
+
+          </div><!-- /.col-lg-5 col-md-6 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.vc_row -->
+
+    <section class="vc_row pt-80 pb-120" id="works">
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-12">
+
+            <div class="liquid-portfolio-list">
+
+              <div
+                class="row liquid-portfolio-list-row"
+                data-columns="3"
+                data-liquid-masonry="true"
+                data-masonry-options='{ "layoutMode": "masonry", "alignMid": true }'
+                data-custom-animations="true"
+                data-ca-options='{"triggerHandler":"inview","animationTarget":".ld-pf-item","animateTargetsWhenVisible":"true","duration":"1400","delay":"180","easing":"easeOutQuint","initValues":{"translateY":75,"scale":0.75,"opacity":0},"animations":{"translateY":0,"scale":1,"opacity":1}}'
+              >
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 grid-stamp creative-masonry-grid-stamp"></div>
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/search.svg');">
+                          <img src="./assets/demo/portfolio/pf-11.jpg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Explorar</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/services.svg');">
+                          <img src="./assets/resources/services.svg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Servicios</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/food.svg');">
+                          <img src="./assets/resources/food.svg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Restaurantes</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/tech.svg');">
+                          <img src="./assets/demo/portfolio/pf-12.jpg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Tecnología</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/ecommerce.svg');">
+                          <img src="./assets/demo/portfolio/pf-14.jpg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options=''>Comercios nuevos</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/art.svg');">
+                          <img src="./assets/demo/portfolio/pf-13.jpg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Papelería</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/ideas.svg');">
+                          <img src="./assets/demo/portfolio/pf-16.jpg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Nuevas ideas</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/toys.svg');">
+                          <img src="./assets/resources/toys.svg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Jugeterías</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+                <div class="lqd-column col-md-4 col-sm-6 col-xs-12 masonry-item">
+
+                  <div class="ld-pf-item ld-pf-light pf-details-inside pf-details-full pf-details-h-mid pf-details-v-mid title-size-32 ld-pf-semiround">
+
+                    <div class="ld-pf-inner">
+
+                      <div class="ld-pf-image">
+                        <figure style="background-image: url('./assets/resources/cosmetics.svg');">
+                          <img src="./assets/demo/portfolio/pf-17.jpg" alt="Portfolio Image">
+                        </figure>
+                      </div><!-- /.ld-pf-image -->
+
+                      <div class="ld-pf-bg  opacity-08" style="background: #ff5c5c"></div><!-- /.ld-pf-bg -->
+
+                      <div class="ld-pf-details" data-custom-animations="true" data-ca-options='{ "triggerHandler": "mouseenter", "triggerTarget": ".ld-pf-item", "triggerRelation": "closest", "offTriggerHandler": "mouseleave", "animationTarget": ".split-inner", "duration": 200, "delay": 35, "offDuration": 100, "easing": "easeOutCubic", "initValues": { "translateX": 50, "rotateZ": -75, "opacity": 0, "transformOrigin": [0, "-100%", 0] }, "animations": { "translateX": 0, "rotateZ": 0, "opacity": 1, "transformOrigin": [0, "0%", 0] } }'>
+                        <div class="ld-pf-details-inner">
+                          <h3 class="ld-pf-title h4 font-weight-semibold" data-split-text="true" data-split-options='{ "type": "chars" }'>Cosméticos</h3>
+                        </div><!-- /.ld-pf-details-inner -->
+                      </div><!-- /.ld-pf-details -->
+
+                      <a href="#" class="liquid-overlay-link"></a>
+
+                    </div><!-- /.ld-pf-inner -->
+
+                  </div><!-- /.ld-pf-item -->
+
+                </div><!-- /.col-lg-4 col-md-6 -->
+
+              </div><!-- /.row liquid-portfolio-list-row -->
+
+            </div><!-- /.liquid-portfolio-list -->
+
+          </div><!-- /.col-md-12 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>
+
+    <section class="vc_row pt-30 pb-60" id="services">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="lqd-column col-md-10 col-md-offset-1">
+
+            <header class="fancy-title text-center mb-75" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":1200,"delay":100,"initValues":{"translateY":80,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+              <h6 class="text-uppercase ltr-sp-2 font-size-12 font-weight-semibold text-secondary" style="color: #ff5c5c!important;">HAGAMOS NOSOTROS UN CAMBIO</h6>
+              <h2 class="mt-4 mb-4">No hay pequeñas ideas, y tampoco pequeños comienzos</h2>
+
+              <div class="row">
+                <div class="lqd-column col-md-6 col-md-offset-3 px-md-5">
+                  <p>Las empresas pequeñas y medianas, solo es un concepto, en Tlint, la intención es crear una plataforma donde además de poder conocer
+                   los productos y servicios locales, sea poder consumirlos</p>
+                </div><!-- /.col-md-6 col-md-offset-3 -->
+              </div><!-- /.row -->
+
+            </header><!-- /.fancy-title -->
+
+          </div><!-- /.col-md-8 col-md-offset-2 -->
+
+        </div><!-- /.row -->
+
+<!--
+        <div class="row" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"180","initValues":{"scale":0.8,"opacity":0},"animations":{"scale":1,"opacity":1}}'>
+
+          <div class="lqd-column col-md-6">
+
+            <div class="iconbox iconbox-side iconbox-semiround iconbox-shadow iconbox-heading-sm iconbox-filled" id="ld_icon_box_5c4e9c4475e68" data-plugin-options='{"color":"#3d59e8"}'>
+              <div class="iconbox-icon-wrap">
+								<span class="iconbox-icon-container">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"> <defs xmlns="http://www.w3.org/2000/svg"> <linearGradient gradientUnits="userSpaceOnUse" id="grad951863" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" stop-color="rgb(61, 89, 232)"></stop> <stop offset="100%" stop-color="rgb(61, 89, 232)"></stop> </linearGradient> </defs> <path fill="none" stroke="url(#grad951863)" stroke-width="2" stroke-miterlimit="10" d="M53.92,10.081c12.107,12.105,12.107,31.732,0,43.838 c-12.106,12.108-31.734,12.108-43.84,0c-12.107-12.105-12.107-31.732,0-43.838C22.186-2.027,41.813-2.027,53.92,10.081z"></path> <circle fill="none" stroke="url(#grad951863)" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="22.999"></circle> <circle fill="none" stroke="url(#grad951863)" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="15"></circle> <circle fill="none" stroke="url(#grad951863)" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="6.999"></circle> </svg>
+								</span>
+              </div>&lt;!&ndash; /.iconbox-icon-container &ndash;&gt;
+              <div class="contents">
+                <h3 class="mb-2">Newest technology</h3>
+                <p>Produce the highest quality work and services for every client, on every project</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-6">
+
+            <div class="iconbox iconbox-side iconbox-semiround iconbox-shadow iconbox-heading-sm iconbox-filled" id="ld_icon_box_5c4e9c4475e69" data-plugin-options='{"color":"#28d5a7"}'>
+              <div class="iconbox-icon-wrap">
+								<span class="iconbox-icon-container">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><defs xmlns="http://www.w3.org/2000/svg"><linearGradient gradientUnits="userSpaceOnUse" id="grad84546" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgb(40, 213, 167)"></stop><stop offset="100%" stop-color="rgb(40, 213, 167)"></stop></linearGradient></defs> <polygon fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" points="1,63 1,2 62,63 "></polygon> <polygon fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" points="14,54 14,30 38,54 "></polygon> <line fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" x1="8" y1="22" x2="2" y2="22"></line> <line fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" x1="6" y1="30" x2="2" y2="30"></line> <line fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" x1="8" y1="38" x2="2" y2="38"></line> <line fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" x1="6" y1="46" x2="2" y2="46"></line> <line fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" x1="8" y1="54" x2="2" y2="54"></line> <polygon fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" points="25,1 19,7 55,43 63,45 61,37 "></polygon> <line fill="none" stroke="url(#grad84546)" stroke-width="2" stroke-miterlimit="10" x1="25" y1="13" x2="31" y2="7"></line> </svg>
+								</span>
+              </div>&lt;!&ndash; /.iconbox-icon-container &ndash;&gt;
+              <div class="contents">
+                <h3 class="mb-2">Attention to details</h3>
+                <p>Produce the highest quality work and services for every client, on every project</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-6">
+
+            <div class="iconbox iconbox-side iconbox-semiround iconbox-shadow iconbox-heading-sm iconbox-filled" id="ld_icon_box_5c4e9c4475e70" data-plugin-options='{"color":"#f9b851"}'>
+              <div class="iconbox-icon-wrap">
+								<span class="iconbox-icon-container">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><defs xmlns="http://www.w3.org/2000/svg"><linearGradient gradientUnits="userSpaceOnUse" id="grad81353" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgb(249, 184, 81)"></stop><stop offset="100%" stop-color="rgb(249, 184, 81)"></stop></linearGradient></defs> <path fill="none" stroke="url(#grad81353)" stroke-width="2" stroke-miterlimit="10" d="M32.001,0.887c17.184,0,31.113,13.929,31.112,31.113 C63.114,49.185,49.184,63.115,32,63.113C14.815,63.114,0.887,49.185,0.888,32.001C0.885,14.816,14.815,0.887,32.001,0.887z"></path> <line fill="none" stroke="url(#grad81353)" stroke-width="2" stroke-miterlimit="10" x1="32" y1="1" x2="32" y2="63"></line> <line fill="none" stroke="url(#grad81353)" stroke-width="2" stroke-miterlimit="10" x1="63" y1="32" x2="1" y2="32"></line> <path fill="none" stroke="url(#grad81353)" stroke-width="2" stroke-miterlimit="10" d="M30,1c0,0-14,11-14,31s14,31,14,31"></path> <path fill="none" stroke="url(#grad81353)" stroke-width="2" stroke-miterlimit="10" d="M34,1c0,0,14,11,14,31S34,63,34,63"></path> <path fill="none" stroke="url(#grad81353)" stroke-width="2" stroke-miterlimit="10" d="M8,12c0,0,5,10,24,10s24-10,24-10"></path> <path fill="none" stroke="url(#grad81353)" stroke-width="2" stroke-miterlimit="10" d="M8,52c0,0,5-10,24-10s24,10,24,10"></path> </svg>
+								</span>
+              </div>&lt;!&ndash; /.iconbox-icon-container &ndash;&gt;
+              <div class="contents">
+                <h3 class="mb-2">Newest technology</h3>
+                <p>Produce the highest quality work and services for every client, on every project</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-6 &ndash;&gt;
+
+          <div class="lqd-column col-md-6">
+
+            <div class="iconbox iconbox-side iconbox-semiround iconbox-shadow iconbox-heading-sm iconbox-filled" id="ld_icon_box_5c4e9c4475e71" data-plugin-options='{"color":"#fe688b"}'>
+              <div class="iconbox-icon-wrap">
+								<span class="iconbox-icon-container">
+									<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><defs xmlns="http://www.w3.org/2000/svg"><linearGradient gradientUnits="userSpaceOnUse" id="grad611408" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgb(254, 104, 139)"></stop><stop offset="100%" stop-color="rgb(254, 104, 139)"></stop></linearGradient></defs> <circle fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" cx="44" cy="38" r="19"></circle> <circle fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" cx="44" cy="38" r="13"></circle> <polyline fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" points="30,51 1,51 1,57 38,57 38,56 "></polyline> <polyline fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" points="27,45 3,45 3,51 30,51 "></polyline> <polyline fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" points="26,39 5,39 5,45 27,45 "></polyline> <polyline fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" points="26,33 1,33 1,39 26,39 "></polyline> <polyline fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" points="29,27 3,27 3,33 26,33 "></polyline> <polyline fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" points="35,21 1,21 1,27 29,27 "></polyline> <polyline fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" points="40,20 40,15 3,15 3,21 35,21 "></polyline> <rect x="1" y="9" fill="none" stroke="url(#grad611408)" stroke-width="2" stroke-miterlimit="10" width="37" height="6"></rect> </svg>
+								</span>
+              </div>&lt;!&ndash; /.iconbox-icon-container &ndash;&gt;
+              <div class="contents">
+                <h3 class="mb-2">Honest pricing</h3>
+                <p>Produce the highest quality work and services for every client, on every project</p>
+              </div>&lt;!&ndash; /.contents &ndash;&gt;
+            </div>&lt;!&ndash; /.iconbox &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-6 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+-->
+
+      </div><!-- /.container -->
+    </section>
+
+<!--    <section class="vc_row pt-60 pb-90">
+      <div class="container">
+        <div class="row d-flex flex-wrap align-items-center">
+
+          <div class="lqd-column col-lg-5 col-md-6 mb-5 mb-md-0" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":1200,"delay":160,"initValues":{"translateY":50,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+            <header class="fancy-title mb-60">
+
+              <h6 class="text-uppercase ltr-sp-2 font-size-12 font-weight-semibold text-secondary">HOW WE WORK</h6>
+              <h2 class="mt-4 mb-4">How do we create amazing products</h2>
+              <p>We have a simple mission: to produce the highest quality work and services for every client, on every project.</p>
+
+            </header>&lt;!&ndash; /.fancy-title &ndash;&gt;
+
+            <a href="https://www.youtube.com/watch?v=LjaKHqDbzSA&feature=youtu.be" class="btn btn-naked text-uppercase fresco btn-icon-left btn-icon-xlg btn-icon-circle btn-icon-solid font-size-12 font-weight-semibold">
+							<span>
+								<span class="btn-txt">See how we work</span>
+								<span class="btn-icon font-size-18	"><i class="fa fa-play"></i></span>
+							</span>
+            </a>
+
+          </div>&lt;!&ndash; /.col-lg-5 col-md-6 &ndash;&gt;
+
+          <div class="lqd-column col-lg-6 col-md-5 col-md-offset-1">
+
+            <div class="liquid-img-group-single stretch-to-right" data-shadow-style="4" data-roundness="4" data-inview="true" data-animate-shadow="true" data-reveal="true" data-reveal-options='{"direction":"rl","bgcolor":"rgb(25, 38, 47)"}'>
+              <div class="liquid-img-group-img-container">
+                <div class="liquid-img-container-inner">
+                  <figure>
+                    <img  src="./assets/demo/banners/banner-1.jpg" alt="Banner" />
+                  </figure>
+                </div>
+              </div>
+            </div>
+
+          </div>&lt;!&ndash; /.col-lg-6 col-md-5 col-md-offset-1 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+    </section>
+
+    <section class="vc_row pt-90 pb-150" id="about">
+      <div class="container">
+        <div class="row d-flex flex-wrap align-items-center">
+
+          <div class="lqd-column col-md-5 hidden-xs hidden-sm">
+
+            <div class="lqd-parallax-team-members">
+
+              <div class="liquid-img-group-container">
+                <div class="liquid-img-group-inner">
+                  <div class="liquid-img-group-single" data-roundness="4">
+                    <div class="liquid-img-group-img-container">
+                      <div class="liquid-img-container-inner" data-parallax="true" data-parallax-from='{"translateY":47}' data-parallax-to='{"translateY":-74}' data-parallax-options='{"overflowHidden": false, "easing": "linear"}'>
+                        <figure>
+                          <img src="./assets/demo/team/team-4.jpg"  alt="Team Member"/>
+                        </figure>
+                      </div>&lt;!&ndash; /.liquid-img-container-inner &ndash;&gt;
+                    </div>&lt;!&ndash; /.liquid-img-group-img-container &ndash;&gt;
+                  </div>&lt;!&ndash; /.liquid-img-group-single &ndash;&gt;
+                </div>&lt;!&ndash; /.liquid-img-group-inner &ndash;&gt;
+              </div>&lt;!&ndash; /.liquid-img-group-container &ndash;&gt;
+
+              <div class="liquid-img-group-container">
+                <div class="liquid-img-group-inner">
+                  <div class="liquid-img-group-single" data-roundness="4">
+                    <div class="liquid-img-group-img-container">
+                      <div class="liquid-img-container-inner" data-parallax="true" data-parallax-from='{"translateY":83}' data-parallax-to='{"translateY":-94}' data-parallax-options='{"overflowHidden": false, "easing": "linear"}'>
+                        <figure>
+                          <img src="./assets/demo/team/team-5.jpg" alt="Team Member"/>
+                        </figure>
+                      </div>&lt;!&ndash; /.liquid-img-container-inner &ndash;&gt;
+                    </div>&lt;!&ndash; /.liquid-img-group-img-container &ndash;&gt;
+                  </div>&lt;!&ndash; /.liquid-img-group-single &ndash;&gt;
+                </div>&lt;!&ndash; /.liquid-img-group-inner &ndash;&gt;
+              </div>&lt;!&ndash; /.liquid-img-group-container &ndash;&gt;
+
+              <div class="liquid-img-group-container">
+                <div class="liquid-img-group-inner">
+                  <div class="liquid-img-group-single" data-roundness="4">
+                    <div class="liquid-img-group-img-container">
+                      <div class="liquid-img-container-inner" data-parallax="true" data-parallax-from='{"translateY":167}' data-parallax-to='{"translateY":-151}' data-parallax-options='{"overflowHidden": false, "easing": "linear"}'>
+                        <figure>
+                          <img src="./assets/demo/team/team-6.jpg"  alt="Team Member"/>
+                        </figure>
+                      </div>&lt;!&ndash; /.liquid-img-container-inner &ndash;&gt;
+                    </div>&lt;!&ndash; /.liquid-img-group-img-container &ndash;&gt;
+                  </div>&lt;!&ndash; /.liquid-img-group-single &ndash;&gt;
+                </div>&lt;!&ndash; /.liquid-img-group-inner &ndash;&gt;
+              </div>&lt;!&ndash; /.liquid-img-group-container &ndash;&gt;
+
+            </div>&lt;!&ndash; /.lqd-parallax-team-members &ndash;&gt;
+
+          </div>&lt;!&ndash; /.col-md-5 &ndash;&gt;
+
+          <div class="lqd-column col-md-6 col-md-offset-1"  data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":1200,"delay":160,"initValues":{"translateY":50,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+            <header class="fancy-title mb-60">
+
+              <h6 class="text-uppercase ltr-sp-2 font-size-12 font-weight-semibold text-secondary">OUR COMMUNITY</h6>
+              <h2 class="mt-4 mb-4">We are optimists who love to work together</h2>
+              <p>Take your career to next level. Apply to our team and see what we can do together. You’re good enough, right ?</p>
+
+            </header>&lt;!&ndash; /.fancy-title &ndash;&gt;
+
+            <a href="#" class="btn btn-solid text-uppercase circle btn-bordered border-thin font-size-14 font-weight-semibold" data-localscroll="true" data-localscroll-options='{"scrollBelowSection":true}'>
+							<span>
+								<span class="btn-txt">Join the team</span>
+							</span>
+            </a>
+
+          </div>&lt;!&ndash; /.col-md-7 &ndash;&gt;
+
+        </div>&lt;!&ndash; /.row &ndash;&gt;
+      </div>&lt;!&ndash; /.container &ndash;&gt;
+    </section>-->
+
+    <section class="vc_row pt-200 pb-100" id="testimonials">
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-lg-4 col-md-12" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":1200,"delay":160,"initValues":{"translateY":50,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+            <header class="fancy-title mb-130">
+
+              <h6 class="text-uppercase ltr-sp-2 font-size-12 font-weight-semibold text-secondary" style="color: #ff5c5c!important;">SERVICIOS Y PRODUCTOS</h6>
+              <h2 class="mt-4 mb-4">¿Por qué usar Tlint?</h2>
+              <p>
+                En Tlint, puedes encontrar de todos los productos y servicios locales al mismo precio o mejor, de los negocios, empresas o departamentos,
+                 la idea es conectar a la comunidad con los pequeños y medianos emprendedores para mejorar la comunicación y servicios entre todos
+              </p>
+
+            </header><!-- /.fancy-title -->
+
+          </div><!-- /.col-lg-4 col-md-12 -->
+
+          <div class="lqd-column col-lg-7 col-lg-offset-1 col-xs-12 mb-7 mb-md-0">
+
+            <div class="carousel-container carousel-vertical-3d">
+
+              <div class="carousel-items">
+
+                <div class="carousel-item is-active">
+
+                  <div class="testimonial testimonial-whole-filled testimonial-whole-shadowed text-left testimonial-details-sm testimonial-avatar-sm">
+                    <div class="testimonial-quote">
+                      <blockquote>
+                        <p class="font-size-16 lh-185">“Cotizaciones de casas, muebles y departamentos"</p>
+                      </blockquote>
+                    </div><!-- /.testimonial-quote -->
+                    <div class="testimonial-details">
+                      <figure class="avatar ">
+                        <img src="./assets/demo/testimonials/testi-3.png" alt="Suke Tran">
+                      </figure>
+                      <div class="testimonial-info">
+                        <h5>Cotizaciones de inmuebles</h5>
+                        <h6 class="font-weight-normal">Tuxtla Gutiérrez, Chiapas</h6>
+                      </div><!-- /.testimonial-info -->
+                      <time datetime="2017-07-07" class="text-uppercase">SERVICIO</time>
+                    </div><!-- /.testimonial-details -->
+                  </div><!-- /.testimonial -->
+
+                </div><!-- /.carousel-item -->
+
+                <div class="carousel-item">
+
+                  <div class="testimonial testimonial-whole-filled testimonial-whole-shadowed text-left testimonial-details-sm testimonial-avatar-sm">
+                    <div class="testimonial-quote">
+                      <blockquote>
+                        <p class="font-size-16 lh-185">“Vehiculos seminuevos, con garantía y precios bajos”</p>
+                      </blockquote>
+                    </div><!-- /.testimonial-quote -->
+                    <div class="testimonial-details">
+                      <figure class="avatar ">
+                        <img src="./assets/demo/testimonials/testi-4.png" alt="Suke Tran">
+                      </figure>
+                      <div class="testimonial-info">
+                        <h5>Automotriz del Sureste</h5>
+                        <h6 class="font-weight-normal">Tuxtla Gutiérrez, Chiapas</h6>
+                      </div><!-- /.testimonial-info -->
+                      <time datetime="2017-07-07" class="text-uppercase">ABIERTO</time>
+                    </div><!-- /.testimonial-details -->
+                  </div><!-- /.testimonial -->
+
+                </div><!-- /.carousel-item -->
+
+                <div class="carousel-item">
+
+                  <div class="testimonial testimonial-whole-filled testimonial-whole-shadowed text-left testimonial-details-sm testimonial-avatar-sm">
+                    <div class="testimonial-quote">
+                      <blockquote>
+                        <p class="font-size-16 lh-185">“Restaurante familiar desde 1984, comida regional exquisita”</p>
+                      </blockquote>
+                    </div><!-- /.testimonial-quote -->
+                    <div class="testimonial-details">
+                      <figure class="avatar">
+                        <img src="./assets/demo/testimonials/testi-5.png" alt="Suke Tran">
+                      </figure>
+                      <div class="testimonial-info">
+                        <h5>Restaurante chiapaneco Quetzal</h5>
+                        <h6 class="font-weight-normal">Tuxtla Gutiérrez, Chiapas</h6>
+                      </div><!-- /.testimonial-info -->
+                      <time datetime="2017-07-07" class="text-uppercase">ABIERTO</time>
+                    </div><!-- /.testimonial-details -->
+                  </div><!-- /.testimonial -->
+
+                </div><!-- /.carousel-item -->
+
+              </div><!-- /.carousel-items -->
+
+            </div><!-- /.carousel-container -->
+
+          </div><!-- /.col-lg-7 col-lg-offset-1 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>
+
+    <section class="vc_row pt-100 pb-70" id="news">
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-12">
+
+            <div class="liquid-blog-posts">
+
+              <div class="liquid-blog-grid row">
+
+                <div class="lqd-column col-md-4">
+                  <article class="liquid-lp">
+                    <figure class="liquid-lp-media rounded">
+                      <a href="#">
+                        <img src="./assets/demo/blog/blog-6.jpg" alt="Blog Post">
+                      </a>
+                    </figure>
+                    <header class="liquid-lp-header">
+                      <h2 class="entry-title liquid-lp-title h5">
+                        <a href="#" rel="bookmark">Apoya el consumo local</a>
+                      </h2>
+                      <time class="liquid-lp-date  size-lg" >
+                        Explora una variedad de pequeños y medianos restaurantes, así como comercios de todo tipo, comprar
+                        sus productos a través de Tlint, es muy sencillo, apoya al consumo local y con la facilidad de hacerlo
+                        desde tu hogar
+                      </time>
+                    </header>
+                  </article>
+                </div><!-- /.col-md-4 -->
+
+                <div class="lqd-column col-md-4">
+                  <article class="liquid-lp">
+                    <figure class="liquid-lp-media rounded">
+                      <a href="#">
+                        <img src="./assets/demo/blog/blog-7.jpg" alt="Blog Post">
+                      </a>
+                    </figure>
+                    <header class="liquid-lp-header">
+                      <h2 class="entry-title liquid-lp-title h5">
+                        <a href="#" rel="bookmark">100% mi ciudad, mi estado</a>
+                      </h2>
+                      <time class="liquid-lp-date  size-lg" >
+                        Adquirir tus productos y servicios en Tlint, es apoyar a decenas de comerciantes y empresarios
+                        originarios de tu ciudad,
+                        el consumo local mejora la economía de todos, Tlint te facilita conectarte con ellos, ver sus productos o
+                        servicios, y adquirirlos, de forma
+                        fácil
+                      </time>
+                    </header>
+                  </article>
+                </div><!-- /.col-md-4 -->
+
+                <div class="lqd-column col-md-4">
+                  <article class="liquid-lp category-news category-rounded">
+                    <figure class="liquid-lp-media rounded">
+                      <a href="#">
+                        <img src="./assets/demo/blog/blog-8.jpg" alt="Blog Post">
+                      </a>
+                    </figure>
+                    <header class="liquid-lp-header">
+                      <h2 class="entry-title liquid-lp-title h5">
+                        <a href="#" rel="bookmark">Voy por el o nos apoyamos todos</a>
+                      </h2>
+                      <time class="liquid-lp-date size-lg">
+                        Puede que muchos productos no ofrescan envío a tu hogar, sin embargo, puedes pedir o solicitar ya sea un
+                        servicio
+                        o producto, y recogerlo tu mismo o bien, apoyar a los repartidores locales para que lleven tu producto a
+                        tu hogar
+                      </time>
+                    </header>
+                  </article>
+                </div><!-- /.col-md-4 -->
+
+              </div><!-- /.liquid-blog-grid -->
+
+            </div><!-- /.liquid-blog-posts -->
+
+          </div><!-- /.col-md-12 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>
+
+    <section class="vc_row pt-50 pb-60">
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-10 col-md-offset-1 " data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":1200,"delay":100,"initValues":{"translateY":80,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+
+            <header class="fancy-title fancy-title-big mb-6">
+              <h2 data-split-text="true" data-split-options='{"type":"lines"}'>
+                Forma parte de la familia Tlint y
+                <br>
+                <span class="font-size-2-15x lh-15 text-primary" data-fittext="true" data-fittext-options='{ "maxFontSize": 70, "minFontSize": 40, "compressor": 0.5 }' style="color: #ff5c5c!important;">consume productos locales</span>
+              </h2>
+            </header><!-- /.fancy-title -->
+
+            <a routerLink="/contents" style="background: #ff5c5c; border: none" class="btn btn-solid text-uppercase circle btn-bordered border-thin font-size-14 font-weight-semibold" data-localscroll="true" data-localscroll-options='{"scrollBelowSection":true}'>
+							<span>
+								<span class="btn-txt" >Explorar</span>
+							</span>
+            </a>
+
+          </div><!-- /.col-md-10 col-md-offset-1 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>
+
+  </main><!-- /#content.content -->
+
+  <footer class="main-footer pt-80">
+
+    <section>
+
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-3 col-sm-6">
+
+            <h3 class="widget-title">Navigation</h3>
+            <ul class="lqd-custom-menu reset-ul">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Product</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Pricing</a></li>
+            </ul>
+
+          </div><!-- /.col-md-3 col-sm-6 -->
+
+          <div class="lqd-column col-md-3 col-sm-6">
+
+            <h3 class="widget-title">Abous Us</h3>
+            <ul class="lqd-custom-menu reset-ul">
+              <li><a href="#">Company</a></li>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+
+          </div><!-- /.col-md-3 col-sm-6 -->
+
+          <div class="lqd-column col-md-3 col-sm-6">
+
+            <h3 class="widget-title">Workflows</h3>
+            <ul class="lqd-custom-menu reset-ul">
+              <li><a href="#">Management</a></li>
+              <li><a href="#">Reporting</a></li>
+              <li><a href="#">Tracking</a></li>
+              <li><a href="#">All Users</a></li>
+            </ul>
+
+          </div><!-- /.col-md-3 col-sm-6 -->
+
+          <div class="lqd-column col-md-3 col-sm-6">
+
+            <h3 class="widget-title">Resources</h3>
+            <ul class="lqd-custom-menu reset-ul">
+              <li><a href="#">Ave Guide</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Intergration</a></li>
+              <li><a href="#">Communnity</a></li>
+            </ul>
+
+          </div><!-- /.col-md-3 col-sm-6 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+
+    </section>
+
+    <section class="bt-fade-white-015 pt-90 pb-90">
+      <div class="container">
+        <div class="row">
+
+          <div class="lqd-column col-md-6 col-md-offset-3 text-center">
+
+            <figure class="mb-40">
+              <img src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px"  alt="Tlint">
+            </figure>
+
+            <p>© 2020 Tlint. Proyecto en fase de desarrollo</p>
+
+          </div><!-- /.col-md-6 -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>
+
+  </footer><!-- /.main-footer -->
+
+</div><!-- /#wrap -->
+
+</body>
+</html>

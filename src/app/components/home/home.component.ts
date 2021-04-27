@@ -3,6 +3,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {User} from '../../models/user';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {UploadService} from '../../services/upload.service';
 
 @Component({
   selector: 'app-home',
@@ -13,17 +14,33 @@ import {UserService} from '../../services/user.service';
 export class HomeComponent implements OnInit {
 
   // tslint:disable-next-line:variable-name
-  constructor(private spinnerService: NgxSpinnerService, private _router: Router, private _userService: UserService) {
+  constructor(private spinnerService: NgxSpinnerService, private _router: Router,
+              private _userService: UserService, private _servicesGlobal: UploadService) {
   }
   public user: User;
   public estatus = true;
   public details;
+  public cookies = true;
+  public ciudadOrigen = false;
+  public ciudadOrigenData;
 
-  @ViewChild('idValue') dataId: string;
+  //@ViewChild('idValue') dataId: string;
 
   // tslint:disable-next-line:typedef
   ngOnInit(){
     this.spinner();
+    if (localStorage.getItem('cookies') === 'ok'){
+      this.cookies = false;
+    }
+    this._servicesGlobal.getGeolocation().subscribe((data) => {
+      this.ciudadOrigenData = data.city;
+      if (data.city === 'Tuxtla Gutiérrez'){
+        this.ciudadOrigen = true;
+      } else {
+        this.ciudadOrigen = false;
+      }
+    });
+
   }
 
   spinner(): void {
@@ -48,11 +65,14 @@ export class HomeComponent implements OnInit {
             this._router.navigate(['/profile', idValue.toLocaleLowerCase()]);
 
           } else {
-            this.details = 'No existe una ID de rastreo, intentelo nuevamente, asegurese de que este escrito correctamente ';
+            this.estatus = false;
+            // tslint:disable-next-line:max-line-length
+            this.details = 'No existe un ID de rastreo bajo este código, intentelo nuevamente, asegurese de que este escrito correctamente ';
           }
 
         }, error => {
-          this.details = 'No existe una ID de rastreo, intentelo nuevamente, asegurese de que este escrito correctamente ';
+          this.estatus = false;
+          this.details = 'No existe un ID de rastreo bajo este código, intentelo nuevamente, asegurese de que este escrito correctamente ';
         }
       );
     }
@@ -61,5 +81,10 @@ export class HomeComponent implements OnInit {
       this.estatus = false;
       this.details = 'Su ID ingresado es erroneo, el formato es de 5 digitos';
     }
+  }
+
+  // tslint:disable-next-line:typedef
+  acceptCookies(){
+    localStorage.setItem('cookies', 'ok');
   }
 }

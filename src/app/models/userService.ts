@@ -8,6 +8,7 @@ export class UserService {
     public password: string,
     public image: string,
     public cellphone: string,
+    public horarios: string
 
   ) {
   }

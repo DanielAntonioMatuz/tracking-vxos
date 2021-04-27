@@ -1,0 +1,110 @@
+<header class="main-header main-header-overlay " style="z-index: 980; background: white" uk-sticky="bottom: #offset">
+
+  <div class="mainbar-wrap">
+    <div class="megamenu-hover-bg"></div><!-- /.megamenu-hover-bg -->
+    <div class="container-fluid mainbar-container">
+      <div class="mainbar">
+        <div class="row mainbar-row align-items-lg-stretch px-4">
+
+          <div class="col-auto pr-5 ">
+            <div class="navbar-header">
+              <a class="navbar-brand" routerLink="/" rel="home">
+										<span class="navbar-brand-inner">
+											<img class="logo-dark" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="logo-sticky" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="mobile-logo-default" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+											<img class="logo-default" src="https://res.cloudinary.com/vxosplatform/image/upload/v1598224226/resources-tlint/LOGORecurso_2_kd6x9n.png" alt="Tlint" style="height: 40px">
+										</span>
+              </a>
+              <button type="button" class="navbar-toggle collapsed nav-trigger style-mobile" data-toggle="collapse" data-target="#main-header-collapse" aria-expanded="false" data-changeclassnames='{ "html": "mobile-nav-activated overflow-hidden" }'>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="bars">
+											<span class="bar"></span>
+											<span class="bar"></span>
+											<span class="bar"></span>
+										</span>
+              </button>
+            </div><!-- /.navbar-header -->
+          </div><!-- /.col -->
+
+          <div class="col">
+
+            <div class="collapse navbar-collapse " id="main-header-collapse">
+
+              <ul id="primary-nav" class="main-nav nav align-items-lg-stretch justify-content-lg-start" data-submenu-options='{ "toggleType":"fade", "handler":"mouse-in-out" }' data-localscroll="true">
+
+                <li>
+                  <a routerLink="/profile/1">
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Inicio</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/profile-user/tracking-user">
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Seguimiento</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/profile-user/my-shopping">
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Mis compras</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/profile-user/settings">
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Mi perfil</span>
+												</span>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/contact">
+                    <span class="link-icon"></span>
+                    <span class="link-txt">
+													<span class="link-ext"></span>
+													<span class="txt">Ayuda</span>
+												</span>
+                  </a>
+                </li>
+
+              </ul><!-- /#primary-nav  -->
+
+            </div><!-- /#main-header-collapse -->
+
+          </div><!-- /.col -->
+
+          <div class="col text-right">
+
+            <div class="header-module">
+
+              <a *ngIf="!identity" routerLink="/login" target="_blank" class="btn btn-default text-uppercase circle btn-bordered border-thick font-size-12 font-weight-semibold btn-white">
+									<span style="background: #ff5c5c">
+										<span class="btn-txt">Iniciar sesión</span>
+									</span>
+              </a>
+
+              <p>Hola {{identity.name}}</p>
+
+            </div><!-- /.header-module -->
+
+          </div><!-- /.col -->
+
+        </div><!-- /.mainbar-row -->
+      </div><!-- /.mainbar -->
+    </div><!-- /.mainbar-container -->
+  </div><!-- /.mainbar-wrap -->
+
+</header>
+

@@ -3,13 +3,13 @@
 
   <div>
     <div class="uk-tile uk-tile-default border" style="padding-top: 35px; padding-bottom: 35px">
-      <p class="uk-h4">Panel de registro</p>
-      <p class="uk-h5">Usuarios registrados </p>
+      <p class="uk-h4">Panel de registro de pedidos</p>
+      <p class="uk-h5">Registrar solicitud de pedido o servicio del usuario </p>
     </div>
   </div>
 
   <div class="w-75 mx-auto border" style="margin-top: 35px; padding: 20px; border-radius: 5px">
-    <p class="uk-h2" style="text-align: center">Registrar usuario </p>
+    <p class="uk-h2" style="text-align: center">Registrar pedido/servicio </p>
 
     <div class="alert alert-success" role="alert" *ngIf="status == 'success'">
       La información del usuario ha sido registrado <a routerLink="/tracking">, realiza el seguimiento</a>
@@ -40,14 +40,14 @@
       <div class="uk-margin">
         <label class="uk-form-label" for="form-stacked-ref">Referencia (ID)</label>
         <div class="uk-form-controls">
-          <input name="_id" #_id="ngModel" [(ngModel)]="user._id" required="required"  class="uk-input" id="form-stacked-ref" type="text" placeholder="a{{idData}}">
+          <input name="_id" #_id="ngModel" value="A{{idData}}" disabled  [(ngModel)]="user._id" required="required"  class="uk-input" id="form-stacked-ref" type="text" placeholder="a{{idData}}">
         </div>
       </div>
 
       <div class="uk-margin">
         <label class="uk-form-label" for="form-stacked-refA">Confirmar Referencia (ID)</label>
         <div class="uk-form-controls">
-          <input name="referencia" #referencia="ngModel" [(ngModel)]="user.referencia" required="required" class="uk-input" id="form-stacked-refA" type="text" placeholder="a{{idData}}">
+          <input name="referencia" #referencia="ngModel" value="A{{idData}}" disabled [(ngModel)]="user.referencia" required="required" class="uk-input" id="form-stacked-refA" type="text" placeholder="a{{idData}}">
         </div>
       </div>
 
@@ -55,11 +55,8 @@
       <div class="uk-margin">
         <label class="uk-form-label" for="form-stacked-select">Tipo de producto</label>
         <div class="uk-form-controls">
-          <select class="uk-select" id="form-stacked-select" name="tipoLicencia" #tipoLicencia="ngModel" [(ngModel)]="user.tipoLicencia" required="required" >
-            <option>Creative Cloud</option>
-            <option>Producto individual</option>
-            <option>Producto dual</option>
-
+          <select class="uk-select" id="form-stacked-select" name="pedido" #pedido="ngModel" [(ngModel)]="user.pedido" required="required" >
+            <option *ngFor="let i of menuService" value="{{i._id}}">{{i.nombre}}</option>
           </select>
         </div>
       </div>

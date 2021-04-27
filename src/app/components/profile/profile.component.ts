@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
   public tickect;
   public msgService = true;
   public cfm = false;
+  public identity;
+  public token;
 
   constructor(
     // tslint:disable-next-line:variable-name
@@ -38,9 +40,12 @@ export class ProfileComponent implements OnInit {
 
   ) {
     this.details = 'Ocultar rastreo de licencia';
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();
   }
 
   ngOnInit(): void {
+
     const hoy = new Date();
     const anio = hoy.getFullYear();
     const mes = hoy.getMonth() + 1;
@@ -79,8 +84,11 @@ export class ProfileComponent implements OnInit {
           const fechActual = new Date(this.fecha);
           console.log(fechActual);
           console.log(fechVigencia);
+          this.status = true;
+          this.soliLicense = 'Solicito renovación de mi licencia de con vigencia: ' + this.user.vigencia;
+
           // tslint:disable-next-line:triple-equals max-line-length
-          if (new Date(response.user.vigencia).getTime() < new Date(this.fecha).getTime() && new Date(response.user.vigencia).getTime() != undefined){
+          /*if (new Date(response.user.vigencia).getTime() < new Date(this.fecha).getTime() && new Date(response.user.vigencia).getTime() != undefined){
             this.cfm = true;
             this.status = true;
             const data = {
@@ -120,7 +128,7 @@ export class ProfileComponent implements OnInit {
             this.soliLicense = 'Solicito renovación de mi licencia de con vigencia: ' + this.user.vigencia;
           } else {
             this.status = false;
-          }
+          }*/
         } else {
           this.status = 'error';
         }

@@ -9,7 +9,7 @@ export class MessageService {
 
   // tslint:disable-next-line:typedef
   sendMessage(body) {
-    return this._http.post('http://localhost:3800/api/formulario', body);
+    return this._http.post('https://db-server-vxos.herokuapp.com/api/formulario', body);
   }
 
 }
